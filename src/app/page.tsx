@@ -2,14 +2,18 @@ import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 import { CourseCategories } from "./components/CourseCategories";
 import { Hero } from "./components/Hero";
+import { FeaturedCourses } from "./components/FeaturedCourses";
+import { TrainingInfo } from "./components/TrainingInfo";
 
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen bg-zinc-50 dark:bg-black font-sans">
       <Header />
-      <main className="flex-1 w-full max-w-7xl mx-auto px-6 py-12">
-        <Hero imageUrl="/hero.jpg" />
+      <Hero imageUrl="/pictures/pic2.jpg" />
+      <main className="flex-1 w-full flex flex-col">
         <CourseCategories />
+        <FeaturedCourses />
+        <TrainingInfo />
       </main>
       <Footer />
     </div>

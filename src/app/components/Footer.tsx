@@ -1,135 +1,142 @@
-import { MapPin, Phone, Mail, ExternalLink } from 'lucide-react';
+import { ChevronRight } from 'lucide-react';
 
-const globalOffices = [
-  { city: 'London', address: '123 Canary Wharf' },
-  { city: 'New York', address: '456 Wall Street' },
-  { city: 'Singapore', address: '789 Marina Bay' },
-  { city: 'Dubai', address: '321 Business Bay' },
-  { city: 'Sydney', address: '654 Circular Quay' },
-  { city: 'Hong Kong', address: '987 Central' },
-];
+const FacebookIcon = ({ size = 24, className = "", fill = "none" }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill={fill} stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+);
+const TwitterIcon = ({ size = 24, className = "", fill = "none" }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill={fill} stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
+);
+const LinkedinIcon = ({ size = 24, className = "", fill = "none" }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill={fill} stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+);
+const YoutubeIcon = ({ size = 24, className = "", fill = "none" }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill={fill} stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg>
+);
 
 export function Footer() {
   return (
-    <footer className="bg-[#0b3d91] text-white">
-      {/* Newsletter Section */}
-      <div className="border-b border-white/20">
-        <div className="max-w-7xl mx-auto px-6 py-12">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-            <div>
-              <h3 className="text-3xl font-bold mb-2">Stay Informed</h3>
-              <p className="text-white/80">
-                Subscribe to our newsletter for the latest course updates, industry insights, and exclusive offers.
-              </p>
-            </div>
-            <div className="flex gap-4">
-              <input
-                type="email"
-                placeholder="Enter your email address"
-                className="flex-1 px-6 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder:text-white/50 outline-none focus:border-[#facc15] transition-colors"
-              />
-              <button className="bg-[#facc15] text-[#0b3d91] px-8 py-3 rounded-lg hover:bg-[#e5b805] transition-colors font-medium whitespace-nowrap">
-                Subscribe
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Main Footer Content */}
-      <div className="max-w-7xl mx-auto px-6 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* Company Info */}
-          <div>
-            <h3 className="text-2xl font-bold mb-4">OXLADE</h3>
-            <p className="text-white/80 mb-4">
-              Leading the way in professional development and corporate training since 1995.
+    <footer className="bg-zinc-50 border-t border-gray-200 text-gray-800 font-sans">
+      <div className="max-w-7xl mx-auto px-6 pt-16 pb-8">
+        
+        {/* Top 4 Columns */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+          {/* Column 1: Description */}
+          <div className="lg:pr-8">
+            <p className="text-[15px] leading-relaxed text-gray-700 mt-2">
+              Oxlade Business School offers over 500 intensive courses that elevate professional skills, enhance career growth, and boost organisational effectiveness.
             </p>
-            <div className="flex gap-4">
-              <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#facc15] hover:text-[#0b3d91] transition-colors">
-                <ExternalLink size={20} />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#facc15] hover:text-[#0b3d91] transition-colors">
-                <ExternalLink size={20} />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#facc15] hover:text-[#0b3d91] transition-colors">
-                <ExternalLink size={20} />
-              </a>
-            </div>
           </div>
 
-          {/* Quick Links */}
+          {/* Column 2: About */}
           <div>
-            <h4 className="font-semibold mb-4">Quick Links</h4>
-            <ul className="space-y-2">
-              <li><a href="#" className="text-white/80 hover:text-[#facc15] transition-colors">About Us</a></li>
-              <li><a href="#" className="text-white/80 hover:text-[#facc15] transition-colors">All Courses</a></li>
-              <li><a href="#" className="text-white/80 hover:text-[#facc15] transition-colors">Corporate Training</a></li>
-              <li><a href="#" className="text-white/80 hover:text-[#facc15] transition-colors">Accreditation</a></li>
-              <li><a href="#" className="text-white/80 hover:text-[#facc15] transition-colors">Careers</a></li>
-            </ul>
-          </div>
-
-          {/* Global Offices */}
-          <div>
-            <h4 className="font-semibold mb-4">Global Offices</h4>
-            <ul className="space-y-2">
-              {globalOffices.map((office) => (
-                <li key={office.city}>
-                  <a href="#" className="text-white/80 hover:text-[#facc15] transition-colors flex items-start gap-2">
-                    <MapPin size={16} className="mt-1 flex-shrink-0" />
-                    <div>
-                      <div>{office.city}</div>
-                      <div className="text-sm text-white/60">{office.address}</div>
-                    </div>
+            <h4 className="font-bold text-gray-900 mb-5 text-[15px]">About</h4>
+            <ul className="space-y-3">
+              {['About Us', 'Meet the Team', 'Course Locations', 'Training Consultants', 'Testimonials'].map((link) => (
+                <li key={link}>
+                  <a href="#" className="flex items-center gap-2 text-[14px] text-gray-700 hover:text-[#0b3d91] font-medium transition-colors group">
+                    <ChevronRight size={14} className="text-[#3b82f6] group-hover:text-[#0b3d91] transition-colors" />
+                    <span>{link}</span>
                   </a>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Contact Info */}
+          {/* Column 3: Quick Links */}
           <div>
-            <h4 className="font-semibold mb-4">Contact Us</h4>
-            <ul className="space-y-4">
-              <li>
-                <a href="tel:+442071234567" className="text-white/80 hover:text-[#facc15] transition-colors flex items-center gap-2">
-                  <Phone size={18} />
-                  <span>+44 (0)20 7123 4567</span>
-                </a>
-              </li>
-              <li>
-                <a href="mailto:info@oxlade.com" className="text-white/80 hover:text-[#facc15] transition-colors flex items-center gap-2">
-                  <Mail size={18} />
-                  <span>info@oxlade.com</span>
-                </a>
-              </li>
+            <h4 className="font-bold text-gray-900 mb-5 text-[15px]">Quick Links</h4>
+            <ul className="space-y-3">
+              {['Brochures & Calendars', 'Accommodation', 'Airport Transfers', 'Visas', 'Consultancy Solutions'].map((link) => (
+                <li key={link}>
+                  <a href="#" className="flex items-center gap-2 text-[14px] text-gray-700 hover:text-[#0b3d91] font-medium transition-colors group">
+                    <ChevronRight size={14} className="text-[#3b82f6] group-hover:text-[#0b3d91] transition-colors" />
+                    <span>{link}</span>
+                  </a>
+                </li>
+              ))}
             </ul>
-            <div className="mt-6">
-              <h5 className="font-semibold mb-2">Office Hours</h5>
-              <p className="text-white/80 text-sm">
-                Monday - Friday: 9:00 - 18:00<br />
-                Saturday - Sunday: Closed
-              </p>
-            </div>
           </div>
-        </div>
-      </div>
 
-      {/* Bottom Bar */}
-      <div className="border-t border-white/20">
-        <div className="max-w-7xl mx-auto px-6 py-6">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-white/60 text-sm">
-              © 2026 Oxlade Business Training School. All rights reserved.
+          {/* Column 4: Info */}
+          <div>
+            <h4 className="font-bold text-gray-900 mb-5 text-[15px]">Info</h4>
+            <ul className="space-y-3">
+              {['Privacy & Cookies', 'Terms', 'FAQs', 'Cookie Preferences'].map((link) => (
+                <li key={link}>
+                  <a href="#" className="flex items-center gap-2 text-[14px] text-gray-700 hover:text-[#0b3d91] font-medium transition-colors group">
+                    <ChevronRight size={14} className="text-[#3b82f6] group-hover:text-[#0b3d91] transition-colors" />
+                    <span>{link}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        {/* Newsletter Section */}
+        <div className="bg-[#e9f0f0] rounded-xl p-8 mb-12 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8">
+          <div className="lg:w-1/2">
+            <h3 className="text-xl font-bold text-[#1e1e24] mb-2">Sign up to our newsletter</h3>
+            <p className="text-gray-700 text-[15px]">
+              Receive all the latest information about new courses and much more
             </p>
-            <div className="flex gap-6">
-              <a href="#" className="text-white/60 hover:text-[#facc15] transition-colors text-sm">Privacy Policy</a>
-              <a href="#" className="text-white/60 hover:text-[#facc15] transition-colors text-sm">Terms of Service</a>
-              <a href="#" className="text-white/60 hover:text-[#facc15] transition-colors text-sm">Cookie Policy</a>
+          </div>
+          
+          <div className="lg:w-[55%] w-full flex flex-col gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <input
+                type="text"
+                placeholder="First Name"
+                className="w-full px-4 py-2.5 rounded border border-gray-300 bg-black/5 text-gray-800 placeholder-gray-500 focus:outline-none focus:border-[#0b3d91] focus:bg-white transition-colors text-sm"
+              />
+              <input
+                type="text"
+                placeholder="Last Name"
+                className="w-full px-4 py-2.5 rounded border border-gray-300 bg-black/5 text-gray-800 placeholder-gray-500 focus:outline-none focus:border-[#0b3d91] focus:bg-white transition-colors text-sm"
+              />
+              <input
+                type="email"
+                placeholder="Email"
+                className="w-full px-4 py-2.5 rounded border border-gray-300 bg-black/5 text-gray-800 placeholder-gray-500 focus:outline-none focus:border-[#0b3d91] focus:bg-white transition-colors text-sm"
+              />
+            </div>
+            
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+              <label className="flex items-center gap-2 cursor-pointer group">
+                <input type="checkbox" className="w-4 h-4 rounded border-gray-300 text-[#0b3d91] focus:ring-[#0b3d91] cursor-pointer" />
+                <span className="text-[14px] text-gray-600 group-hover:text-gray-900 transition-colors">I agree to receiving newsletters.</span>
+              </label>
+              <button className="bg-[#1f1a38] text-white px-8 py-2.5 rounded font-medium hover:bg-[#2c2550] transition-colors text-sm whitespace-nowrap">
+                Sign up
+              </button>
             </div>
           </div>
         </div>
+
+        {/* Bottom Bar: Socials & Copyright */}
+        <div className="flex flex-col md:flex-row justify-between items-center gap-6 pt-4 border-t border-gray-200/60">
+          <div className="flex items-center gap-3">
+            <span className="text-gray-600 font-medium mr-2">Us:</span>
+            <a href="#" className="w-8 h-8 flex items-center justify-center bg-[#7bc4c4] text-white rounded hover:bg-[#5aa8a8] transition-colors">
+              <FacebookIcon size={16} fill="currentColor" className="stroke-none" />
+            </a>
+            <a href="#" className="w-8 h-8 flex items-center justify-center bg-[#7bc4c4] text-white rounded hover:bg-[#5aa8a8] transition-colors">
+              <TwitterIcon size={16} fill="currentColor" className="stroke-none" />
+            </a>
+            <a href="#" className="w-8 h-8 flex items-center justify-center bg-[#7bc4c4] text-white rounded hover:bg-[#5aa8a8] transition-colors">
+              <LinkedinIcon size={16} fill="currentColor" className="stroke-none" />
+            </a>
+            <a href="#" className="w-8 h-8 flex items-center justify-center bg-[#7bc4c4] text-white rounded hover:bg-[#5aa8a8] transition-colors">
+              <YoutubeIcon size={16} />
+            </a>
+          </div>
+          
+          <div className="text-right text-[13px] text-gray-600">
+            <p className="mb-1">© 2026 All Rights Reserved. Oxlade Business School.</p>
+            <p>Built By <span className="font-semibold underline cursor-pointer hover:text-[#0b3d91]">Oxlade Design</span></p>
+          </div>
+        </div>
+
       </div>
     </footer>
   );
