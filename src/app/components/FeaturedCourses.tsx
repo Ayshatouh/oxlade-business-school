@@ -1,90 +1,106 @@
-import { Calendar, MapPin, ArrowRight } from 'lucide-react';
+import { Calendar, MapPin, Clock, ArrowRight } from 'lucide-react';
+import Link from 'next/link';
 
 const featuredCourses = [
   {
-    title: 'Advanced Strategic Leadership & Management',
-    category: 'Leadership',
-    date: '15 - 19 Aug 2026',
-    location: 'London, UK',
-    price: '£3,450',
-    tags: ['In-Person', 'Popular']
+    id: 'fraud-detection',
+    title: 'Fraud Detection and Prevention in Internal Auditing',
+    category: 'Banking and Finance',
+    duration: '5 Days',
+    date: '25 - 29 May 2026',
+    venue: 'London',
+    price: '£4,495',
+    image: '/pictures/pic1.jpg',
   },
   {
+    id: 'mini-mba',
     title: 'Mini MBA in Business Management',
     category: 'Business Management',
+    duration: '5 Days',
     date: '02 - 06 Sep 2026',
-    location: 'Dubai, UAE',
+    venue: 'Dubai',
     price: '£3,800',
-    tags: ['In-Person']
+    image: '/pictures/pic2.jpg',
   },
   {
+    id: 'data-analytics',
     title: 'Data Analytics for Decision Makers',
     category: 'Digital & Tech',
+    duration: 'Online',
     date: 'Flexible Start',
-    location: 'Online',
+    venue: 'Online',
     price: '£1,950',
-    tags: ['Online', 'New']
+    image: '/pictures/pic3.jpg',
   }
 ];
 
 export function FeaturedCourses() {
   return (
-    <section className="py-16 bg-white">
+    <section className="py-20 bg-[#110e26] text-white">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
-          <div>
-            <h2 className="text-[clamp(1.75rem,4vw,2.5rem)] font-extrabold text-[#0b3d91] mb-3 leading-tight" style={{ fontFamily: "var(--font-playfair), 'Playfair Display', Georgia, serif" }}>
-              Featured Courses
-            </h2>
-            <p className="text-lg text-gray-600 font-medium">
-              Highly recommended programmes starting soon
-            </p>
-          </div>
-          <a href="#" className="inline-flex items-center gap-2 text-[#0b3d91] font-bold hover:text-[#facc15] transition-colors">
-            View all schedule <ArrowRight size={18} />
-          </a>
+        <div className="text-center mb-16">
+          <p className="text-[#facc15] font-bold uppercase tracking-[0.2em] text-sm mb-4">Find a Course</p>
+          <h2 className="text-3xl font-black mb-4 tracking-tight" style={{ fontFamily: "var(--font-playfair), 'Playfair Display', Georgia, serif" }}>
+            Featured Courses
+          </h2>
+          <div className="w-24 h-1.5 bg-[#facc15] mx-auto"></div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {featuredCourses.map((course, index) => (
-            <div key={index} className="bg-white rounded-2xl border border-gray-200 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgba(11,61,145,0.12)] transition-shadow duration-300 overflow-hidden flex flex-col">
-              <div className="p-6 flex-grow flex flex-col">
-                <div className="flex gap-2 mb-4">
-                  {course.tags.map(tag => (
-                    <span key={tag} className={`text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full ${tag === 'Popular' ? 'bg-[#facc15]/20 text-[#b38f00]' : tag === 'New' ? 'bg-green-100 text-green-700' : 'bg-blue-50 text-[#0b3d91]'}`}>
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-                
-                <h3 className="text-xl font-bold text-gray-900 mb-2 leading-snug hover:text-[#0b3d91] transition-colors cursor-pointer">
-                  {course.title}
-                </h3>
-                
-                <p className="text-[#0b3d91] font-semibold text-sm mb-6 uppercase tracking-wide">
+            <div key={index} className="bg-[#1a152e] flex flex-col group overflow-hidden border border-white/5 shadow-2xl">
+              <div className="relative aspect-[4/3] overflow-hidden p-6 pb-0">
+                <img 
+                  src={course.image} 
+                  alt={course.title}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute top-8 left-8 bg-[#facc15] text-[#110e26] px-3 py-1 font-black text-[10px] uppercase tracking-tighter">
                   {course.category}
-                </p>
-                
-                <div className="space-y-3 mt-auto">
-                  <div className="flex items-center gap-3 text-gray-600 text-sm font-medium">
-                    <Calendar size={18} className="text-gray-400" />
-                    {course.date}
-                  </div>
-                  <div className="flex items-center gap-3 text-gray-600 text-sm font-medium">
-                    <MapPin size={18} className="text-gray-400" />
-                    {course.location}
-                  </div>
                 </div>
               </div>
               
-              <div className="px-6 py-5 bg-gray-50 border-t border-gray-100 flex items-center justify-between">
-                <div className="text-xl font-bold text-[#0b3d91]">{course.price}</div>
-                <button className="px-5 py-2 bg-white border border-[#0b3d91] text-[#0b3d91] rounded-lg font-bold hover:bg-[#0b3d91] hover:text-white transition-colors text-sm">
-                  Book Now
-                </button>
+              <div className="p-8 pt-6 flex flex-col flex-grow">
+                <h3 className="text-lg font-bold text-white mb-6 leading-tight min-h-[3rem] group-hover:text-[#facc15] transition-colors">
+                  {course.title}
+                </h3>
+                
+                <div className="space-y-4 mb-8">
+                  <div className="flex items-center gap-3 text-gray-400 text-[13px] font-medium">
+                    <Calendar size={16} className="text-[#facc15]" />
+                    <span>{course.date}</span>
+                  </div>
+                  <div className="flex items-center gap-3 text-gray-400 text-[13px] font-medium">
+                    <MapPin size={16} className="text-[#facc15]" />
+                    <span>{course.venue}</span>
+                  </div>
+                  <div className="flex items-center gap-3 text-gray-400 text-[13px] font-medium">
+                    <Clock size={16} className="text-[#facc15]" />
+                    <span>{course.duration}</span>
+                  </div>
+                </div>
+                
+                <div className="mt-auto flex items-center justify-between pt-6 border-t border-white/10">
+                  <div className="flex flex-col">
+                    <span className="text-[10px] uppercase tracking-widest text-gray-500 font-bold mb-0.5">Price</span>
+                    <span className="text-xl font-black text-[#facc15]">{course.price}</span>
+                  </div>
+                  <Link 
+                    href={`/courses/${course.id}`}
+                    className="bg-[#facc15] text-[#110e26] px-6 py-2.5 font-black uppercase tracking-widest text-[11px] hover:bg-white transition-all transform hover:-translate-y-0.5"
+                  >
+                    VIEW DETAILS
+                  </Link>
+                </div>
               </div>
             </div>
           ))}
+        </div>
+
+        <div className="mt-16 text-center">
+          <p className="text-gray-400 text-sm italic">
+            Images from <span className="underline decoration-[#facc15] underline-offset-4">Freepik</span>
+          </p>
         </div>
       </div>
     </section>

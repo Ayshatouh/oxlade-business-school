@@ -61,7 +61,7 @@ export function Testimonials() {
           <h2 className="text-4xl font-bold text-[#0b3d91] mb-4">
             What Our Delegates Say
           </h2>
-          <p className="text-xl text-gray-600">
+          <p className="text-xl text-gray-900">
             Real feedback from professionals who've transformed their careers
           </p>
         </div>
@@ -71,7 +71,7 @@ export function Testimonials() {
             <div key={index} className="px-4">
               <div className="bg-white rounded-2xl p-8 shadow-lg h-full">
                 <Quote className="text-[#facc15] mb-4" size={40} />
-                <p className="text-gray-700 mb-6 text-lg italic">
+                <p className="text-gray-900 mb-6 text-lg italic">
                   "{testimonial.text}"
                 </p>
                 <div className="flex items-center gap-2 mb-4">
@@ -81,7 +81,7 @@ export function Testimonials() {
                 </div>
                 <div className="border-t pt-4">
                   <div className="font-semibold text-[#0b3d91]">{testimonial.name}</div>
-                  <div className="text-sm text-gray-600">{testimonial.role}</div>
+                  <div className="text-sm text-gray-800">{testimonial.role}</div>
                   <div className="text-sm text-[#facc15]">{testimonial.company}</div>
                 </div>
               </div>

@@ -36,7 +36,7 @@ export function Hero({ imageUrl }: HeroProps) {
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(110deg, rgba(11,61,145,0.92) 0%, rgba(11,61,145,0.78) 35%, rgba(5,30,80,0.60) 65%, rgba(0,20,60,0.35) 100%)",
+              "linear-gradient(110deg, rgba(17,14,38,0.95) 0%, rgba(17,14,38,0.85) 35%, rgba(17,14,38,0.60) 65%, rgba(17,14,38,0.35) 100%)",
           }}
         />
       </div>
@@ -56,10 +56,10 @@ export function Hero({ imageUrl }: HeroProps) {
         <h1
           style={{
             fontFamily: "var(--font-playfair), 'Playfair Display', Georgia, serif",
-            fontSize: "clamp(2rem, 4.5vw, 3rem)",
+            fontSize: "clamp(2rem, 3.5vw, 2.5rem)",
             fontWeight: 700,
             color: "#ffffff",
-            lineHeight: 1.15,
+            lineHeight: 1.1,
             marginBottom: "1.5rem",
             textShadow: "0 2px 16px rgba(0,0,0,0.5)",
             letterSpacing: "-0.01em",

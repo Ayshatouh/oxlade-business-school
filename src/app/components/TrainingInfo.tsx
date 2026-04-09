@@ -14,7 +14,7 @@ export function TrainingInfo() {
             <h2 className="text-[1.75rem] font-extrabold text-[#0b3d91] mb-5 leading-tight" style={{ fontFamily: "var(--font-playfair), 'Playfair Display', Georgia, serif" }}>
               Multiple Training Formats
             </h2>
-            <p className="text-gray-600 leading-relaxed text-[15px] md:text-base font-medium">
+            <p className="text-gray-900 leading-relaxed font-medium">
               We offer different training formats, including classroom open (public) courses, in-house classroom customised courses, and online training courses, all fully designed to suit client requirements.
             </p>
             <a href="#" className="mt-8 text-[#0b3d91] font-bold hover:text-[#facc15] transition-colors uppercase tracking-wide text-sm">
@@ -30,7 +30,7 @@ export function TrainingInfo() {
             <h2 className="text-[1.75rem] font-extrabold text-[#0b3d91] mb-5 leading-tight" style={{ fontFamily: "var(--font-playfair), 'Playfair Display', Georgia, serif" }}>
               International Training Venues
             </h2>
-            <p className="text-gray-600 leading-relaxed text-[15px] md:text-base font-medium">
+            <p className="text-gray-900 leading-relaxed font-medium">
               We offer open (public) courses in leading international locations across the world, including Abuja, Barcelona, Dubai, Istanbul, London, New York and Singapore and customised courses anywhere in the world to meet client requirements.
             </p>
             <a href="#" className="mt-8 text-[#0b3d91] font-bold hover:text-[#facc15] transition-colors uppercase tracking-wide text-sm">
