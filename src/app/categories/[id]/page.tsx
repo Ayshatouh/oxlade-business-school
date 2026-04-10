@@ -41,14 +41,14 @@ export default function CategoryListingPage({ params }: { params: Promise<{ id: 
       <section className="pt-32 pb-12 bg-gray-50 border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-6">
           <nav className="flex items-center gap-2 text-gray-400 mb-6 font-medium">
-            <Link href="/" className="hover:text-[#0b3d91]">Home</Link>
+            <Link href="/" className="hover:text-[#002d80]">Home</Link>
             <ChevronRight size={12} />
-            <Link href="#categories" className="hover:text-[#0b3d91]">Categories</Link>
+            <Link href="#categories" className="hover:text-[#002d80]">Categories</Link>
             <ChevronRight size={12} />
             <span className="text-gray-900">{categoryName}</span>
           </nav>
           
-          <h1 className="text-3xl font-black text-[#110e26] tracking-tight" style={{ fontFamily: "var(--font-playfair), 'Playfair Display', Georgia, serif" }}>
+          <h1 className="text-3xl font-black text-[#002d80] tracking-tight" style={{ fontFamily: "var(--font-playfair), 'Playfair Display', Georgia, serif" }}>
             {categoryName} Training Courses
           </h1>
         </div>
@@ -60,8 +60,8 @@ export default function CategoryListingPage({ params }: { params: Promise<{ id: 
           {/* Sidebar Filters */}
           <aside className="lg:col-span-1 space-y-8">
             <div className="flex items-center justify-between pb-4 border-b border-gray-100">
-              <h3 className="font-bold text-[#110e26] uppercase tracking-widest text-[10px]">Filter Results</h3>
-              <button className="text-gray-400 hover:text-[#0b3d91] flex items-center gap-1 font-bold">
+              <h3 className="font-bold text-[#002d80] uppercase tracking-widest text-[10px]">Filter Results</h3>
+              <button className="text-gray-400 hover:text-[#002d80] flex items-center gap-1 font-bold">
                 <Filter size={12} /> Hide filter
               </button>
             </div>
@@ -70,14 +70,14 @@ export default function CategoryListingPage({ params }: { params: Promise<{ id: 
               <div>
                 <label className="block font-bold text-gray-900 mb-2">Search Course</label>
                 <div className="relative">
-                  <input type="text" placeholder="e.g. Sales" className="w-full pl-3 pr-10 py-2 border border-gray-200 rounded focus:border-[#0b3d91] outline-none" />
+                  <input type="text" placeholder="e.g. Sales" className="w-full pl-3 pr-10 py-2 border border-gray-200 rounded focus:border-[#002d80] outline-none" />
                   <Search size={14} className="absolute right-3 top-2.5 text-gray-400" />
                 </div>
               </div>
               
               <div>
                 <label className="block font-bold text-gray-900 mb-2">Location</label>
-                <select className="w-full px-3 py-2 border border-gray-200 rounded focus:border-[#0b3d91] outline-none">
+                <select className="w-full px-3 py-2 border border-gray-200 rounded focus:border-[#002d80] outline-none">
                   <option>All Locations</option>
                   <option>London</option>
                   <option>Dubai</option>
@@ -90,7 +90,7 @@ export default function CategoryListingPage({ params }: { params: Promise<{ id: 
                 <div className="space-y-2">
                   {['1 - 3 Days', '5 Days', '2 Weeks'].map(dur => (
                     <label key={dur} className="flex items-center gap-2 cursor-pointer group">
-                      <input type="checkbox" className="w-3.5 h-3.5 rounded border-gray-300 text-[#0b3d91] focus:ring-[#0b3d91]" />
+                      <input type="checkbox" className="w-3.5 h-3.5 rounded border-gray-300 text-[#002d80] focus:ring-[#002d80]" />
                       <span className="text-gray-700 group-hover:text-gray-900">{dur}</span>
                     </label>
                   ))}
@@ -115,13 +115,13 @@ export default function CategoryListingPage({ params }: { params: Promise<{ id: 
                   {courses.map((course, idx) => (
                     <tr key={idx} className="hover:bg-gray-50/50 transition-colors group cursor-pointer">
                       <td className="px-6 py-4">
-                        <Link href="/courses/fraud-detection" className="font-bold text-gray-900 group-hover:text-[#0b3d91] transition-colors leading-tight block">
+                        <Link href="/courses/fraud-detection" className="font-bold text-gray-900 group-hover:text-[#002d80] transition-colors leading-tight block">
                           {course.title}
                         </Link>
                       </td>
                       <td className="px-6 py-4 text-gray-600 font-medium whitespace-nowrap">{course.date}</td>
                       <td className="px-6 py-4 text-gray-600">{course.venue}</td>
-                      <td className="px-6 py-4 font-bold text-[#0b3d91] text-right">{course.price}</td>
+                      <td className="px-6 py-4 font-bold text-[#002d80] text-right">{course.price}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -130,7 +130,7 @@ export default function CategoryListingPage({ params }: { params: Promise<{ id: 
             
             {/* Pagination Placeholder */}
             <div className="mt-8 flex justify-center items-center gap-2">
-              <span className="px-3 py-1 bg-[#110e26] text-white rounded font-bold">1</span>
+              <span className="px-3 py-1 bg-[#002d80] text-white rounded font-bold">1</span>
               <span className="px-3 py-1 hover:bg-gray-100 rounded cursor-pointer font-bold">2</span>
               <span className="px-3 py-1 hover:bg-gray-100 rounded cursor-pointer font-bold flex items-center gap-1">Next <ChevronRight size={12} /></span>
             </div>
@@ -141,7 +141,7 @@ export default function CategoryListingPage({ params }: { params: Promise<{ id: 
         {/* Marketing / SEO Section */}
         <section className="mt-24 space-y-12">
           <div className="max-w-4xl">
-            <h2 className="text-2xl font-black text-[#110e26] mb-6 leading-tight" style={{ fontFamily: "var(--font-playfair), 'Playfair Display', Georgia, serif" }}>
+            <h2 className="text-2xl font-black text-[#002d80] mb-6 leading-tight" style={{ fontFamily: "var(--font-playfair), 'Playfair Display', Georgia, serif" }}>
               Master {categoryName} Skills with Professional Training Courses
             </h2>
             <div className="space-y-4 text-gray-700 leading-relaxed font-medium">
@@ -156,7 +156,7 @@ export default function CategoryListingPage({ params }: { params: Promise<{ id: 
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             <div>
-              <h3 className="text-xl font-bold text-[#110e26] mb-6" style={{ fontFamily: "var(--font-playfair), 'Playfair Display', Georgia, serif" }}>Why Choose Oxlade's {categoryName} Courses?</h3>
+              <h3 className="text-xl font-bold text-[#002d80] mb-6" style={{ fontFamily: "var(--font-playfair), 'Playfair Display', Georgia, serif" }}>Why Choose Oxlade's {categoryName} Courses?</h3>
               <p className="text-gray-700 mb-6 font-medium">Transform your approach to {categoryName.toLowerCase()} with training that delivers real results:</p>
               <ul className="space-y-4">
                 {[
@@ -177,14 +177,14 @@ export default function CategoryListingPage({ params }: { params: Promise<{ id: 
               </ul>
             </div>
             
-            <div className="bg-[#110e26] text-white p-10 rounded-2xl relative overflow-hidden flex flex-col justify-center">
+            <div className="bg-[#002d80] text-white p-10 rounded-2xl relative overflow-hidden flex flex-col justify-center">
               <div className="absolute top-0 right-0 w-1/2 h-full bg-white/5 skew-x-[-20deg] translate-x-1/2"></div>
               <h3 className="text-2xl font-black mb-6 relative z-10" style={{ fontFamily: "var(--font-playfair), 'Playfair Display', Georgia, serif" }}>Ready to elevate your career?</h3>
               <p className="text-gray-300 mb-8 relative z-10 leading-relaxed font-medium">
                 Our team is ready to help you find the perfect training solution for you or your organisation.
               </p>
               <div className="flex flex-wrap gap-4 relative z-10">
-                <button className="bg-[#facc15] text-[#110e26] px-8 py-3 rounded font-black uppercase tracking-widest text-[10px] hover:bg-white transition-colors">
+                <button className="bg-[#facc15] text-[#002d80] px-8 py-3 rounded font-black uppercase tracking-widest text-[10px] hover:bg-white transition-colors">
                   Contact Us
                 </button>
                 <button className="bg-white/10 text-white px-8 py-3 rounded font-black uppercase tracking-widest text-[10px] hover:bg-white/20 transition-colors">

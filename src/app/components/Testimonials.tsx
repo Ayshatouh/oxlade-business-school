@@ -58,7 +58,7 @@ export function Testimonials() {
     <section className="py-16 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-[#0b3d91] mb-4">
+          <h2 className="text-4xl font-bold text-[#002d80] mb-4">
             What Our Delegates Say
           </h2>
           <p className="text-xl text-gray-900">
@@ -80,7 +80,7 @@ export function Testimonials() {
                   ))}
                 </div>
                 <div className="border-t pt-4">
-                  <div className="font-semibold text-[#0b3d91]">{testimonial.name}</div>
+                  <div className="font-semibold text-[#002d80]">{testimonial.name}</div>
                   <div className="text-sm text-gray-800">{testimonial.role}</div>
                   <div className="text-sm text-[#facc15]">{testimonial.company}</div>
                 </div>

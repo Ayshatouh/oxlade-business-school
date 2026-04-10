@@ -89,11 +89,11 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
   const { id } = use(params);
 
   return (
-    <div className="min-h-screen bg-white selection:bg-[#facc15] selection:text-[#110e26]">
+    <div className="min-h-screen bg-white selection:bg-[#facc15] selection:text-[#002d80]">
       <Header />
       
       {/* Course Hero */}
-      <section className="pt-40 pb-20 bg-[#110e26] text-white relative overflow-hidden">
+      <section className="pt-40 pb-20 bg-[#002d80] text-white relative overflow-hidden">
         <div className="absolute inset-0"
              style={{
                background: "linear-gradient(110deg, rgba(17,14,38,0.95) 0%, rgba(17,14,38,0.85) 35%, rgba(17,14,38,0.60) 65%, rgba(17,14,38,0.35) 100%)"
@@ -102,7 +102,7 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="flex flex-col gap-6 max-w-4xl">
             <div className="flex items-center gap-3">
-              <span className="bg-[#facc15] text-[#110e26] px-4 py-1 text-[11px] font-black uppercase tracking-widest leading-none">
+              <span className="bg-[#facc15] text-[#002d80] px-4 py-1 text-[11px] font-black uppercase tracking-widest leading-none">
                 {courseData.category}
               </span>
               <div className="flex items-center gap-1 text-[#facc15]">
@@ -141,7 +141,7 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
             
             {/* Schedule Section */}
             <div id="schedule" className="scroll-mt-32">
-              <h2 className="text-3xl font-bold text-[#110e26] mb-8 flex items-center gap-3" style={{ fontFamily: "var(--font-playfair), 'Playfair Display', Georgia, serif" }}>
+              <h2 className="text-3xl font-bold text-[#002d80] mb-8 flex items-center gap-3" style={{ fontFamily: "var(--font-playfair), 'Playfair Display', Georgia, serif" }}>
                 <Calendar className="text-[#facc15]" /> Course Schedule
               </h2>
               <div className="overflow-hidden border border-gray-100 rounded-xl shadow-sm">
@@ -160,7 +160,7 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
                         <td className="px-6 py-4 text-[15px] font-semibold text-gray-900">{slot.date}</td>
                         <td className="px-6 py-4 text-[15px] text-gray-700">{slot.venue}</td>
                         <td className="px-6 py-4 text-[14px] text-gray-600">{slot.duration}</td>
-                        <td className="px-6 py-4 text-[15px] font-bold text-[#0b3d91] text-right">{slot.price}</td>
+                        <td className="px-6 py-4 text-[15px] font-bold text-[#002d80] text-right">{slot.price}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -173,7 +173,7 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
 
             {/* Overview */}
             <div id="overview" className="scroll-mt-32">
-              <h2 className="text-2xl font-bold text-[#110e26] mb-6" style={{ fontFamily: "var(--font-playfair), 'Playfair Display', Georgia, serif" }}>Course Overview</h2>
+              <h2 className="text-2xl font-bold text-[#002d80] mb-6" style={{ fontFamily: "var(--font-playfair), 'Playfair Display', Georgia, serif" }}>Course Overview</h2>
               <p className="text-gray-700 leading-relaxed">
                 {courseData.description}
               </p>
@@ -181,12 +181,12 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
 
             {/* Who Should Attend */}
             <div id="attendees" className="bg-[#facc15]/5 p-8 border-l-4 border-[#facc15]">
-              <h2 className="text-2xl font-bold text-[#110e26] mb-4">Who Should Attend</h2>
+              <h2 className="text-2xl font-bold text-[#002d80] mb-4">Who Should Attend</h2>
               <p className="text-gray-700 mb-6 font-medium">{courseData.whoShouldAttend}</p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {courseData.pastDelegates.map((item, idx) => (
                   <div key={idx} className="flex items-center gap-2 text-gray-800 text-[15px]">
-                    <CheckCircle2 size={16} className="text-[#0b3d91]" />
+                    <CheckCircle2 size={16} className="text-[#002d80]" />
                     <span>{item}</span>
                   </div>
                 ))}
@@ -195,12 +195,12 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
 
             {/* Outcomes */}
             <div>
-              <h2 className="text-2xl font-bold text-[#110e26] mb-8" style={{ fontFamily: "var(--font-playfair), 'Playfair Display', Georgia, serif" }}>Course Outcomes</h2>
+              <h2 className="text-2xl font-bold text-[#002d80] mb-8" style={{ fontFamily: "var(--font-playfair), 'Playfair Display', Georgia, serif" }}>Course Outcomes</h2>
               <div className="space-y-4">
                 {courseData.outcomes.map((outcome, idx) => (
                   <div key={idx} className="flex gap-4 items-start py-1 transition-colors group">
-                    <div className="w-5 h-5 rounded-full bg-[#facc15]/10 flex items-center justify-center text-[#110e26] flex-shrink-0 font-bold border border-[#facc15]/20 group-hover:bg-[#facc15] transition-colors">
-                      <CheckCircle2 size={12} className="text-[#110e26]" />
+                    <div className="w-5 h-5 rounded-full bg-[#facc15]/10 flex items-center justify-center text-[#002d80] flex-shrink-0 font-bold border border-[#facc15]/20 group-hover:bg-[#facc15] transition-colors">
+                      <CheckCircle2 size={12} className="text-[#002d80]" />
                     </div>
                     <p className="text-gray-700 leading-normal font-medium mt-0.5">{outcome}</p>
                   </div>
@@ -210,13 +210,13 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
 
             {/* Topics */}
             <div id="topics" className="scroll-mt-32">
-              <h2 className="text-3xl font-bold text-[#110e26] mb-8" style={{ fontFamily: "var(--font-playfair), 'Playfair Display', Georgia, serif" }}>Course Topics</h2>
+              <h2 className="text-3xl font-bold text-[#002d80] mb-8" style={{ fontFamily: "var(--font-playfair), 'Playfair Display', Georgia, serif" }}>Course Topics</h2>
               <div className="space-y-10">
                 {courseData.topics.map((topic, idx) => (
                   <div key={topic.title} className="relative pl-8">
                     <div className="absolute left-0 top-0 bottom-0 w-px bg-gray-200"></div>
                     <div className="absolute left-[-4px] top-2 w-2 h-2 rounded-full bg-[#facc15]"></div>
-                    <h3 className="text-xl font-bold text-[#110e26] mb-4">{topic.title}</h3>
+                    <h3 className="text-xl font-bold text-[#002d80] mb-4">{topic.title}</h3>
                     <ul className="space-y-3">
                       {topic.bullets.map((bullet, idx) => (
                         <li key={idx} className="flex items-start gap-2 text-gray-700">
@@ -237,7 +237,7 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
             <div className="sticky top-32 space-y-6">
               
               {/* Action Card */}
-              <div className="bg-[#110e26] text-white p-8 rounded-2xl shadow-xl lg:-mt-40 relative z-20">
+              <div className="bg-[#002d80] text-white p-8 rounded-2xl shadow-xl lg:-mt-40 relative z-20">
                 <div className="mb-8">
                   <p className="text-[#facc15] text-[10px] uppercase font-black tracking-widest mb-1">Starting From</p>
                   <div className="flex items-baseline gap-2">
@@ -247,7 +247,7 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
                 </div>
                 
                 <div className="space-y-3">
-                  <button className="w-full bg-[#facc15] text-[#110e26] py-3.5 rounded font-black uppercase tracking-widest text-[12px] hover:bg-white transition-all transform active:scale-95">
+                  <button className="w-full bg-[#facc15] text-[#002d80] py-3.5 rounded font-black uppercase tracking-widest text-[12px] hover:bg-white transition-all transform active:scale-95">
                     Apply for this course
                   </button>
                   <button className="w-full bg-white/10 text-white py-3.5 rounded font-black uppercase tracking-widest text-[12px] hover:bg-white/20 transition-all">
@@ -274,7 +274,7 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
 
               {/* All Categories */}
               <div className="bg-gray-50 p-8 rounded-2xl border border-gray-100">
-                <h4 className="font-bold text-[#110e26] mb-5 pb-2 border-b border-gray-200 text-sm uppercase tracking-wider">All Categories</h4>
+                <h4 className="font-bold text-[#002d80] mb-5 pb-2 border-b border-gray-200 text-sm uppercase tracking-wider">All Categories</h4>
                 <div className="space-y-3">
                   {[
                     'New and Trending',
@@ -286,7 +286,7 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
                     'Human Resources Management',
                     'Law'
                   ].map((cat) => (
-                    <a key={cat} href="#" className="flex items-center gap-2 text-sm text-gray-700 hover:text-[#0b3d91] transition-colors group">
+                    <a key={cat} href="#" className="flex items-center gap-2 text-sm text-gray-700 hover:text-[#002d80] transition-colors group">
                       <ChevronRight size={14} className="text-[#facc15]" />
                       <span>{cat}</span>
                     </a>
@@ -296,14 +296,14 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
 
               {/* Other Courses */}
               <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
-                <h4 className="font-bold text-[#110e26] mb-5 text-sm uppercase tracking-wider">Other Courses</h4>
+                <h4 className="font-bold text-[#002d80] mb-5 text-sm uppercase tracking-wider">Other Courses</h4>
                 <div className="space-y-6">
                   {[
                     { title: 'Mini MBA in Business Management', price: '£3,800' },
                     { title: 'Data Analytics for Decision Makers', price: '£1,950' }
                   ].map((course) => (
                     <div key={course.title} className="group cursor-pointer">
-                      <h5 className="text-[13px] font-bold text-gray-900 group-hover:text-[#0b3d91] transition-colors leading-tight mb-1">
+                      <h5 className="text-[13px] font-bold text-gray-900 group-hover:text-[#002d80] transition-colors leading-tight mb-1">
                         {course.title}
                       </h5>
                       <p className="text-[#facc15] font-black text-xs">{course.price}</p>

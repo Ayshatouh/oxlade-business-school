@@ -3,7 +3,8 @@
 :root {
   --background: #ffffff;
   --foreground: #000000;
-  --brand-blue: #0b3d91;
+  /* Palette: brand blue, brand yellow, neutrals (gray / white / black) */
+  --brand-blue: #002d80;
   --brand-yellow: #facc15;
 }
 

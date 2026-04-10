@@ -28,15 +28,14 @@ export function Hero({ imageUrl }: HeroProps) {
           unoptimized
         />
         {/*
-          Gradient overlay matching brand colors:
-          Deep navy-blue (#0b3d91) on the left darkening toward the text,
-          fading to a semi-transparent teal-dark on the right so the city shows through.
+          Gradient overlay using brand blue (#002d80), stronger on the left for text contrast,
+          fading right so the city image stays visible.
         */}
         <div
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(110deg, rgba(17,14,38,0.95) 0%, rgba(17,14,38,0.85) 35%, rgba(17,14,38,0.60) 65%, rgba(17,14,38,0.35) 100%)",
+              "linear-gradient(110deg, rgba(0,45,128,0.95) 0%, rgba(0,45,128,0.85) 35%, rgba(0,45,128,0.55) 65%, rgba(0,45,128,0.22) 100%)",
           }}
         />
       </div>

@@ -29,7 +29,7 @@ const stats = [
 
 export function TrustSection() {
   return (
-    <section className="py-16 bg-gradient-to-br from-[#0b3d91] to-[#083068]">
+    <section className="py-16 bg-[#002d80]">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-white mb-4">
@@ -49,7 +49,7 @@ export function TrustSection() {
                 className="text-center group"
               >
                 <div className="inline-flex items-center justify-center w-16 h-16 bg-[#facc15] rounded-full mb-4 group-hover:scale-110 transition-transform">
-                  <Icon size={32} className="text-[#0b3d91]" />
+                  <Icon size={32} className="text-[#002d80]" />
                 </div>
                 <div className="text-5xl font-bold text-white mb-2">{stat.value}</div>
                 <div className="text-xl font-semibold text-[#facc15] mb-2">{stat.label}</div>

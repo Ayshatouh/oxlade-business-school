@@ -107,9 +107,13 @@ export function Header() {
                       <li key={item}>
                         <Link
                           href={`/categories/${item.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-')}`}
-                          className="flex items-start gap-1.5 text-gray-900 hover:text-[#0b3d91] group/item transition-all duration-200 text-[13px]"
+                          className="flex items-start gap-1.5 text-gray-800 hover:text-[#002d80] focus-visible:text-[#002d80] focus-visible:outline-none group/item transition-colors duration-200 text-[13px]"
                         >
-                          <ChevronRight size={13} className="mt-0.5 flex-shrink-0 text-gray-400 group-hover/item:text-[#0b3d91]" />
+                          <ChevronRight
+                            size={13}
+                            className="mt-0.5 flex-shrink-0 text-gray-500 group-hover/item:text-[#002d80] group-focus-visible/item:text-[#002d80]"
+                            aria-hidden
+                          />
                           <span className="leading-snug">{item}</span>
                         </Link>
                       </li>
@@ -127,8 +131,8 @@ export function Header() {
             <div className="flex flex-wrap items-center justify-center gap-y-6 flex-row w-full">
               {trainingLocations.map((loc, index) => (
                 <Fragment key={loc}>
-                  <a href="#" className="flex items-center gap-1.5 text-black hover:text-[#0b3d91] transition-colors group px-4 whitespace-nowrap">
-                    <MapPin size={14} className="text-[#3b82f6] group-hover:text-[#facc15] transition-colors" />
+                  <a href="#" className="flex items-center gap-1.5 text-black hover:text-[#002d80] transition-colors group px-4 whitespace-nowrap">
+                    <MapPin size={14} className="text-[#002d80] group-hover:text-[#facc15] transition-colors" />
                     <span className="text-[12px] font-semibold tracking-wide uppercase whitespace-nowrap">{loc}</span>
                   </a>
                   {index < trainingLocations.length - 1 && (
@@ -148,8 +152,8 @@ export function Header() {
                 const Icon = format.icon;
                 return (
                   <Fragment key={format.label}>
-                    <a href="#" className="flex items-center gap-2 text-black hover:text-[#0b3d91] transition-colors group whitespace-nowrap">
-                      <Icon size={15} className="text-[#3b82f6] group-hover:text-[#facc15] transition-colors" />
+                    <a href="#" className="flex items-center gap-2 text-black hover:text-[#002d80] transition-colors group whitespace-nowrap">
+                      <Icon size={15} className="text-[#002d80] group-hover:text-[#facc15] transition-colors" />
                       <span className="text-[12px] font-semibold tracking-wide uppercase whitespace-nowrap">{format.label}</span>
                     </a>
                     {index < trainingFormats.length - 1 && (
@@ -170,7 +174,7 @@ export function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white shadow-sm">
       {/* Top Utility Bar */}
-      <div className="bg-[#110e26] text-white py-2 px-6">
+      <div className="bg-[#002d80] text-white py-2 px-6">
         <div className="max-w-7xl mx-auto flex justify-between items-center" ref={topMenuRef}>
           <div className="flex gap-6">
             <a href="tel:+442071234567" className="flex items-center gap-2 hover:text-[#facc15] transition-colors">
@@ -197,7 +201,7 @@ export function Header() {
                 </button>
 
                 {activeTopMenu === menuItem && (
-                  <div className="absolute top-full right-0 mt-0 bg-[#0c0a1e] text-white shadow-2xl min-w-[240px] z-50 animate-slideDownFade border border-white/5">
+                  <div className="absolute top-full right-0 mt-0 bg-[#002d80] text-white shadow-2xl min-w-[240px] z-50 animate-slideDownFade border border-white/5">
                     <ul className="flex flex-col">
                       {topNavItems[menuItem as keyof typeof topNavItems].map((item, idx) => (
                         <li key={item} className="border-b border-white/5 last:border-0">
@@ -240,7 +244,7 @@ export function Header() {
                   <div className="relative">
                     <button
                       onClick={() => toggleMenu(navItem.name)}
-                      className="flex items-center gap-1 py-4 -my-4 text-gray-900 hover:text-[#0b3d91] transition-all duration-300 font-medium text-[15px] group"
+                      className="flex items-center gap-1 py-4 -my-4 text-gray-900 hover:text-[#002d80] transition-all duration-300 font-medium text-[15px] group"
                     >
                       <span className="relative">
                         {navItem.name}
@@ -248,13 +252,13 @@ export function Header() {
                       </span>
                       <ChevronDown
                         size={16}
-                        className={`transition-transform duration-300 ${activeMenu === navItem.name ? 'rotate-180 text-[#0b3d91]' : ''}`}
+                        className={`transition-transform duration-300 ${activeMenu === navItem.name ? 'rotate-180 text-[#002d80]' : ''}`}
                       />
                     </button>
                     {/* The dropdown will be rendered inside this relative wrapper or absolute to the root */}
                   </div>
                 ) : (
-                  <a href={navItem.href} className="text-gray-900 hover:text-[#0b3d91] transition-colors font-medium text-[15px] relative group py-2">
+                  <a href={navItem.href} className="text-gray-900 hover:text-[#002d80] transition-colors font-medium text-[15px] relative group py-2">
                     {navItem.name}
                     <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#facc15] group-hover:w-full transition-all duration-300"></span>
                   </a>

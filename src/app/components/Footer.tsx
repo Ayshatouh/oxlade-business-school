@@ -33,8 +33,8 @@ export function Footer() {
             <ul className="space-y-3">
               {['About Us', 'Meet the Team', 'Course Locations', 'Training Consultants', 'Testimonials'].map((link) => (
                 <li key={link}>
-                  <a href="#" className="flex items-center gap-2 text-[14px] text-gray-900 hover:text-[#0b3d91] font-medium transition-colors group">
-                    <ChevronRight size={14} className="text-[#3b82f6] group-hover:text-[#0b3d91] transition-colors" />
+                  <a href="#" className="flex items-center gap-2 text-[14px] text-gray-900 hover:text-[#002d80] font-medium transition-colors group">
+                    <ChevronRight size={14} className="text-[#002d80] transition-colors" />
                     <span>{link}</span>
                   </a>
                 </li>
@@ -48,8 +48,8 @@ export function Footer() {
             <ul className="space-y-3">
               {['Brochures & Calendars', 'Accommodation', 'Airport Transfers', 'Visas', 'Consultancy Solutions'].map((link) => (
                 <li key={link}>
-                  <a href="#" className="flex items-center gap-2 text-[14px] text-gray-900 hover:text-[#0b3d91] font-medium transition-colors group">
-                    <ChevronRight size={14} className="text-[#3b82f6] group-hover:text-[#0b3d91] transition-colors" />
+                  <a href="#" className="flex items-center gap-2 text-[14px] text-gray-900 hover:text-[#002d80] font-medium transition-colors group">
+                    <ChevronRight size={14} className="text-[#002d80] transition-colors" />
                     <span>{link}</span>
                   </a>
                 </li>
@@ -63,8 +63,8 @@ export function Footer() {
             <ul className="space-y-3">
               {['Privacy & Cookies', 'Terms', 'FAQs', 'Cookie Preferences'].map((link) => (
                 <li key={link}>
-                  <a href="#" className="flex items-center gap-2 text-[14px] text-gray-900 hover:text-[#0b3d91] font-medium transition-colors group">
-                    <ChevronRight size={14} className="text-[#3b82f6] group-hover:text-[#0b3d91] transition-colors" />
+                  <a href="#" className="flex items-center gap-2 text-[14px] text-gray-900 hover:text-[#002d80] font-medium transition-colors group">
+                    <ChevronRight size={14} className="text-[#002d80] transition-colors" />
                     <span>{link}</span>
                   </a>
                 </li>
@@ -73,11 +73,11 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Newsletter Section */}
-        <div className="bg-[#e9f0f0] rounded-xl p-8 mb-12 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8">
+        {/* Newsletter — light tint of brand blue */}
+        <div className="rounded-xl p-8 mb-12 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8 bg-[#002d80]/[0.06] border border-[#002d80]/10">
           <div className="lg:w-1/2">
-            <h3 className="text-xl font-bold text-[#1e1e24] mb-2">Sign up to our newsletter</h3>
-            <p className="text-gray-900 text-[15px]">
+            <h3 className="text-xl font-bold text-[#002d80] mb-2">Sign up to our newsletter</h3>
+            <p className="text-gray-800 text-[15px]">
               Receive all the latest information about new courses and much more
             </p>
           </div>
@@ -87,26 +87,29 @@ export function Footer() {
               <input
                 type="text"
                 placeholder="First Name"
-                className="w-full px-4 py-2.5 rounded border border-gray-300 bg-black/5 text-gray-800 placeholder-gray-500 focus:outline-none focus:border-[#0b3d91] focus:bg-white transition-colors text-sm"
+                className="w-full px-4 py-2.5 rounded border border-gray-300 bg-black/5 text-gray-800 placeholder-gray-500 focus:outline-none focus:border-[#002d80] focus:bg-white transition-colors text-sm"
               />
               <input
                 type="text"
                 placeholder="Last Name"
-                className="w-full px-4 py-2.5 rounded border border-gray-300 bg-black/5 text-gray-800 placeholder-gray-500 focus:outline-none focus:border-[#0b3d91] focus:bg-white transition-colors text-sm"
+                className="w-full px-4 py-2.5 rounded border border-gray-300 bg-black/5 text-gray-800 placeholder-gray-500 focus:outline-none focus:border-[#002d80] focus:bg-white transition-colors text-sm"
               />
               <input
                 type="email"
                 placeholder="Email"
-                className="w-full px-4 py-2.5 rounded border border-gray-300 bg-black/5 text-gray-800 placeholder-gray-500 focus:outline-none focus:border-[#0b3d91] focus:bg-white transition-colors text-sm"
+                className="w-full px-4 py-2.5 rounded border border-gray-300 bg-black/5 text-gray-800 placeholder-gray-500 focus:outline-none focus:border-[#002d80] focus:bg-white transition-colors text-sm"
               />
             </div>
             
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
               <label className="flex items-center gap-2 cursor-pointer group">
-                <input type="checkbox" className="w-4 h-4 rounded border-gray-300 text-[#0b3d91] focus:ring-[#0b3d91] cursor-pointer" />
+                <input type="checkbox" className="w-4 h-4 rounded border-gray-300 text-[#002d80] focus:ring-[#002d80] cursor-pointer" />
                 <span className="text-[14px] text-gray-700 group-hover:text-gray-900 transition-colors">I agree to receiving newsletters.</span>
               </label>
-              <button className="bg-[#1f1a38] text-white px-8 py-2.5 rounded font-medium hover:bg-[#2c2550] transition-colors text-sm whitespace-nowrap">
+              <button
+                type="button"
+                className="bg-[#002d80] text-white px-8 py-2.5 rounded font-medium hover:opacity-90 transition-opacity text-sm whitespace-nowrap"
+              >
                 Sign up
               </button>
             </div>
@@ -117,23 +120,23 @@ export function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-center gap-6 pt-4 border-t border-gray-200/60">
           <div className="flex items-center gap-3">
             <span className="text-gray-900 font-bold mr-2 text-sm uppercase tracking-wider">Follow us:</span>
-            <a href="#" className="w-8 h-8 flex items-center justify-center bg-[#facc15] text-[#110e26] rounded hover:bg-[#0b3d91] hover:text-white transition-all shadow-sm">
+            <a href="#" className="w-8 h-8 flex items-center justify-center bg-[#facc15] text-[#002d80] rounded hover:bg-[#002d80] hover:text-white transition-all shadow-sm">
               <FacebookIcon size={16} fill="currentColor" className="stroke-none" />
             </a>
-            <a href="#" className="w-8 h-8 flex items-center justify-center bg-[#facc15] text-[#110e26] rounded hover:bg-[#0b3d91] hover:text-white transition-all shadow-sm">
+            <a href="#" className="w-8 h-8 flex items-center justify-center bg-[#facc15] text-[#002d80] rounded hover:bg-[#002d80] hover:text-white transition-all shadow-sm">
               <TwitterIcon size={16} fill="currentColor" className="stroke-none" />
             </a>
-            <a href="#" className="w-8 h-8 flex items-center justify-center bg-[#facc15] text-[#110e26] rounded hover:bg-[#0b3d91] hover:text-white transition-all shadow-sm">
+            <a href="#" className="w-8 h-8 flex items-center justify-center bg-[#facc15] text-[#002d80] rounded hover:bg-[#002d80] hover:text-white transition-all shadow-sm">
               <LinkedinIcon size={16} fill="currentColor" className="stroke-none" />
             </a>
-            <a href="#" className="w-8 h-8 flex items-center justify-center bg-[#facc15] text-[#110e26] rounded hover:bg-[#0b3d91] hover:text-white transition-all shadow-sm">
+            <a href="#" className="w-8 h-8 flex items-center justify-center bg-[#facc15] text-[#002d80] rounded hover:bg-[#002d80] hover:text-white transition-all shadow-sm">
               <YoutubeIcon size={16} />
             </a>
           </div>
           
           <div className="text-right text-[13px] text-gray-900">
             <p className="mb-1">© 2026 All Rights Reserved. Oxlade Business School.</p>
-            <p>Built By <span className="font-semibold underline cursor-pointer hover:text-[#0b3d91]">Oxlade Design</span></p>
+            <p>Built By <span className="font-semibold underline cursor-pointer hover:text-[#002d80]">Oxlade Design</span></p>
           </div>
         </div>
 
