@@ -2,8 +2,9 @@
 
 import { Header } from "@/app/components/Header";
 import { Footer } from "@/app/components/Footer";
-import { Calendar, MapPin, Clock, Award, Users, BookOpen, CheckCircle2, FileText, Mail, Phone, ArrowRight, ChevronRight, Download } from 'lucide-react';
-import React, { use } from "react";
+import { Calendar, MapPin, Clock, Award, Users, BookOpen, CheckCircle2, FileText, Mail, Phone, ArrowRight, ChevronRight, Download, ChevronDown, Minus, Plus } from 'lucide-react';
+import React, { use, useState } from "react";
+import Link from "next/link";
 
 const courseData = {
   id: 'fraud-detection',
@@ -87,6 +88,15 @@ const courseData = {
 
 export default function CourseDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);
+  const [openTopics, setOpenTopics] = useState<number[]>([0]); // Opens first topic by default
+
+  const toggleTopic = (index: number) => {
+    setOpenTopics(prev => 
+      prev.includes(index) 
+        ? prev.filter(i => i !== index) 
+        : [...prev, index]
+    );
+  };
 
   return (
     <div className="min-h-screen bg-white selection:bg-[#facc15] selection:text-[#002d80]">
@@ -96,11 +106,19 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
       <section className="pt-40 pb-20 bg-[#002d80] text-white relative overflow-hidden">
         <div className="absolute inset-0"
              style={{
-               background: "linear-gradient(110deg, rgba(17,14,38,0.95) 0%, rgba(17,14,38,0.85) 35%, rgba(17,14,38,0.60) 65%, rgba(17,14,38,0.35) 100%)"
+               background: "linear-gradient(110deg, rgba(0,45,128,0.95) 0%, rgba(0,45,128,0.85) 35%, rgba(0,45,128,0.7) 65%, rgba(0,45,128,0.4) 100%)"
              }}
         ></div>
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="flex flex-col gap-6 max-w-4xl">
+            <nav className="flex items-center gap-2 text-white/50 mb-4 font-bold uppercase tracking-widest text-[10px]">
+              <Link href="/" className="hover:text-white transition-colors">Home</Link>
+              <ChevronRight size={10} />
+              <Link href="#categories" className="hover:text-white transition-colors">Courses</Link>
+              <ChevronRight size={10} />
+              <span className="text-[#facc15] font-normal">{courseData.title}</span>
+            </nav>
+
             <div className="flex items-center gap-3">
               <span className="bg-[#facc15] text-[#002d80] px-4 py-1 text-[11px] font-black uppercase tracking-widest leading-none">
                 {courseData.category}
@@ -110,22 +128,22 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
               </div>
             </div>
             
-            <h1 className="text-2xl md:text-4xl font-black leading-tight tracking-tight" style={{ fontFamily: "var(--font-playfair), 'Playfair Display', Georgia, serif" }}>
+            <h1 className="text-2xl md:text-3xl font-black leading-tight tracking-tight" style={{ fontFamily: "var(--font-playfair), 'Playfair Display', Georgia, serif" }}>
               {courseData.title}
             </h1>
             
             <div className="flex flex-wrap gap-8 mt-4 text-gray-300">
-              <div className="flex items-center gap-2">
-                <Clock size={20} className="text-[#facc15]" />
+              <div className="flex items-center gap-2 text-sm">
+                <Clock size={18} className="text-[#facc15]" />
                 <span className="font-semibold text-white">5 Days Duration</span>
               </div>
-              <div className="flex items-center gap-2">
-                <Award size={20} className="text-[#facc15]" />
-                <span className="font-semibold text-white">Certified Certification</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Users size={20} className="text-[#facc15]" />
+              <div className="flex items-center gap-2 text-sm">
+                <Award size={18} className="text-[#facc15]" />
                 <span className="font-semibold text-white">CPD Accredited</span>
+              </div>
+              <div className="flex items-center gap-2 text-sm">
+                <Users size={18} className="text-[#facc15]" />
+                <span className="font-semibold text-white">Corporate Group Option</span>
               </div>
             </div>
           </div>
@@ -139,53 +157,21 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
           {/* Left Column: Details */}
           <div className="lg:col-span-2 space-y-16">
             
-            {/* Schedule Section */}
-            <div id="schedule" className="scroll-mt-32">
-              <h2 className="text-3xl font-bold text-[#002d80] mb-8 flex items-center gap-3" style={{ fontFamily: "var(--font-playfair), 'Playfair Display', Georgia, serif" }}>
-                <Calendar className="text-[#facc15]" /> Course Schedule
-              </h2>
-              <div className="overflow-hidden border border-gray-100 rounded-xl shadow-sm">
-                <table className="w-full text-left border-collapse">
-                  <thead>
-                    <tr className="bg-gray-50 border-b border-gray-100">
-                      <th className="px-6 py-4 text-[13px] font-bold text-gray-500 uppercase tracking-wider">Date</th>
-                      <th className="px-6 py-4 text-[13px] font-bold text-gray-500 uppercase tracking-wider">Venue</th>
-                      <th className="px-6 py-4 text-[13px] font-bold text-gray-500 uppercase tracking-wider">Duration</th>
-                      <th className="px-6 py-4 text-[13px] font-bold text-gray-500 uppercase tracking-wider text-right">Price</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-gray-50">
-                    {courseData.schedule.map((slot, idx) => (
-                      <tr key={idx} className="hover:bg-gray-50/50 transition-colors group">
-                        <td className="px-6 py-4 text-[15px] font-semibold text-gray-900">{slot.date}</td>
-                        <td className="px-6 py-4 text-[15px] text-gray-700">{slot.venue}</td>
-                        <td className="px-6 py-4 text-[14px] text-gray-600">{slot.duration}</td>
-                        <td className="px-6 py-4 text-[15px] font-bold text-[#002d80] text-right">{slot.price}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-              <p className="mt-4 text-sm text-gray-500 italic">
-                Please note: prices shown above are exclusive of VAT (20%).
-              </p>
-            </div>
-
             {/* Overview */}
             <div id="overview" className="scroll-mt-32">
-              <h2 className="text-2xl font-bold text-[#002d80] mb-6" style={{ fontFamily: "var(--font-playfair), 'Playfair Display', Georgia, serif" }}>Course Overview</h2>
-              <p className="text-gray-700 leading-relaxed">
+              <h2 className="text-2xl font-bold text-[#002d80] mb-6" style={{ fontFamily: "var(--font-playfair), 'Playfair Display', Georgia, serif" }}>Description</h2>
+              <p className="text-gray-600 leading-relaxed font-normal text-[15px]">
                 {courseData.description}
               </p>
             </div>
 
             {/* Who Should Attend */}
-            <div id="attendees" className="bg-[#facc15]/5 p-8 border-l-4 border-[#facc15]">
+            <div id="attendees" className="bg-zinc-50 p-8 border-l-4 border-[#002d80] rounded-r-2xl border border-zinc-100">
               <h2 className="text-2xl font-bold text-[#002d80] mb-4">Who Should Attend</h2>
-              <p className="text-gray-700 mb-6 font-medium">{courseData.whoShouldAttend}</p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <p className="text-zinc-500 mb-6 font-normal leading-relaxed">{courseData.whoShouldAttend}</p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {courseData.pastDelegates.map((item, idx) => (
-                  <div key={idx} className="flex items-center gap-2 text-gray-800 text-[15px]">
+                  <div key={idx} className="flex items-center gap-2 text-gray-600 text-[14px]">
                     <CheckCircle2 size={16} className="text-[#002d80]" />
                     <span>{item}</span>
                   </div>
@@ -195,38 +181,94 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
 
             {/* Outcomes */}
             <div>
-              <h2 className="text-2xl font-bold text-[#002d80] mb-8" style={{ fontFamily: "var(--font-playfair), 'Playfair Display', Georgia, serif" }}>Course Outcomes</h2>
+              <h2 className="text-2xl font-bold text-[#002d80] mb-8" style={{ fontFamily: "var(--font-playfair), 'Playfair Display', Georgia, serif" }}>Key Learning Outcomes</h2>
               <div className="space-y-4">
                 {courseData.outcomes.map((outcome, idx) => (
-                  <div key={idx} className="flex gap-4 items-start py-1 transition-colors group">
-                    <div className="w-5 h-5 rounded-full bg-[#facc15]/10 flex items-center justify-center text-[#002d80] flex-shrink-0 font-bold border border-[#facc15]/20 group-hover:bg-[#facc15] transition-colors">
-                      <CheckCircle2 size={12} className="text-[#002d80]" />
+                  <div key={idx} className="flex gap-4 items-start py-2 transition-colors group px-4 hover:bg-zinc-50 rounded-xl border border-transparent hover:border-zinc-100">
+                    <div className="w-6 h-6 rounded-full bg-[#facc15]/20 flex items-center justify-center text-[#002d80] flex-shrink-0 font-bold font-normal">
+                      <CheckCircle2 size={14} />
                     </div>
-                    <p className="text-gray-700 leading-normal font-medium mt-0.5">{outcome}</p>
+                    <p className="text-gray-600 leading-normal font-normal text-[15px] mt-0.5">{outcome}</p>
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* Topics */}
+            {/* Topics Accordion */}
             <div id="topics" className="scroll-mt-32">
-              <h2 className="text-3xl font-bold text-[#002d80] mb-8" style={{ fontFamily: "var(--font-playfair), 'Playfair Display', Georgia, serif" }}>Course Topics</h2>
-              <div className="space-y-10">
-                {courseData.topics.map((topic, idx) => (
-                  <div key={topic.title} className="relative pl-8">
-                    <div className="absolute left-0 top-0 bottom-0 w-px bg-gray-200"></div>
-                    <div className="absolute left-[-4px] top-2 w-2 h-2 rounded-full bg-[#facc15]"></div>
-                    <h3 className="text-xl font-bold text-[#002d80] mb-4">{topic.title}</h3>
-                    <ul className="space-y-3">
-                      {topic.bullets.map((bullet, idx) => (
-                        <li key={idx} className="flex items-start gap-2 text-gray-700">
-                          <ChevronRight size={18} className="text-[#facc15] mt-0.5 flex-shrink-0" />
-                          <span>{bullet}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                ))}
+              <div className="flex items-center justify-between mb-8">
+                <h2 className="text-2xl font-bold text-[#002d80]" style={{ fontFamily: "var(--font-playfair), 'Playfair Display', Georgia, serif" }}>Course Topics</h2>
+                <div className="h-0.5 flex-1 mx-8 bg-zinc-100 hidden md:block"></div>
+                <span className="text-[10px] font-black uppercase text-zinc-400 tracking-widest">{courseData.topics.length} Sections</span>
+              </div>
+              
+              <div className="space-y-4">
+                {courseData.topics.map((topic, idx) => {
+                  const isOpen = openTopics.includes(idx);
+                  return (
+                    <div 
+                      key={topic.title} 
+                      className={`border transition-all duration-300 rounded-2xl overflow-hidden ${isOpen ? 'border-[#002d80] shadow-lg shadow-[#002d80]/5 bg-white' : 'border-gray-100 bg-white'}`}
+                    >
+                      <button 
+                        onClick={() => toggleTopic(idx)}
+                        className="w-full flex items-center justify-between p-6 text-left hover:bg-zinc-50/50 transition-colors"
+                      >
+                        <div className="flex items-center gap-4">
+                          <span className={`w-8 h-8 rounded-lg flex items-center justify-center font-black text-sm transition-colors ${isOpen ? 'bg-[#002d80] text-[#facc15]' : 'bg-zinc-100 text-[#002d80]'}`}>
+                            {idx + 1}
+                          </span>
+                          <h3 className={`text-lg font-black transition-colors ${isOpen ? 'text-[#002d80]' : 'text-gray-800'}`}>{topic.title}</h3>
+                        </div>
+                        <div className={`transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}>
+                          {isOpen ? <Minus size={20} className="text-[#002d80]" /> : <Plus size={20} className="text-zinc-400" />}
+                        </div>
+                      </button>
+                      
+                      <div className={`transition-all duration-500 ease-in-out ${isOpen ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'}`}>
+                        <div className="px-6 pb-8 pt-2 pl-[72px]">
+                          <ul className="space-y-4">
+                            {topic.bullets.map((bullet, bIdx) => (
+                              <li key={bIdx} className="flex items-start gap-3 text-gray-500 font-normal text-[15px]">
+                                <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-[#facc15] shrink-0" />
+                                <span>{bullet}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Schedule Section */}
+            <div id="schedule" className="scroll-mt-32">
+              <h2 className="text-2xl font-bold text-[#002d80] mb-8 flex items-center gap-3" style={{ fontFamily: "var(--font-playfair), 'Playfair Display', Georgia, serif" }}>
+                Course Schedule
+              </h2>
+              <div className="overflow-hidden border border-gray-100 rounded-2xl shadow-sm">
+                <table className="w-full text-left border-collapse">
+                  <thead>
+                    <tr className="bg-zinc-50 border-b border-zinc-100">
+                      <th className="px-6 py-4 text-[10px] font-black text-zinc-400 uppercase tracking-wider text-center">Date</th>
+                      <th className="px-6 py-4 text-[10px] font-black text-zinc-400 uppercase tracking-wider">Venue</th>
+                      <th className="px-6 py-4 text-[10px] font-black text-zinc-400 uppercase tracking-wider text-center">Duration</th>
+                      <th className="px-6 py-4 text-[10px] font-black text-zinc-400 uppercase tracking-wider text-right">Investment</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-gray-50 text-[14px]">
+                    {courseData.schedule.map((slot, idx) => (
+                      <tr key={idx} className="hover:bg-gray-50/50 transition-colors group">
+                        <td className="px-6 py-5 text-gray-400 font-normal text-center">{slot.date}</td>
+                        <td className="px-6 py-5 text-[#002d80] font-normal">{slot.venue}</td>
+                        <td className="px-6 py-5 text-gray-400 font-normal text-center">{slot.duration}</td>
+                        <td className="px-6 py-5 font-normal text-gray-900 text-right">{slot.price}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
               </div>
             </div>
 
@@ -237,44 +279,43 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
             <div className="sticky top-32 space-y-6">
               
               {/* Action Card */}
-              <div className="bg-[#002d80] text-white p-8 rounded-2xl shadow-xl lg:-mt-40 relative z-20">
+              <div className="bg-[#002d80] text-white p-8 rounded-3xl shadow-2xl lg:-mt-32 relative z-20">
                 <div className="mb-8">
                   <p className="text-[#facc15] text-[10px] uppercase font-black tracking-widest mb-1">Starting From</p>
                   <div className="flex items-baseline gap-2">
                     <span className="text-4xl font-black">{courseData.schedule[0].price}</span>
-                    <span className="text-gray-400 text-xs">+ VAT (20%)</span>
                   </div>
                 </div>
                 
                 <div className="space-y-3">
-                  <button className="w-full bg-[#facc15] text-[#002d80] py-3.5 rounded font-black uppercase tracking-widest text-[12px] hover:bg-white transition-all transform active:scale-95">
-                    Apply for this course
-                  </button>
-                  <button className="w-full bg-white/10 text-white py-3.5 rounded font-black uppercase tracking-widest text-[12px] hover:bg-white/20 transition-all">
-                    Enquire about this course
-                  </button>
-                  <button className="w-full flex items-center justify-center gap-2 text-white/70 py-4 font-bold text-sm hover:text-[#facc15] transition-colors group">
-                    <Download size={18} className="group-hover:-translate-y-1 transition-transform" />
-                    Download Course PDF
+                  <Link href="/enquiry" className="w-full bg-[#facc15] text-[#002d80] py-4 rounded-xl font-black uppercase tracking-widest text-[11px] hover:bg-white transition-all transform active:scale-95 shadow-lg shadow-[#facc15]/10 flex items-center justify-center">
+                    Register Online
+                  </Link>
+                  <Link href="/enquiry" className="w-full bg-white/10 text-white py-4 rounded-xl font-black uppercase tracking-widest text-[11px] hover:bg-white/20 transition-all border border-white/10 flex items-center justify-center">
+                    Enquire Now
+                  </Link>
+                  <button className="w-full flex items-center justify-center gap-2 text-white/50 py-4 font-black uppercase tracking-[0.2em] text-[9px] hover:text-[#facc15] transition-colors group">
+                    <Download size={16} className="group-hover:-translate-y-1 transition-transform" />
+                    Course Syllabus PDF
                   </button>
                 </div>
 
-                <div className="mt-8 pt-8 border-t border-white/10 space-y-3">
-                  <p className="text-[11px] text-gray-400 font-bold uppercase tracking-wider">Quick Contact</p>
-                  <a href="tel:+442071234567" className="flex items-center gap-3 text-sm hover:text-[#facc15] transition-colors">
-                    <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center"><Phone size={14} /></div>
+                <div className="mt-8 pt-8 border-t border-white/5 space-y-4">
+                  <p className="text-[10px] text-white/30 font-black uppercase tracking-widest">Admissions Office</p>
+                  <a href="tel:+442071234567" className="flex items-center gap-3 text-sm font-bold hover:text-[#facc15] transition-colors">
+                    <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center"><Phone size={14} /></div>
                     +44 (0)20 7123 4567
                   </a>
-                  <a href="mailto:info@oxlade.com" className="flex items-center gap-3 text-sm hover:text-[#facc15] transition-colors">
-                    <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center"><Mail size={14} /></div>
+                  <a href="mailto:info@oxlade.com" className="flex items-center gap-3 text-sm font-bold hover:text-[#facc15] transition-colors">
+                    <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center"><Mail size={14} /></div>
                     info@oxlade.com
                   </a>
                 </div>
               </div>
 
               {/* All Categories */}
-              <div className="bg-gray-50 p-8 rounded-2xl border border-gray-100">
-                <h4 className="font-bold text-[#002d80] mb-5 pb-2 border-b border-gray-200 text-sm uppercase tracking-wider">All Categories</h4>
+              <div className="bg-zinc-50 p-8 rounded-3xl border border-zinc-100">
+                <h4 className="font-black text-[#002d80] mb-6 text-[10px] uppercase tracking-[0.2em] border-b border-zinc-200 pb-3">Department Directory</h4>
                 <div className="space-y-3">
                   {[
                     'New and Trending',
@@ -286,28 +327,10 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
                     'Human Resources Management',
                     'Law'
                   ].map((cat) => (
-                    <a key={cat} href="#" className="flex items-center gap-2 text-sm text-gray-700 hover:text-[#002d80] transition-colors group">
-                      <ChevronRight size={14} className="text-[#facc15]" />
+                    <a key={cat} href="#" className="flex items-center gap-2 text-[13px] font-bold text-gray-500 hover:text-[#002d80] transition-colors group">
+                      <ChevronRight size={14} className="text-[#facc15] group-hover:translate-x-1 transition-transform" />
                       <span>{cat}</span>
                     </a>
-                  ))}
-                </div>
-              </div>
-
-              {/* Other Courses */}
-              <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
-                <h4 className="font-bold text-[#002d80] mb-5 text-sm uppercase tracking-wider">Other Courses</h4>
-                <div className="space-y-6">
-                  {[
-                    { title: 'Mini MBA in Business Management', price: '£3,800' },
-                    { title: 'Data Analytics for Decision Makers', price: '£1,950' }
-                  ].map((course) => (
-                    <div key={course.title} className="group cursor-pointer">
-                      <h5 className="text-[13px] font-bold text-gray-900 group-hover:text-[#002d80] transition-colors leading-tight mb-1">
-                        {course.title}
-                      </h5>
-                      <p className="text-[#facc15] font-black text-xs">{course.price}</p>
-                    </div>
                   ))}
                 </div>
               </div>

@@ -41,7 +41,7 @@ export function LatestNewsSection() {
   const [featured, ...rest] = latestNews;
 
   return (
-    <section className="py-20 bg-white border-y border-gray-100">
+    <section className="py-10 bg-white border-y border-gray-100">
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10">
           <div>

@@ -4,6 +4,8 @@ import { useState } from 'react';
 import { TrendingUp, Building2, Users, Settings, Landmark, Globe, UserCheck, Scale, ChevronRight, ChevronDown } from 'lucide-react';
 import Link from 'next/link';
 
+const playfair = { fontFamily: "var(--font-playfair), 'Playfair Display', Georgia, serif" };
+
 const categories = [
   { 
     name: 'New and Trending', 
@@ -49,16 +51,36 @@ const categories = [
 
 export function CourseCategories() {
   const [openCategory, setOpenCategory] = useState<string | null>(null);
+  const headingText = "Explore Our Course Categories";
 
   const toggleCategory = (name: string) => {
     setOpenCategory(openCategory === name ? null : name);
   };
 
   return (
-    <section className="pt-4 pb-16 bg-zinc-50 dark:bg-black">
-      <div className="text-center mb-10 w-full max-w-3xl mx-auto">
-        <h2 className="text-2xl font-black text-[#002d80] mb-2 leading-tight" style={{ fontFamily: "var(--font-playfair), 'Playfair Display', Georgia, serif" }}>
-          Explore Our Course Categories
+    <section className="py-6 bg-zinc-50 dark:bg-black overflow-hidden">
+      <div className="text-center mb-12 w-full max-w-3xl mx-auto px-6">
+        <h2 className="text-3xl font-black text-[#002d80] mb-4 tracking-tight leading-tight" style={playfair}>
+          {headingText.split("").map((char, i) => (
+            <span 
+              key={i} 
+              className={`inline-block animate-reveal-letter ${char === " " ? "mr-2" : ""}`}
+              style={{ 
+                animationDelay: `${i * 30}ms`,
+                animationFillMode: 'both'
+              }}
+            >
+              <span 
+                className="inline-block animate-color-sweep"
+                style={{ 
+                  animationDelay: `${2000 + (i * 100)}ms`,
+                  animationIterationCount: 'infinite'
+                }}
+              >
+                {char === " " ? "\u00A0" : char}
+              </span>
+            </span>
+          ))}
         </h2>
         <p className="text-gray-900 font-medium">
           Comprehensive training solutions across all business disciplines
@@ -113,6 +135,33 @@ export function CourseCategories() {
           );
         })}
       </div>
+
+      <style jsx>{`
+        @keyframes revealLetter {
+          0% {
+            opacity: 0;
+            transform: translateY(10px);
+          }
+          100% {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        @keyframes colorSweep {
+          0%, 100% {
+            color: inherit;
+          }
+          50% {
+            color: #facc15;
+          }
+        }
+        .animate-reveal-letter {
+          animation: revealLetter 0.5s cubic-bezier(0.2, 1, 0.3, 1) forwards;
+        }
+        .animate-color-sweep {
+          animation: colorSweep 3s ease-in-out infinite;
+        }
+      `}</style>
     </section>
   );
 }

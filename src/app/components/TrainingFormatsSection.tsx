@@ -41,7 +41,7 @@ const cityLinks = getVenueCityLinks();
 
 export function TrainingFormatsSection() {
   return (
-    <section className="py-20 bg-white border-t border-gray-100">
+    <section className="py-10 bg-white border-t border-gray-100">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center max-w-3xl mx-auto mb-14">
           <p className="text-[#002d80] font-bold uppercase tracking-[0.2em] text-sm mb-4">
@@ -105,19 +105,19 @@ export function TrainingFormatsSection() {
           })}
         </div>
 
-        <div className="mt-12 bg-[#002d80] text-white rounded-2xl px-7 py-7 flex flex-col xl:flex-row xl:items-center xl:justify-between gap-6">
+        <div className="mt-6 bg-[#002d80] text-white rounded-2xl px-7 py-7 flex flex-col xl:flex-row xl:items-center xl:justify-between gap-6">
           <div className="flex items-start gap-3 min-w-0">
             <Globe2 size={22} className="text-[#facc15] mt-0.5 shrink-0" />
             <p className="text-[13px] md:text-sm leading-relaxed text-white/90 max-w-xl">
               Open and in-house programmes run in key cities worldwide—tap a location to see what is scheduled there.
             </p>
           </div>
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-nowrap items-center gap-2 overflow-x-auto pb-1 no-scrollbar lg:overflow-visible">
             {cityLinks.map(({ slug, label }) => (
               <Link
                 key={slug}
                 href={`/courses/by-venue/${slug}`}
-                className="inline-flex items-center gap-1.5 rounded-full border border-white/25 bg-white/10 px-3.5 py-2 text-xs font-semibold text-white transition-colors hover:bg-[#facc15] hover:border-[#facc15] hover:text-[#002d80] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#facc15]"
+                className="whitespace-nowrap inline-flex items-center gap-1.5 rounded-full border border-white/25 bg-white/10 px-3.5 py-2 text-xs font-semibold text-white transition-all hover:bg-[#facc15] hover:border-[#facc15] hover:text-[#002d80] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#facc15] shadow-sm"
               >
                 <MapPin size={12} className="opacity-90" />
                 {label}

@@ -44,7 +44,7 @@ export function Hero({ imageUrl }: HeroProps) {
       <div
         className="relative z-10 flex flex-col justify-center"
         style={{
-          paddingTop: "160px",
+          paddingTop: "200px",
           paddingBottom: "80px",
           paddingLeft: "clamp(24px, 5vw, 64px)",
           paddingRight: "clamp(24px, 5vw, 64px)",
@@ -55,18 +55,19 @@ export function Hero({ imageUrl }: HeroProps) {
         <h1
           style={{
             fontFamily: "var(--font-playfair), 'Playfair Display', Georgia, serif",
-            fontSize: "clamp(2rem, 3.5vw, 2.5rem)",
-            fontWeight: 700,
+            fontSize: "clamp(1.75rem, 3vw, 2.25rem)",
+            fontWeight: 900,
             color: "#ffffff",
-            lineHeight: 1.1,
+            lineHeight: 1.15,
             marginBottom: "1.5rem",
-            textShadow: "0 2px 16px rgba(0,0,0,0.5)",
-            letterSpacing: "-0.01em",
+            textShadow: "0 2px 16px rgba(0,0,0,0.4)",
+            letterSpacing: "0.02em",
+            textTransform: "uppercase",
           }}
         >
-          Corporate
+          Oxlade Business
           <br />
-          Training Courses
+          Training School
         </h1>
 
         {/* Bullet Points — Inter body font */}

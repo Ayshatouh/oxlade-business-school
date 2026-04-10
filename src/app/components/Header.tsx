@@ -32,7 +32,7 @@ export function Header() {
   };
 
   const navMenus = [
-    { name: 'Home', href: '#home' },
+    { name: 'Home', href: '/' },
     { name: 'Open Courses', hasDropdown: true },
     { name: 'Group Programmes', href: '#group-programmes' },
     { name: 'Training Locations', hasDropdown: true },
@@ -231,7 +231,7 @@ export function Header() {
         <div className="max-w-7xl mx-auto flex justify-between items-center relative" ref={menuRef}>
           <a href="/" className="block">
             <img
-              src="/pictures/oxladelogo2.png"
+              src="/pictures/oxladebiz.png"
               alt="Oxlade Business School Logo"
               className="h-12 w-auto object-contain"
             />

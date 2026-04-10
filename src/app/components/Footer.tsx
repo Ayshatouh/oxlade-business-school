@@ -22,6 +22,11 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
           {/* Column 1: Description */}
           <div className="lg:pr-8">
+            <img
+              src="/pictures/oxladebiz.png"
+              alt="Oxlade Business School Logo"
+              className="h-10 w-auto object-contain mb-6"
+            />
             <p className="text-[15px] leading-relaxed text-gray-900 mt-2">
               Oxlade Business School offers over 500 intensive courses that elevate professional skills, enhance career growth, and boost organisational effectiveness.
             </p>

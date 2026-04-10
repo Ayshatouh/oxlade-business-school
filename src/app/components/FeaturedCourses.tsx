@@ -36,7 +36,7 @@ const featuredCourses = [
 
 export function FeaturedCourses() {
   return (
-    <section className="py-20 bg-[#002d80] text-white">
+    <section className="py-10 bg-[#002d80] text-white">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
           <p className="text-[#facc15] font-bold uppercase tracking-[0.2em] text-sm mb-4">Find a Course</p>
@@ -97,11 +97,7 @@ export function FeaturedCourses() {
           ))}
         </div>
 
-        <div className="mt-16 text-center">
-          <p className="text-gray-400 text-sm italic">
-            Images from <span className="underline decoration-[#facc15] underline-offset-4">Freepik</span>
-          </p>
-        </div>
+
       </div>
     </section>
   );
