@@ -103,7 +103,7 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
       <Header />
       
       {/* Course Hero */}
-      <section className="pt-40 pb-20 bg-[#002d80] text-white relative overflow-hidden">
+      <section className="pt-24 md:pt-40 pb-12 md:pb-20 bg-[#002d80] text-white relative overflow-hidden">
         <div className="absolute inset-0"
              style={{
                background: "linear-gradient(110deg, rgba(0,45,128,0.95) 0%, rgba(0,45,128,0.85) 35%, rgba(0,45,128,0.7) 65%, rgba(0,45,128,0.4) 100%)"
@@ -248,7 +248,38 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
               <h2 className="text-2xl font-bold text-[#002d80] mb-8 flex items-center gap-3" style={{ fontFamily: "var(--font-playfair), 'Playfair Display', Georgia, serif" }}>
                 Course Schedule
               </h2>
-              <div className="overflow-hidden border border-gray-100 rounded-2xl shadow-sm">
+              {/* Schedule: Cards on Mobile, Table on Desktop */}
+              <div className="lg:hidden space-y-4">
+                {courseData.schedule.map((slot, idx) => (
+                  <div key={idx} className="bg-white p-6 rounded-2xl border border-zinc-100 shadow-sm">
+                    <div className="flex justify-between items-start mb-4">
+                      <div className="flex items-center gap-2 text-[#002d80] font-bold">
+                        <MapPin size={16} className="text-[#facc15]" />
+                        {slot.venue}
+                      </div>
+                      <span className="text-xl font-black text-[#002d80]">{slot.price}</span>
+                    </div>
+                    <div className="grid grid-cols-2 gap-4">
+                      <div className="flex flex-col">
+                        <span className="text-[10px] uppercase tracking-widest text-zinc-400 font-bold mb-1">Date</span>
+                        <div className="flex items-center gap-2 text-zinc-600 text-[13px]">
+                          <Calendar size={14} className="text-[#facc15]" />
+                          {slot.date}
+                        </div>
+                      </div>
+                      <div className="flex flex-col">
+                        <span className="text-[10px] uppercase tracking-widest text-zinc-400 font-bold mb-1">Duration</span>
+                        <div className="flex items-center gap-2 text-zinc-600 text-[13px]">
+                          <Clock size={14} className="text-[#facc15]" />
+                          {slot.duration}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="hidden lg:block overflow-hidden border border-gray-100 rounded-2xl shadow-sm">
                 <table className="w-full text-left border-collapse">
                   <thead>
                     <tr className="bg-zinc-50 border-b border-zinc-100">

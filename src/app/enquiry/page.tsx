@@ -9,9 +9,9 @@ export default function EnquiryPage() {
     <div className="min-h-screen bg-white">
       <Header />
       
-      <main className="pt-44 pb-20">
+      <main className="pt-24 md:pt-44 pb-20">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-col lg:flex-row gap-16">
+          <div className="flex flex-col lg:flex-row gap-12 lg:gap-16">
             
             {/* Left Column: Content */}
             <div className="lg:w-1/2">
@@ -53,7 +53,7 @@ export default function EnquiryPage() {
 
             {/* Right Column: Form */}
             <div className="lg:w-1/2">
-              <div className="bg-white rounded-[3rem] shadow-2xl p-8 md:p-12 border border-zinc-100 relative overflow-hidden">
+              <div className="bg-white rounded-3xl md:rounded-[3rem] shadow-2xl p-6 md:p-12 border border-zinc-100 relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-[#facc15] opacity-5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
                 
                 <form className="space-y-6 relative z-10">

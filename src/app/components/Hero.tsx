@@ -40,75 +40,64 @@ export function Hero({ imageUrl }: HeroProps) {
         />
       </div>
 
-      {/* Content — padded top to clear the fixed navbar (top bar ≈36px + main nav ≈64px = 100px) */}
-      <div
-        className="relative z-10 flex flex-col justify-center"
-        style={{
-          paddingTop: "200px",
-          paddingBottom: "80px",
-          paddingLeft: "clamp(24px, 5vw, 64px)",
-          paddingRight: "clamp(24px, 5vw, 64px)",
-          maxWidth: "640px",
-        }}
-      >
-        {/* Heading — Playfair Display */}
-        <h1
-          style={{
-            fontFamily: "var(--font-playfair), 'Playfair Display', Georgia, serif",
-            fontSize: "clamp(1.75rem, 3vw, 2.25rem)",
-            fontWeight: 900,
-            color: "#ffffff",
-            lineHeight: 1.15,
-            marginBottom: "1.5rem",
-            textShadow: "0 2px 16px rgba(0,0,0,0.4)",
-            letterSpacing: "0.02em",
-            textTransform: "uppercase",
-          }}
-        >
-          Oxlade Business
-          <br />
-          Training School
-        </h1>
+      {/* Content — padded top to clear the fixed navbar */}
+      <div className="relative z-10 max-w-7xl mx-auto px-6 h-full flex flex-col justify-center pt-32 md:pt-48 pb-12 md:pb-20">
+        <div className="max-w-2xl">
+          {/* Heading — Playfair Display */}
+          <h1
+            className="text-white mb-6 tracking-tight uppercase"
+            style={{
+              fontFamily: "var(--font-playfair), 'Playfair Display', Georgia, serif",
+              fontSize: "clamp(1.75rem, 5vw, 3rem)",
+              fontWeight: 900,
+              lineHeight: 1.1,
+              textShadow: "0 2px 16px rgba(0,0,0,0.4)",
+            }}
+          >
+            Oxlade Business
+            <br />
+            Training School
+          </h1>
 
-        {/* Bullet Points — Inter body font */}
-        <ul className="space-y-4">
-          {bulletPoints.map((point, index) => (
-            <li key={index} className="flex items-start gap-3">
-              {/* Arrow icon — brand yellow accent */}
-              <span
-                className="mt-0.5 flex-shrink-0 flex items-center justify-center rounded-full"
-                style={{
-                  width: "22px",
-                  height: "22px",
-                  minWidth: "22px",
-                  background: "rgba(250,204,21,0.15)",
-                  border: "1.5px solid rgba(250,204,21,0.75)",
-                }}
-                aria-hidden="true"
-              >
-                <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
-                  <path
-                    d="M2 5h6M5.5 2.5L8 5l-2.5 2.5"
-                    stroke="#facc15"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </span>
-              <span
-                style={{
-                  fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
-                  fontSize: "clamp(0.82rem, 1.5vw, 0.92rem)",
-                  color: "rgba(255,255,255,0.93)",
-                  lineHeight: 1.55,
-                }}
-              >
-                {point}
-              </span>
-            </li>
-          ))}
-        </ul>
+          {/* Bullet Points — Inter body font */}
+          <ul className="space-y-4 md:space-y-5">
+            {bulletPoints.map((point, index) => (
+              <li key={index} className="flex items-start gap-3 md:gap-4">
+                {/* Arrow icon — brand yellow accent */}
+                <span
+                  className="mt-1 flex-shrink-0 flex items-center justify-center rounded-full"
+                  style={{
+                    width: "20px",
+                    height: "20px",
+                    minWidth: "20px",
+                    background: "rgba(250,204,21,0.15)",
+                    border: "1.5px solid rgba(250,204,21,0.75)",
+                  }}
+                  aria-hidden="true"
+                >
+                  <svg width="8" height="8" viewBox="0 0 10 10" fill="none">
+                    <path
+                      d="M2 5h6M5.5 2.5L8 5l-2.5 2.5"
+                      stroke="#facc15"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </span>
+                <span
+                  className="text-white/90 leading-relaxed font-medium"
+                  style={{
+                    fontFamily: "var(--font-inter), Inter, system-ui, sans-serif",
+                    fontSize: "clamp(0.85rem, 2vw, 1rem)",
+                  }}
+                >
+                  {point}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
 
       {/* White wave separator at bottom */}

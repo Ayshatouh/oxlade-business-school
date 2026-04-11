@@ -1,11 +1,13 @@
 "use client";
-import { Phone, Mail, ChevronDown, ChevronRight, MapPin, Monitor, Users, BookOpen, Building } from 'lucide-react';
+import { Phone, Mail, ChevronDown, ChevronRight, MapPin, Monitor, Users, BookOpen, Building, Menu, X } from 'lucide-react';
 import { useState, useRef, useEffect, Fragment } from 'react';
 import Link from 'next/link';
 
 export function Header() {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [activeTopMenu, setActiveTopMenu] = useState<string | null>(null);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [expandedMobileMenus, setExpandedMobileMenus] = useState<string[]>([]);
 
   const menuRef = useRef<HTMLDivElement>(null);
   const topMenuRef = useRef<HTMLDivElement>(null);
@@ -95,8 +97,8 @@ export function Header() {
     switch (menuName) {
       case 'Open Courses':
         return (
-          <div className="absolute top-[calc(100%+16px)] left-0 w-full bg-[#f8f9fa] shadow-2xl border border-gray-200 rounded-b-xl p-6 z-50 animate-slideDownFade overflow-hidden">
-            <div className="grid grid-cols-4 gap-x-6 gap-y-8">
+          <div className="absolute top-[calc(100%+16px)] left-0 w-full bg-[#f8f9fa] shadow-2xl border border-gray-200 rounded-b-xl p-6 z-50 animate-slideDownFade overflow-hidden hidden lg:block">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-8">
               {openCourses.map((category) => (
                 <div key={category.category} className="space-y-2.5">
                   <h4 className="text-gray-800 text-sm font-medium border-b border-gray-300 pb-1.5">
@@ -127,7 +129,7 @@ export function Header() {
 
       case 'Training Locations':
         return (
-          <div className="absolute top-[calc(100%+8px)] left-1/2 -translate-x-1/2 w-[90%] max-w-6xl bg-[#f4f5f7] shadow-xl border border-gray-200 rounded-xl px-4 py-8 z-50 animate-slideDownFade overflow-hidden flex items-center justify-center">
+          <div className="absolute top-[calc(100%+8px)] left-1/2 -translate-x-1/2 w-[90%] max-w-6xl bg-[#f4f5f7] shadow-xl border border-gray-200 rounded-xl px-4 py-8 z-50 animate-slideDownFade overflow-hidden hidden lg:flex items-center justify-center">
             <div className="flex flex-wrap items-center justify-center gap-y-6 flex-row w-full">
               {trainingLocations.map((loc, index) => (
                 <Fragment key={loc}>
@@ -146,7 +148,7 @@ export function Header() {
 
       case 'Training Formats':
         return (
-          <div className="absolute top-[calc(100%+8px)] left-1/2 -translate-x-1/2 min-w-[600px] w-auto bg-[#f4f5f7] shadow-xl border border-gray-200 rounded-xl px-12 py-8 z-50 animate-slideDownFade overflow-hidden flex items-center justify-center">
+          <div className="absolute top-[calc(100%+8px)] left-1/2 -translate-x-1/2 min-w-[600px] w-[90%] max-w-6xl bg-[#f4f5f7] shadow-xl border border-gray-200 rounded-xl px-12 py-8 z-50 animate-slideDownFade overflow-hidden hidden lg:flex items-center justify-center">
             <div className="flex items-center justify-center gap-x-10 flex-row">
               {trainingFormats.map((format, index) => {
                 const Icon = format.icon;
@@ -174,8 +176,8 @@ export function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white shadow-sm">
       {/* Top Utility Bar */}
-      <div className="bg-[#002d80] text-white py-2 px-6">
-        <div className="max-w-7xl mx-auto flex justify-between items-center" ref={topMenuRef}>
+      <div className="bg-[#002d80] text-white py-2 px-6 hidden sm:block">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-2" ref={topMenuRef}>
           <div className="flex gap-6">
             <a href="tel:+442071234567" className="flex items-center gap-2 hover:text-[#facc15] transition-colors">
               <Phone size={16} />
@@ -236,8 +238,15 @@ export function Header() {
               className="h-12 w-auto object-contain"
             />
           </a>
+          
+          <button 
+            className="lg:hidden p-2 text-[#002d80] focus:outline-none"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+          </button>
 
-          <div className="flex gap-8 items-center">
+          <div className="hidden lg:flex gap-8 items-center">
             {navMenus.map((navItem) => (
               <Fragment key={navItem.name}>
                 {navItem.hasDropdown ? (
@@ -271,6 +280,134 @@ export function Header() {
           </div>
         </div>
       </nav>
+
+      {/* Mobile Menu Overlay */}
+      {isMobileMenuOpen && (
+        <div className="lg:hidden fixed inset-0 top-[64px] bg-white z-[60] overflow-y-auto pb-20 animate-slideInLeft">
+          <div className="px-6 py-8 space-y-8">
+            {/* Quick Contact for Mobile */}
+            <div className="sm:hidden grid grid-cols-1 gap-4 pb-6 border-b border-gray-100">
+              <a href="tel:+442071234567" className="flex items-center gap-3 text-gray-800">
+                <div className="w-10 h-10 bg-[#002d80]/5 rounded-full flex items-center justify-center text-[#002d80]">
+                  <Phone size={18} />
+                </div>
+                <span className="text-sm font-bold">+44 (0)20 7123 4567</span>
+              </a>
+              <a href="mailto:info@oxlade.com" className="flex items-center gap-3 text-gray-800">
+                <div className="w-10 h-10 bg-[#002d80]/5 rounded-full flex items-center justify-center text-[#002d80]">
+                  <Mail size={18} />
+                </div>
+                <span className="text-sm font-bold">info@oxlade.com</span>
+              </a>
+            </div>
+
+            {/* Main Nav Items */}
+            <ul className="space-y-6">
+              {navMenus.map((item) => (
+                <li key={item.name} className="border-b border-gray-50 pb-4">
+                  {item.hasDropdown ? (
+                    <div>
+                      <button 
+                        onClick={() => {
+                          setExpandedMobileMenus(prev => 
+                            prev.includes(item.name) ? prev.filter(m => m !== item.name) : [...prev, item.name]
+                          );
+                        }}
+                        className="flex items-center justify-between w-full text-lg font-black text-[#002d80]"
+                      >
+                        {item.name}
+                        <ChevronDown 
+                          size={20} 
+                          className={`transition-transform duration-300 ${expandedMobileMenus.includes(item.name) ? 'rotate-180' : ''}`} 
+                        />
+                      </button>
+                      
+                      {expandedMobileMenus.includes(item.name) && (
+                        <div className="mt-4 pl-4 border-l-2 border-[#facc15] space-y-4">
+                          {item.name === 'Open Courses' ? (
+                            openCourses.map(cat => (
+                              <div key={cat.category}>
+                                <h4 className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-2">{cat.category}</h4>
+                                <ul className="space-y-2">
+                                  {cat.items.slice(0, 3).map(course => (
+                                    <li key={course}>
+                                      <Link 
+                                        href={`/categories/${course.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-')}`}
+                                        className="text-gray-700 text-[15px] font-medium block"
+                                        onClick={() => setIsMobileMenuOpen(false)}
+                                      >
+                                        {course}
+                                      </Link>
+                                    </li>
+                                  ))}
+                                  {cat.items.length > 3 && (
+                                    <li>
+                                      <Link href="#" className="text-[#002d80] text-xs font-bold" onClick={() => setIsMobileMenuOpen(false)}>See More...</Link>
+                                    </li>
+                                  )}
+                                </ul>
+                              </div>
+                            ))
+                          ) : item.name === 'Training Locations' ? (
+                            <div className="grid grid-cols-2 gap-3">
+                              {trainingLocations.map(loc => (
+                                <a key={loc} href="#" className="text-gray-700 text-[15px] font-medium flex items-center gap-2">
+                                  <MapPin size={14} className="text-[#facc15]" />
+                                  {loc}
+                                </a>
+                              ))}
+                            </div>
+                          ) : (
+                            <div className="space-y-4">
+                              {trainingFormats.map(format => {
+                                const Icon = format.icon;
+                                return (
+                                  <a key={format.label} href="#" className="flex items-center gap-3 text-gray-700 text-[15px] font-medium">
+                                    <Icon size={18} className="text-[#002d80]" />
+                                    {format.label}
+                                  </a>
+                                );
+                              })}
+                            </div>
+                          )}
+                        </div>
+                      )}
+                    </div>
+                  ) : (
+                    <Link 
+                      href={item.href || '#'} 
+                      className="text-lg font-black text-[#002d80] block"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      {item.name}
+                    </Link>
+                  )}
+                </li>
+              ))}
+            </ul>
+
+            {/* Support Nav for Mobile */}
+            <div className="grid grid-cols-2 gap-4 pt-10 border-t border-gray-100">
+              <div>
+                <h4 className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-3">About Us</h4>
+                <ul className="space-y-2">
+                  {topNavItems['About'].slice(0, 4).map(link => (
+                    <li key={link}><a href="#" className="text-gray-600 text-sm">{link}</a></li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <h4 className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-3">Helpful Information</h4>
+                <ul className="space-y-2">
+                  {topNavItems['Info'].slice(0, 4).map(link => (
+                    <li key={link}><a href="#" className="text-gray-600 text-sm">{link}</a></li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </header>
   );
 }

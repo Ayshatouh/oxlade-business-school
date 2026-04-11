@@ -12,7 +12,7 @@ export default function ReviewPage() {
     <div className="min-h-screen bg-white">
       <Header />
       
-      <main className="pt-44 pb-20">
+      <main className="pt-24 md:pt-44 pb-20">
         <div className="max-w-4xl mx-auto px-6">
           <div className="text-center mb-16">
             <div className="inline-block px-4 py-1.5 bg-[#facc15]/20 text-[#002d80] rounded-full text-[11px] font-black uppercase tracking-widest mb-6">
@@ -27,7 +27,7 @@ export default function ReviewPage() {
             </p>
           </div>
 
-          <div className="bg-zinc-50 rounded-[3rem] p-8 md:p-16 border border-zinc-100 shadow-xl relative overflow-hidden">
+          <div className="bg-zinc-50 rounded-3xl md:rounded-[3rem] p-6 md:p-16 border border-zinc-100 shadow-xl relative overflow-hidden">
             {/* Background elements - Blue quote removed as requested */}
             
             <form className="relative z-10 space-y-10">
