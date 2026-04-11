@@ -66,7 +66,7 @@ export function Footer() {
           <div>
             <h4 className="font-bold text-gray-900 mb-5 text-[15px]">Info</h4>
             <ul className="space-y-3">
-              {['Privacy & Cookies', 'Terms', 'FAQs', 'Cookie Preferences'].map((link) => (
+              {['Privacy Policy', 'Terms', 'FAQs'].map((link) => (
                 <li key={link}>
                   <a href="#" className="flex items-center gap-2 text-[14px] text-gray-900 hover:text-[#002d80] font-medium transition-colors group">
                     <ChevronRight size={14} className="text-[#002d80] transition-colors" />

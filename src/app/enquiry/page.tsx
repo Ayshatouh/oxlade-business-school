@@ -61,14 +61,14 @@ export default function EnquiryPage() {
                     <div className="space-y-2">
                       <label className="text-[11px] font-black uppercase text-zinc-400 tracking-widest px-1">Full Name</label>
                       <div className="relative">
-                        <input type="text" placeholder="Full Name" className="w-full pl-11 pr-4 py-3.5 bg-zinc-50 border border-zinc-100 rounded-xl focus:bg-white focus:border-[#002d80] outline-none transition-all font-medium" />
+                        <input type="text" placeholder="Full Name" className="w-full pl-11 pr-4 py-2.5 bg-black/5 border border-gray-300 rounded text-sm focus:bg-white focus:border-[#002d80] outline-none transition-all" />
                         <User className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-300" size={18} />
                       </div>
                     </div>
                     <div className="space-y-2">
                       <label className="text-[11px] font-black uppercase text-zinc-400 tracking-widest px-1">Email Address</label>
                       <div className="relative">
-                        <input type="email" placeholder="youremail@gmail.com" className="w-full pl-11 pr-4 py-3.5 bg-zinc-50 border border-zinc-100 rounded-xl focus:bg-white focus:border-[#002d80] outline-none transition-all font-medium" />
+                        <input type="email" placeholder="youremail@gmail.com" className="w-full pl-11 pr-4 py-2.5 bg-black/5 border border-gray-300 rounded text-sm focus:bg-white focus:border-[#002d80] outline-none transition-all" />
                         <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-300" size={18} />
                       </div>
                     </div>
@@ -78,14 +78,14 @@ export default function EnquiryPage() {
                     <div className="space-y-2">
                       <label className="text-[11px] font-black uppercase text-zinc-400 tracking-widest px-1">Organisation</label>
                       <div className="relative">
-                        <input type="text" placeholder="Company Name" className="w-full pl-11 pr-4 py-3.5 bg-zinc-50 border border-zinc-100 rounded-xl focus:bg-white focus:border-[#002d80] outline-none transition-all font-medium" />
+                        <input type="text" placeholder="Company Name" className="w-full pl-11 pr-4 py-2.5 bg-black/5 border border-gray-300 rounded text-sm focus:bg-white focus:border-[#002d80] outline-none transition-all" />
                         <Building className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-300" size={18} />
                       </div>
                     </div>
                     <div className="space-y-2">
                       <label className="text-[11px] font-black uppercase text-zinc-400 tracking-widest px-1">Course Interest</label>
                       <div className="relative">
-                        <select className="w-full pl-11 pr-4 py-3.5 bg-zinc-50 border border-zinc-100 rounded-xl focus:bg-white focus:border-[#002d80] outline-none transition-all font-bold text-gray-700">
+                        <select className="w-full pl-11 pr-4 py-2.5 bg-black/5 border border-gray-300 rounded text-sm focus:bg-white focus:border-[#002d80] outline-none transition-all text-gray-700">
                           <option>Select a category</option>
                           <option>Leadership</option>
                           <option>Banking and Finance</option>
@@ -100,7 +100,7 @@ export default function EnquiryPage() {
                   <div className="space-y-2">
                     <label className="text-[11px] font-black uppercase text-zinc-400 tracking-widest px-1">Your Message</label>
                     <div className="relative">
-                      <textarea rows={4} placeholder="How can we help you?" className="w-full pl-11 pr-4 py-3.5 bg-zinc-50 border border-zinc-100 rounded-xl focus:bg-white focus:border-[#002d80] outline-none transition-all font-medium resize-none"></textarea>
+                      <textarea rows={4} placeholder="How can we help you?" className="w-full pl-11 pr-4 py-2.5 bg-black/5 border border-gray-300 rounded text-sm focus:bg-white focus:border-[#002d80] outline-none transition-all resize-none"></textarea>
                       <MessageSquare className="absolute left-4 top-4 text-zinc-300" size={18} />
                     </div>
                   </div>

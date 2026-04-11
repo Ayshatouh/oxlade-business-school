@@ -27,7 +27,7 @@ export function Header() {
 
   const topNavItems = {
     'About': ['About', 'Our Team', 'Our Course Locations', 'Our Training Venues', 'Our Training Consultants', 'Careers', 'Reviews'],
-    'Info': ['Clients', 'Accredetation', 'Accomodation', 'Airport Transfers', 'Policies', 'Visas', 'Terms and Conditions', 'Privacy and Cookies'],
+    'Info': ['Clients', 'Accredetation', 'Accomodation', 'Airport Transfers', 'Policies', 'Visas', 'Terms and Conditions', 'Privacy Policy'],
     'Resources': ['Brochures and Calenders', 'Case Studies'],
   };
 
