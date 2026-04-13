@@ -3,6 +3,8 @@
 import { Header } from "@/app/components/Header";
 import { Footer } from "@/app/components/Footer";
 import { Mail, Phone, MapPin, Send, MessageSquare, User, Building, Book } from "lucide-react";
+import { siteConfig } from "@/config/site";
+
 
 export default function EnquiryPage() {
   return (
@@ -33,7 +35,8 @@ export default function EnquiryPage() {
                   </div>
                   <div>
                     <h4 className="font-black text-[#002d80] uppercase tracking-widest text-[11px] mb-1">Email Us</h4>
-                    <p className="text-gray-900 font-bold">info@oxlade.com</p>
+                    <p className="text-gray-900 font-bold">{siteConfig.email}</p>
+
                     <p className="text-gray-400 text-sm">Response within 24 hours</p>
                   </div>
                 </div>
@@ -44,7 +47,8 @@ export default function EnquiryPage() {
                   </div>
                   <div>
                     <h4 className="font-black text-[#002d80] uppercase tracking-widest text-[11px] mb-1">Call Us</h4>
-                    <p className="text-gray-900 font-bold">+44 (0)20 7123 4567</p>
+                    <p className="text-gray-900 font-bold">{siteConfig.phone}</p>
+
                     <p className="text-gray-400 text-sm">Mon - Fri, 9am - 6pm BST</p>
                   </div>
                 </div>

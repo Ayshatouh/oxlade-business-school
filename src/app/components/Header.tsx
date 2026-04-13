@@ -2,6 +2,8 @@
 import { Phone, Mail, ChevronDown, ChevronRight, MapPin, Monitor, Users, BookOpen, Building, Menu, X } from 'lucide-react';
 import { useState, useRef, useEffect, Fragment } from 'react';
 import Link from 'next/link';
+import { siteConfig } from '@/config/site';
+
 
 export function Header() {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
@@ -179,14 +181,16 @@ export function Header() {
       <div className="bg-[#002d80] text-white py-2 px-6 hidden sm:block">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-2" ref={topMenuRef}>
           <div className="flex gap-6">
-            <a href="tel:+442071234567" className="flex items-center gap-2 hover:text-[#facc15] transition-colors">
+            <a href={`tel:${siteConfig.phone.replace(/\s+/g, '')}`} className="flex items-center gap-2 hover:text-[#facc15] transition-colors">
               <Phone size={16} />
-              <span className="text-[13px] font-medium">+44 (0)20 7123 4567</span>
+              <span className="text-[13px] font-medium">{siteConfig.phone}</span>
             </a>
-            <a href="mailto:info@oxlade.com" className="flex items-center gap-2 hover:text-[#facc15] transition-colors">
+
+            <a href={`mailto:${siteConfig.email}`} className="flex items-center gap-2 hover:text-[#facc15] transition-colors">
               <Mail size={16} />
-              <span className="text-[13px] font-medium">info@oxlade.com</span>
+              <span className="text-[13px] font-medium">{siteConfig.email}</span>
             </a>
+
           </div>
 
           {/* Top Navigation */}
@@ -234,9 +238,10 @@ export function Header() {
           <a href="/" className="block">
             <img
               src="/pictures/oxladebiz.png"
-              alt="Oxlade Business School Logo"
+              alt={`${siteConfig.name} Logo`}
               className="h-12 w-auto object-contain"
             />
+
           </a>
           
           <button 
@@ -287,18 +292,19 @@ export function Header() {
           <div className="px-6 py-8 space-y-8">
             {/* Quick Contact for Mobile */}
             <div className="sm:hidden grid grid-cols-1 gap-4 pb-6 border-b border-gray-100">
-              <a href="tel:+442071234567" className="flex items-center gap-3 text-gray-800">
+              <a href={`tel:${siteConfig.phone.replace(/\s+/g, '')}`} className="flex items-center gap-3 text-gray-800">
                 <div className="w-10 h-10 bg-[#002d80]/5 rounded-full flex items-center justify-center text-[#002d80]">
                   <Phone size={18} />
                 </div>
-                <span className="text-sm font-bold">+44 (0)20 7123 4567</span>
+                <span className="text-sm font-bold">{siteConfig.phone}</span>
               </a>
-              <a href="mailto:info@oxlade.com" className="flex items-center gap-3 text-gray-800">
+              <a href={`mailto:${siteConfig.email}`} className="flex items-center gap-3 text-gray-800">
                 <div className="w-10 h-10 bg-[#002d80]/5 rounded-full flex items-center justify-center text-[#002d80]">
                   <Mail size={18} />
                 </div>
-                <span className="text-sm font-bold">info@oxlade.com</span>
+                <span className="text-sm font-bold">{siteConfig.email}</span>
               </a>
+
             </div>
 
             {/* Main Nav Items */}

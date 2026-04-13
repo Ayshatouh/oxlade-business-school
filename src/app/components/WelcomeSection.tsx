@@ -1,6 +1,8 @@
 'use client';
 
 import { CheckCircle2, GraduationCap, Handshake, Sparkles } from "lucide-react";
+import { siteConfig } from "@/config/site";
+
 
 const playfair = { fontFamily: "var(--font-playfair), 'Playfair Display', Georgia, serif" };
 
@@ -18,7 +20,8 @@ const highlights = [
 ];
 
 export function WelcomeSection() {
-  const headingText = "Why professionals choose Oxlade";
+  const headingText = `Why professionals choose ${siteConfig.name}`;
+
   
   return (
     <section className="py-12 bg-white relative overflow-hidden">
@@ -59,10 +62,11 @@ export function WelcomeSection() {
 
           <div className="max-w-3xl mx-auto">
             <p className="text-lg text-gray-600 leading-relaxed font-medium">
-              At Oxlade, we blend academic depth with practical execution so delegates gain skills they can use immediately. 
+              At {siteConfig.name}, we blend academic depth with practical execution so delegates gain skills they can use immediately. 
               Our programmes are designed to strengthen leadership, technical capability, and strategic decision-making 
               in fast-moving business environments.
             </p>
+
           </div>
         </div>
 

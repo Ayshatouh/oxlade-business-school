@@ -1,4 +1,6 @@
 import { ChevronRight } from 'lucide-react';
+import { siteConfig } from '@/config/site';
+
 
 const FacebookIcon = ({ size = 24, className = "", fill = "none" }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill={fill} stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
@@ -24,12 +26,14 @@ export function Footer() {
           <div className="lg:pr-8">
             <img
               src="/pictures/oxladebiz.png"
-              alt="Oxlade Business School Logo"
+              alt={`${siteConfig.name} Logo`}
               className="h-10 w-auto object-contain mb-6"
             />
+
             <p className="text-[15px] leading-relaxed text-gray-900 mt-2">
-              Oxlade Business School offers over 500 intensive courses that elevate professional skills, enhance career growth, and boost organisational effectiveness.
+              {siteConfig.name} offers over 500 intensive courses that elevate professional skills, enhance career growth, and boost organisational effectiveness.
             </p>
+
           </div>
 
           {/* Column 2: About */}
@@ -140,7 +144,8 @@ export function Footer() {
           </div>
           
           <div className="text-right text-[13px] text-gray-900">
-            <p className="mb-1">© 2026 All Rights Reserved. Oxlade Business School.</p>
+            <p className="mb-1">© {new Date().getFullYear()} All Rights Reserved. {siteConfig.name}.</p>
+
             <p>Built By <span className="font-semibold underline cursor-pointer hover:text-[#002d80]">Oxlade Design</span></p>
           </div>
         </div>

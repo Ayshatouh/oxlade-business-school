@@ -1,0 +1,79 @@
+{
+  "id": "fraud-detection",
+  "title": "Fraud Detection and Prevention in Internal Auditing",
+  "category": "Banking and Finance",
+  "description": "Delegates explore audit frameworks specific to banking and financial institutions. The course covers regulatory expectations, risk-based planning, and internal control evaluation. Participants learn to address compliance, operational, and financial risks effectively. The programme prepares professionals to deliver audits that safeguard institutional stability and credibility.",
+  "whoShouldAttend": "Risk, audit, and compliance professionals ensuring organisational integrity and control. Past delegates have included:",
+  "pastDelegates": [
+    "Risk Managers",
+    "Internal Auditors",
+    "Compliance Officers",
+    "Governance Specialists",
+    "Finance Directors"
+  ],
+  "outcomes": [
+    "Identify fraud risk indicators through analytical and behavioural assessment techniques.",
+    "Design audit tests and controls to detect and prevent financial irregularities.",
+    "Investigate anomalies using forensic evidence collection and data analytics tools.",
+    "Report fraud findings in line with legal and professional requirements.",
+    "Promote a culture of ethical conduct and zero tolerance for fraud."
+  ],
+  "topics": [
+    {
+      "title": "Identifying Fraud Risks and Red Flags",
+      "bullets": [
+        "Understand common fraud schemes and behavioural indicators.",
+        "Assess fraud risk factors across finance, procurement, and HR.",
+        "Integrate fraud considerations into the audit plan and fieldwork.",
+        "Use analytics and forensic tools to identify suspicious patterns."
+      ]
+    },
+    {
+      "title": "Developing Fraud Prevention Frameworks",
+      "bullets": [
+        "Design fraud prevention controls aligned with governance structures.",
+        "Promote awareness and ethical culture across the organisation.",
+        "Collaborate with management to enhance anti-fraud measures.",
+        "Evaluate whistleblowing systems and incident reporting channels."
+      ]
+    },
+    {
+      "title": "Effective Audit Reporting and Stakeholder Communication",
+      "bullets": [
+        "Draft concise, evidence-based audit reports that clearly convey risk and impact.",
+        "Deliver findings and recommendations that drive tangible management actions.",
+        "Use visual tools and rating systems to highlight key audit priorities.",
+        "Engage confidently with senior stakeholders to discuss outcomes and next steps."
+      ]
+    },
+    {
+      "title": "Evaluating and Strengthening Internal Controls",
+      "bullets": [
+        "Assess control design and operating effectiveness through walkthroughs and testing.",
+        "Apply data analytics to identify control gaps and process inefficiencies.",
+        "Link control weaknesses to root causes and provide practical recommendations.",
+        "Establish follow-up mechanisms to ensure timely remediation and accountability."
+      ]
+    },
+    {
+      "title": "Regulatory and Ethical Compliance in Auditing",
+      "bullets": [
+        "Apply relevant international standards (IIA, ISA) throughout the audit lifecycle.",
+        "Maintain objectivity, confidentiality, and independence in all engagements.",
+        "Comply with internal quality assurance and external regulatory frameworks.",
+        "Align audit processes with organisational ethics and governance expectations."
+      ]
+    }
+  ],
+  "schedule": [
+    { "date": "25 - 29 May 2026", "venue": "London", "duration": "5 days", "price": "£4,495" },
+    { "date": "3 - 7 Aug 2026", "venue": "London", "duration": "5 days", "price": "£4,495" },
+    { "date": "19 - 23 Oct 2026", "venue": "London", "duration": "5 days", "price": "£4,495" },
+    { "date": "7 - 11 Dec 2026", "venue": "London", "duration": "5 days", "price": "£4,495" },
+    { "date": "6 - 11 Jul 2026", "venue": "Cape Town", "duration": "5 days", "price": "£4,495" },
+    { "date": "3 Aug - 11 Jul 2026", "venue": "Cape Town", "duration": "5 days", "price": "£4,495" },
+    { "date": "7 - 12 Sep 2026", "venue": "Riyadh", "duration": "5 days", "price": "£4,495" },
+    { "date": "5 - 10 Oct 2026", "venue": "Dubai", "duration": "5 days", "price": "£4,495" },
+    { "date": "2 - 7 Nov 2026", "venue": "Singapore", "duration": "5 days", "price": "£4,495" }
+  ]
+}

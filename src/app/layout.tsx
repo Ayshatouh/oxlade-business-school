@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Inter } from "next/font/google";
+import { siteConfig } from "@/config/site";
 import "./globals.css";
+
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
@@ -16,7 +18,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Oxlade Business School | Corporate Training Courses",
+  title: `${siteConfig.name} | Corporate Training Courses`,
+
   description:
     "Over 30 years of delivering premium corporate training. Explore 500+ intensive courses across leadership, finance, digital and more.",
 };

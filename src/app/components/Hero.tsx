@@ -1,4 +1,6 @@
 import Image from "next/image";
+import { siteConfig } from "@/config/site";
+
 
 interface HeroProps {
   imageUrl: string;
@@ -54,9 +56,10 @@ export function Hero({ imageUrl }: HeroProps) {
               textShadow: "0 2px 16px rgba(0,0,0,0.4)",
             }}
           >
-            Oxlade Business
+            {siteConfig.name.split(" ").slice(0, 2).join(" ")}
             <br />
-            Training School
+            {siteConfig.name.split(" ").slice(2).join(" ")}
+
           </h1>
 
           {/* Bullet Points — Inter body font */}
