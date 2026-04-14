@@ -3,6 +3,7 @@ import { Phone, Mail, ChevronDown, ChevronRight, MapPin, Monitor, Users, BookOpe
 import { useState, useRef, useEffect, Fragment } from 'react';
 import Link from 'next/link';
 import { siteConfig } from '@/config/site';
+import { getVenueCityLinks } from '@/data/venueCourses';
 import { COURSE_CATEGORY_GROUPS, getCategoryPath } from '@/data/courseCategories';
 
 
@@ -47,7 +48,7 @@ export function Header() {
 
   const openCourses = COURSE_CATEGORY_GROUPS;
 
-  const trainingLocations = ['Barcelona', 'Cape Town', 'Dubai', 'Istanbul', 'London', 'New York', 'Paris', 'Riyadh', 'Singapore'];
+  const trainingLocations = getVenueCityLinks().map(link => link.label);
 
   const trainingFormats = [
     { label: 'Classroom Training', icon: BookOpen },

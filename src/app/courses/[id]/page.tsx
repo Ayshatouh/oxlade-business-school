@@ -66,20 +66,7 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
               {courseData.title}
             </h1>
             
-            <div className="flex flex-wrap gap-8 mt-4 text-gray-300">
-              <div className="flex items-center gap-2 text-sm">
-                <Clock size={18} className="text-[#facc15]" />
-                <span className="font-semibold text-white">5 Days Duration</span>
-              </div>
-              <div className="flex items-center gap-2 text-sm">
-                <Award size={18} className="text-[#facc15]" />
-                <span className="font-semibold text-white">CPD Accredited</span>
-              </div>
-              <div className="flex items-center gap-2 text-sm">
-                <Users size={18} className="text-[#facc15]" />
-                <span className="font-semibold text-white">Corporate Group Option</span>
-              </div>
-            </div>
+            
           </div>
         </div>
       </section>

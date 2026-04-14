@@ -1,6 +1,8 @@
 import { Globe, Users } from 'lucide-react';
+import { getVenueCityLinks } from '@/data/venueCourses';
 
 export function TrainingInfo() {
+  const cityLinks = getVenueCityLinks();
   return (
     <section className="py-16 bg-zinc-50 border-t border-gray-200">
       <div className="max-w-7xl mx-auto px-6">
@@ -31,7 +33,7 @@ export function TrainingInfo() {
               International Training Venues
             </h2>
             <p className="text-gray-900 leading-relaxed font-medium">
-              We offer open (public) courses in leading international locations across the world, including Abuja, Barcelona, Dubai, Istanbul, London, New York and Singapore and customised courses anywhere in the world to meet client requirements.
+              We offer open (public) courses in leading international locations across the world, including {cityLinks.map(l => l.label).join(', ')} and customised courses anywhere in the world to meet client requirements.
             </p>
             <a href="#" className="mt-8 text-[#002d80] font-bold hover:text-[#facc15] transition-colors uppercase tracking-wide text-sm">
               View Venues &rarr;
