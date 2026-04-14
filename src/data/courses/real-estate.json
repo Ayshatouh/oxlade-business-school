@@ -1,0 +1,53 @@
+{
+  "id": "real-estate",
+  "title": "Real Estate",
+  "category": "Specialist Sectors",
+  "description": "A focused professional course in Real Estate designed to build practical capability and confidence through expert-led sessions and real-world case application.",
+  "whoShouldAttend": "This course is suitable for professionals, team leads, and managers seeking stronger skills in Real Estate.",
+  "pastDelegates": [
+    "Managers in Specialist Sectors",
+    "Team Leaders",
+    "Specialists and Analysts",
+    "Operations and Project Staff"
+  ],
+  "outcomes": [
+    "Understand core principles and current practices in Real Estate.",
+    "Apply practical frameworks to workplace challenges.",
+    "Improve decision-making with structured methods.",
+    "Develop an action plan for immediate implementation."
+  ],
+  "topics": [
+    {
+      "title": "Foundations and Core Concepts",
+      "bullets": [
+        "Key terminology and principles in Real Estate",
+        "Current trends, risks, and opportunities",
+        "Frameworks for practical application"
+      ]
+    },
+    {
+      "title": "Tools, Methods, and Practice",
+      "bullets": [
+        "Step-by-step techniques for implementation",
+        "Case examples and scenario analysis",
+        "Common pitfalls and how to avoid them"
+      ]
+    },
+    {
+      "title": "Execution and Performance",
+      "bullets": [
+        "Building implementation roadmaps",
+        "Measuring impact and performance",
+        "Sustaining improvements over time"
+      ]
+    }
+  ],
+  "schedule": [
+    {
+      "date": "Flexible Start",
+      "venue": "Online",
+      "duration": "5 Days",
+      "price": "£2,950"
+    }
+  ]
+}

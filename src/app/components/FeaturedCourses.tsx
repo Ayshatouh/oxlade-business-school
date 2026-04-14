@@ -1,40 +1,29 @@
 import { Calendar, MapPin, Clock, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
+import { getAllCourseIds, getCourseById } from '@/data/courses';
 
-const featuredCourses = [
-  {
-    id: 'fraud-detection',
-    title: 'Fraud Detection and Prevention in Internal Auditing',
-    category: 'Banking and Finance',
-    duration: '5 Days',
-    date: '25 - 29 May 2026',
-    venue: 'London',
-    price: '£4,495',
-    image: '/pictures/pic1.jpg',
-  },
-  {
-    id: 'mini-mba',
-    title: 'Mini MBA in Business Management',
-    category: 'Business Management',
-    duration: '5 Days',
-    date: '02 - 06 Sep 2026',
-    venue: 'Dubai',
-    price: '£3,800',
-    image: '/pictures/pic2.jpg',
-  },
-  {
-    id: 'data-analytics',
-    title: 'Data Analytics for Decision Makers',
-    category: 'Digital & Tech',
-    duration: 'Online',
-    date: 'Flexible Start',
-    venue: 'Online',
-    price: '£1,950',
-    image: '/pictures/pic3.jpg',
-  }
-];
+const featuredImages: Record<string, string> = {
+  'fraud-detection': '/pictures/pic1.jpg',
+  'mini-mba': '/pictures/pic2.jpg',
+  'data-analytics': '/pictures/pic3.jpg',
+};
 
 export function FeaturedCourses() {
+  const featuredCourses = getAllCourseIds()
+    .map((courseId) => getCourseById(courseId))
+    .filter((course): course is NonNullable<typeof course> => course !== null)
+    .slice(0, 3)
+    .map((course) => ({
+      id: course.id,
+      title: course.title,
+      category: course.category,
+      duration: course.schedule[0]?.duration ?? 'TBC',
+      date: course.schedule[0]?.date ?? 'TBC',
+      venue: course.schedule[0]?.venue ?? 'TBC',
+      price: course.schedule[0]?.price ?? 'TBC',
+      image: featuredImages[course.id] ?? '/pictures/pic1.jpg',
+    }));
+
   return (
     <section className="py-10 bg-[#002d80] text-white">
       <div className="max-w-7xl mx-auto px-6">
@@ -89,6 +78,7 @@ export function FeaturedCourses() {
                     href={`/courses/${course.id}`}
                     className="bg-[#facc15] text-[#002d80] px-6 py-2.5 font-black uppercase tracking-widest text-[11px] hover:bg-white transition-all transform hover:-translate-y-0.5"
                   >
+                
                     VIEW DETAILS
                   </Link>
                 </div>
@@ -97,8 +87,8 @@ export function FeaturedCourses() {
           ))}
         </div>
 
-
       </div>
     </section>
   );
 }
+

@@ -7,6 +7,7 @@ import React, { use, useState } from "react";
 import Link from "next/link";
 import { siteConfig } from "@/config/site";
 import { getCourseById } from "@/data/courses";
+import { COURSE_CATEGORY_GROUPS, getCategoryPath } from "@/data/courseCategories";
 import { notFound } from "next/navigation";
 
 
@@ -282,20 +283,11 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
               <div className="bg-zinc-50 p-8 rounded-3xl border border-zinc-100">
                 <h4 className="font-black text-[#002d80] mb-6 text-[10px] uppercase tracking-[0.2em] border-b border-zinc-200 pb-3">Department Directory</h4>
                 <div className="space-y-3">
-                  {[
-                    'New and Trending',
-                    'Business Management',
-                    'Leadership',
-                    'Operations Management',
-                    'Banking and Finance',
-                    'Specialist Sectors',
-                    'Human Resources Management',
-                    'Law'
-                  ].map((cat) => (
-                    <a key={cat} href="#" className="flex items-center gap-2 text-[13px] font-bold text-gray-500 hover:text-[#002d80] transition-colors group">
+                  {COURSE_CATEGORY_GROUPS.map((cat) => (
+                    <Link key={cat.name} href={getCategoryPath(cat.name)} className="flex items-center gap-2 text-[13px] font-bold text-gray-500 hover:text-[#002d80] transition-colors group">
                       <ChevronRight size={14} className="text-[#facc15] group-hover:translate-x-1 transition-transform" />
-                      <span>{cat}</span>
-                    </a>
+                      <span>{cat.name}</span>
+                    </Link>
                   ))}
                 </div>
               </div>

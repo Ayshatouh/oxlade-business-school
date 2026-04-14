@@ -1,0 +1,77 @@
+{
+  "id": "mini-mba",
+  "title": "Mini MBA in Business Management",
+  "category": "Business Management",
+  "description": "A practical executive programme that builds core business and leadership capabilities for managers, entrepreneurs, and high-potential professionals. Participants strengthen decision-making across strategy, finance, marketing, operations, and people management.",
+  "whoShouldAttend": "This course is designed for supervisors, team leads, business owners, functional specialists moving into management roles, and professionals preparing for broader leadership responsibilities.",
+  "pastDelegates": [
+    "Business Unit Managers",
+    "Department Heads",
+    "Project Managers",
+    "Entrepreneurs and Founders",
+    "Operations and Commercial Leads",
+    "Senior Analysts"
+  ],
+  "outcomes": [
+    "Apply strategic thinking frameworks to business planning and growth.",
+    "Interpret financial statements and use key metrics to support decisions.",
+    "Build high-performing teams with stronger leadership communication.",
+    "Develop customer-focused marketing and value proposition strategies.",
+    "Improve operational execution using process and performance tools.",
+    "Lead cross-functional initiatives with confidence and clarity."
+  ],
+  "topics": [
+    {
+      "title": "Strategic Management and Business Models",
+      "bullets": [
+        "External environment analysis and competitive positioning",
+        "Business model design and value creation choices",
+        "Strategic priorities, risk, and execution planning"
+      ]
+    },
+    {
+      "title": "Managerial Finance for Non-Finance Leaders",
+      "bullets": [
+        "Reading profit and loss, balance sheet, and cash flow statements",
+        "Budgeting, forecasting, and cost control fundamentals",
+        "Investment appraisal and performance indicators"
+      ]
+    },
+    {
+      "title": "Marketing and Commercial Growth",
+      "bullets": [
+        "Customer segmentation and market targeting",
+        "Brand positioning and go-to-market planning",
+        "Pricing, channels, and retention strategies"
+      ]
+    },
+    {
+      "title": "Leadership, Teams, and Execution",
+      "bullets": [
+        "Leadership styles and influence across teams",
+        "Coaching conversations and feedback for performance",
+        "Decision-making under pressure and change management"
+      ]
+    }
+  ],
+  "schedule": [
+    {
+      "date": "14 - 18 Jul 2026",
+      "venue": "London",
+      "duration": "5 Days",
+      "price": "£3,800"
+    },
+    {
+      "date": "02 - 06 Sep 2026",
+      "venue": "Dubai",
+      "duration": "5 Days",
+      "price": "£3,800"
+    },
+    {
+      "date": "11 - 15 Aug 2026",
+      "venue": "Singapore",
+      "duration": "5 Days",
+      "price": "£3,800"
+    }
+  ]
+}

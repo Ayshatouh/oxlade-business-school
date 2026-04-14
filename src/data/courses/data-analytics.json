@@ -1,0 +1,77 @@
+{
+  "id": "data-analytics",
+  "title": "Data Analytics for Decision Makers",
+  "category": "Digital & Tech",
+  "description": "A business-focused course that helps leaders and managers translate data into better decisions. Participants learn to frame analytical questions, interpret dashboards, evaluate insights, and communicate recommendations that drive measurable outcomes.",
+  "whoShouldAttend": "Ideal for managers, team leaders, business analysts, functional heads, and professionals who use reports and data outputs to make operational or strategic decisions.",
+  "pastDelegates": [
+    "Business Managers",
+    "Operations Leads",
+    "Commercial and Sales Managers",
+    "Finance Business Partners",
+    "HR and People Analytics Teams",
+    "Policy and Programme Managers"
+  ],
+  "outcomes": [
+    "Define business problems in ways that can be tested with data.",
+    "Interpret key metrics, trends, and patterns with stronger confidence.",
+    "Use practical frameworks to avoid common analytical bias and errors.",
+    "Evaluate dashboard quality and insight relevance for leadership reporting.",
+    "Communicate data stories clearly to technical and non-technical audiences.",
+    "Prioritise actions from insights and track impact over time."
+  ],
+  "topics": [
+    {
+      "title": "Analytics Foundations for Managers",
+      "bullets": [
+        "Types of data and selecting the right metric for each objective",
+        "Descriptive, diagnostic, predictive, and prescriptive analytics",
+        "Defining useful KPIs and avoiding vanity metrics"
+      ]
+    },
+    {
+      "title": "Insight Generation and Decision Quality",
+      "bullets": [
+        "Trend analysis, segmentation, and cohort thinking",
+        "Recognising bias, outliers, and weak inference",
+        "Turning insights into decision options and trade-off discussions"
+      ]
+    },
+    {
+      "title": "Visualisation and Data Communication",
+      "bullets": [
+        "Designing executive dashboards for clarity and speed",
+        "Storytelling with data for stakeholder alignment",
+        "Presenting recommendations with evidence and confidence"
+      ]
+    },
+    {
+      "title": "Applying Analytics in Operations",
+      "bullets": [
+        "Use cases across finance, sales, HR, and operations",
+        "Simple experimentation and performance tracking cycles",
+        "Building a data-informed culture within teams"
+      ]
+    }
+  ],
+  "schedule": [
+    {
+      "date": "Flexible Start",
+      "venue": "Online",
+      "duration": "Self-Paced + Live Sessions",
+      "price": "£1,950"
+    },
+    {
+      "date": "Flexible Start",
+      "venue": "London",
+      "duration": "Blended",
+      "price": "£1,950"
+    },
+    {
+      "date": "Flexible Start",
+      "venue": "Dubai",
+      "duration": "Blended",
+      "price": "£1,950"
+    }
+  ]
+}

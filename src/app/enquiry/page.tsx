@@ -4,9 +4,12 @@ import { Header } from "@/app/components/Header";
 import { Footer } from "@/app/components/Footer";
 import { Mail, Phone, MapPin, Send, MessageSquare, User, Building, Book } from "lucide-react";
 import { siteConfig } from "@/config/site";
+import { getAllCourseInterestOptions } from "@/data/courseCategories";
 
 
 export default function EnquiryPage() {
+  const courseInterestOptions = getAllCourseInterestOptions();
+
   return (
     <div className="min-h-screen bg-white">
       <Header />
@@ -91,10 +94,9 @@ export default function EnquiryPage() {
                       <div className="relative">
                         <select className="w-full pl-11 pr-4 py-2.5 bg-black/5 border border-gray-300 rounded text-sm focus:bg-white focus:border-[#002d80] outline-none transition-all text-gray-700">
                           <option>Select a category</option>
-                          <option>Leadership</option>
-                          <option>Banking and Finance</option>
-                          <option>Digital Transformation</option>
-                          <option>Human Resources</option>
+                          {courseInterestOptions.map((option) => (
+                            <option key={option}>{option}</option>
+                          ))}
                         </select>
                         <Book className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-300" size={18} />
                       </div>

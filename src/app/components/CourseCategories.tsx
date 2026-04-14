@@ -1,53 +1,23 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, type ComponentType } from 'react';
 import { TrendingUp, Building2, Users, Settings, Landmark, Globe, UserCheck, Scale, ChevronRight, ChevronDown } from 'lucide-react';
 import Link from 'next/link';
+import { COURSE_CATEGORY_GROUPS, getCategoryPath } from '@/data/courseCategories';
 
 const playfair = { fontFamily: "var(--font-playfair), 'Playfair Display', Georgia, serif" };
 
-const categories = [
-  { 
-    name: 'New and Trending', 
-    icon: TrendingUp,
-    items: ['Sustainability and Climate Science'] 
-  },
-  { 
-    name: 'Business Management', 
-    icon: Building2,
-    items: ['Personal Effectiveness', 'Strategic Planning and Management', 'Sales and Marketing', 'Public and Media Relations', 'Office Administration'] 
-  },
-  { 
-    name: 'Leadership', 
-    icon: Users,
-    items: ['Strategic Leadership', 'Driving Organisational Change', 'Executive Coaching and Mentoring', 'Environmental, Social and Governance', 'Governance and Risk Management'] 
-  },
-  { 
-    name: 'Operations Management', 
-    icon: Settings,
-    items: ['Project Management', 'Business Process Improvement', 'Facilities Management', 'Logistics and Supply Chain Management', 'Contract Management and Procurement', 'Hospitality, Tourism, and Events Management'] 
-  },
-  { 
-    name: 'Banking and Finance', 
-    icon: Landmark,
-    items: ['Reporting and Budgeting', 'Corporate Finance', 'Audit and Accounting', 'Financial Regulation and Compliance', 'Financial Modelling'] 
-  },
-  { 
-    name: 'Specialist Sectors', 
-    icon: Globe,
-    items: ['Oil and Gas', 'Renewable Energy', 'Sports Business', 'Engineering', 'Real Estate', 'Construction', 'Law', 'Islamic Finance'] 
-  },
-  { 
-    name: 'Human Resources Management', 
-    icon: UserCheck,
-    items: ['Recruitment and Talent Acquisition', 'Employee Wellbeing and Diversity', 'Learning and Development', 'Performance Management', 'Neurodiversity in the Workplace'] 
-  },
-  { 
-    name: 'Law', 
-    icon: Scale, 
-    items: ['Legislative and Policy Framework', 'Dispute Management', 'Legal Reasoning', 'Business Law', 'Cyber Law', 'Corporate Islamic Law'] 
-  },
-];
+const iconByCategory: Record<string, ComponentType<{ size?: number; strokeWidth?: number }>> = {
+  'New and Trending': TrendingUp,
+  'Digital': Globe,
+  'Business Management': Building2,
+  'Leadership': Users,
+  'Operations Management': Settings,
+  'Banking and Finance': Landmark,
+  'Specialist Sectors': Globe,
+  'Human Resources Management': UserCheck,
+  'Law': Scale,
+};
 
 export function CourseCategories() {
   const [openCategory, setOpenCategory] = useState<string | null>(null);
@@ -88,8 +58,8 @@ export function CourseCategories() {
       </div>
 
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-start">
-        {categories.map((category) => {
-          const Icon = category.icon;
+        {COURSE_CATEGORY_GROUPS.map((category) => {
+          const Icon = iconByCategory[category.name] ?? Building2;
           const isOpen = openCategory === category.name;
 
           return (
@@ -120,7 +90,7 @@ export function CourseCategories() {
                     {category.items.map((item) => (
                       <li key={item} className="group">
                         <Link 
-                          href={`/categories/${item.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-')}`}
+                          href={getCategoryPath(item)}
                           className="flex items-start gap-2 text-[12.5px] text-gray-900 font-medium hover:text-[#002d80] transition-all cursor-pointer"
                         >
                           <ChevronRight size={14} className="mt-[2px] flex-shrink-0 text-[#facc15] group-hover:translate-x-1 transition-transform" />

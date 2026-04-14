@@ -3,6 +3,7 @@ import { Phone, Mail, ChevronDown, ChevronRight, MapPin, Monitor, Users, BookOpe
 import { useState, useRef, useEffect, Fragment } from 'react';
 import Link from 'next/link';
 import { siteConfig } from '@/config/site';
+import { COURSE_CATEGORY_GROUPS, getCategoryPath } from '@/data/courseCategories';
 
 
 export function Header() {
@@ -44,44 +45,7 @@ export function Header() {
     { name: 'Calendar', href: '#calendar' }
   ];
 
-  const openCourses = [
-    {
-      category: 'Digital',
-      items: ['Digital Transformation', 'Data Analytics', 'Cybersecurity', 'Artificial Intelligence']
-    },
-    {
-      category: 'Business Management',
-      items: ['Personal Effectiveness', 'Strategic Planning and Management', 'Sales and Marketing', 'Public and Media Relations', 'Office Administration']
-    },
-    {
-      category: 'Leadership',
-      items: ['Strategic Leadership', 'Driving Organisational Change', 'Executive Coaching and Mentoring', 'Environmental, Social and Governance', 'Governance and Risk Management']
-    },
-    {
-      category: 'Operations Management',
-      items: ['Project Management', 'Business Process Improvement', 'Facilities Management', 'Logistics and Supply Chain Management', 'Contract Management and Procurement', 'Hospitality, Tourism, and Events Management']
-    },
-    {
-      category: 'Banking and Finance',
-      items: ['Reporting and Budgeting', 'Corporate Finance', 'Audit and Accounting', 'Financial Regulation and Compliance', 'Financial Modelling']
-    },
-    {
-      category: 'Specialist Sectors',
-      items: ['Oil and Gas', 'Renewable Energy', 'Sports Business', 'Engineering', 'Real Estate', 'Construction', 'Law', 'Islamic Finance and Law']
-    },
-    {
-      category: 'Human Resources Management',
-      items: ['Recruitment and Talent Acquisition', 'Employee Wellbeing and Diversity', 'Learning and Development', 'Performance Management', 'Neurodiversity in the Workplace']
-    },
-    {
-      category: 'Law',
-      items: ['Legislative and Policy Framework', 'Dispute Management', 'Legal Reasoning', 'Business Law', 'Cyber Law', 'Corporate Islamic Law']
-    },
-    {
-      category: 'New and Trending',
-      items: ['Sustainability and Climate Science']
-    },
-  ];
+  const openCourses = COURSE_CATEGORY_GROUPS;
 
   const trainingLocations = ['Barcelona', 'Cape Town', 'Dubai', 'Istanbul', 'London', 'New York', 'Paris', 'Riyadh', 'Singapore'];
 
@@ -102,15 +66,15 @@ export function Header() {
           <div className="absolute top-[calc(100%+16px)] left-0 w-full bg-[#f8f9fa] shadow-2xl border border-gray-200 rounded-b-xl p-6 z-50 animate-slideDownFade overflow-hidden hidden lg:block">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-8">
               {openCourses.map((category) => (
-                <div key={category.category} className="space-y-2.5">
+                <div key={category.name} className="space-y-2.5">
                   <h4 className="text-gray-800 text-sm font-medium border-b border-gray-300 pb-1.5">
-                    {category.category}
+                    {category.name}
                   </h4>
                   <ul className="space-y-1.5">
                     {category.items.map((item) => (
                       <li key={item}>
                         <Link
-                          href={`/categories/${item.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-')}`}
+                          href={getCategoryPath(item)}
                           className="flex items-start gap-1.5 text-gray-800 hover:text-[#002d80] focus-visible:text-[#002d80] focus-visible:outline-none group/item transition-colors duration-200 text-[13px]"
                         >
                           <ChevronRight
@@ -332,13 +296,13 @@ export function Header() {
                         <div className="mt-4 pl-4 border-l-2 border-[#facc15] space-y-4">
                           {item.name === 'Open Courses' ? (
                             openCourses.map(cat => (
-                              <div key={cat.category}>
-                                <h4 className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-2">{cat.category}</h4>
+                              <div key={cat.name}>
+                                <h4 className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-2">{cat.name}</h4>
                                 <ul className="space-y-2">
                                   {cat.items.slice(0, 3).map(course => (
                                     <li key={course}>
                                       <Link 
-                                        href={`/categories/${course.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-')}`}
+                                        href={getCategoryPath(course)}
                                         className="text-gray-700 text-[15px] font-medium block"
                                         onClick={() => setIsMobileMenuOpen(false)}
                                       >
