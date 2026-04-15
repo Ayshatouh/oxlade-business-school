@@ -201,7 +201,7 @@ export default function CategoryListingPage({ params }: { params: Promise<{ id: 
                     { label: '£2,000 - £4,000', value: '2000-4000' },
                     { label: 'Over £4,000', value: 'over-4000' },
                   ].map((range) => (
-                    <label key={range} className="flex items-center gap-3 px-4 py-2 cursor-pointer group hover:bg-zinc-50 rounded-lg transition-colors">
+                    <label key={range.value} className="flex items-center gap-3 px-4 py-2 cursor-pointer group hover:bg-zinc-50 rounded-lg transition-colors">
                       <input
                         type="radio"
                         name="price"
