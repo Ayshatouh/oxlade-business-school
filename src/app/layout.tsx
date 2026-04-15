@@ -22,6 +22,11 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.siteUrl),
   title: siteConfig.siteTitle,
   description: siteConfig.siteDescription,
+  icons: {
+    icon: [{ url: "/pictures/oxladelogo.png", type: "image/png", sizes: "337x337" }],
+    shortcut: ["/pictures/oxladelogo.png"],
+    apple: [{ url: "/pictures/oxladelogo.png", type: "image/png", sizes: "180x180" }],
+  },
   alternates: {
     canonical: siteConfig.siteUrl,
   },
