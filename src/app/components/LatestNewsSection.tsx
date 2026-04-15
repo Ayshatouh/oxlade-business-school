@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowUpRight, Clock } from "lucide-react";
+import { siteConfig } from "@/config/site";
 
 const playfair = { fontFamily: "var(--font-playfair), 'Playfair Display', Georgia, serif" };
 
@@ -45,7 +46,7 @@ export function LatestNewsSection() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10">
           <div>
-            <p className="text-[#002d80] font-bold uppercase tracking-[0.2em] text-sm mb-3">From Oxlade</p>
+            <p className="text-[#002d80] font-bold uppercase tracking-[0.2em] text-sm mb-3">From {siteConfig.name}</p>
             <h2 className="text-3xl font-black text-[#002d80] tracking-tight" style={playfair}>
               News & insights
             </h2>

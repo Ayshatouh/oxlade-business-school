@@ -70,8 +70,8 @@ export default function EnquiryPage() {
                   method="POST"
                 >
                   <input type="hidden" name="access_key" value={w3FormsAccessKey} />
-                  <input type="hidden" name="subject" value="New Enquiry Form Submission - Oxlade Business School" />
-                  <input type="hidden" name="from_name" value="Oxlade Website Enquiry Form" />
+                  <input type="hidden" name="subject" value={`New Enquiry Form Submission - ${siteConfig.name}`} />
+                  <input type="hidden" name="from_name" value={`${siteConfig.name} Website Enquiry Form`} />
                   <input type="checkbox" name="botcheck" className="hidden" style={{ display: "none" }} />
 
                   <div className="grid md:grid-cols-2 gap-6">

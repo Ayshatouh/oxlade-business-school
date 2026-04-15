@@ -4,6 +4,7 @@ import { Header } from "@/app/components/Header";
 import { Footer } from "@/app/components/Footer";
 import { Star, MessageSquarePlus, User, BookOpen, Send, Quote } from "lucide-react";
 import { useState } from "react";
+import { siteConfig } from "@/config/site";
 
 export default function ReviewPage() {
   const [rating, setRating] = useState(0);
@@ -37,8 +38,8 @@ export default function ReviewPage() {
               method="POST"
             >
               <input type="hidden" name="access_key" value={w3FormsAccessKey} />
-              <input type="hidden" name="subject" value="New Review Submission - Oxlade Business School" />
-              <input type="hidden" name="from_name" value="Oxlade Website Review Form" />
+              <input type="hidden" name="subject" value={`New Review Submission - ${siteConfig.name}`} />
+              <input type="hidden" name="from_name" value={`${siteConfig.name} Website Review Form`} />
               <input type="hidden" name="rating" value={rating ? `${rating}/5` : "Not selected"} />
               <input type="checkbox" name="botcheck" className="hidden" style={{ display: "none" }} />
 

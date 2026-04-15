@@ -6,6 +6,7 @@ import { ChevronRight, Filter, Search, Calendar, MapPin, ArrowRight, DollarSign,
 import Link from 'next/link';
 import { use, useMemo, useState } from 'react';
 import { getCategoryLabelFromSlug, toCategorySlug } from '@/data/courseCategories';
+import { siteConfig } from '@/config/site';
 import {
   extractMonthYear,
   getListingsForSlug,
@@ -287,7 +288,7 @@ export default function CategoryListingPage({ params }: { params: Promise<{ id: 
               </h2>
               <div className="space-y-6 text-zinc-500 leading-relaxed font-normal text-[15px]">
                 <p>
-                  In today’s competitive business landscape, mastering {categoryName.toLowerCase()} is essential for your professional growth. At Oxlade Business Training School, we deliver expert-led courses designed to enhance your capabilities and drive measurable success.
+                  In today’s competitive business landscape, mastering {categoryName.toLowerCase()} is essential for your professional growth. At {siteConfig.name}, we deliver expert-led courses designed to enhance your capabilities and drive measurable success.
                 </p>
                 <p>
                   Whether you’re seeking to master innovative marketing strategies or refine your sales techniques, our comprehensive programmes provide you with practical skills you can implement immediately.

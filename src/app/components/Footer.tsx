@@ -16,6 +16,8 @@ const YoutubeIcon = ({ size = 24, className = "", fill = "none" }) => (
 );
 
 export function Footer() {
+  const w3FormsAccessKey = process.env.NEXT_PUBLIC_W3FORMS_ACCESS_KEY;
+
   return (
     <footer className="bg-zinc-50 border-t border-gray-200 text-gray-800 font-sans">
       <div className="max-w-7xl mx-auto px-6 pt-16 pb-8">
@@ -79,6 +81,15 @@ export function Footer() {
                 </li>
               ))}
             </ul>
+            <div className="mt-6 space-y-2 text-[14px] text-gray-900">
+              <p className="font-semibold">{siteConfig.address}</p>
+              <a href={`tel:${siteConfig.phone.replace(/\s+/g, '')}`} className="block hover:text-[#002d80] transition-colors">
+                {siteConfig.phone}
+              </a>
+              <a href={`mailto:${siteConfig.email}`} className="block hover:text-[#002d80] transition-colors">
+                {siteConfig.email}
+              </a>
+            </div>
           </div>
         </div>
 
@@ -91,38 +102,51 @@ export function Footer() {
             </p>
           </div>
           
-          <div className="lg:w-[55%] w-full flex flex-col gap-4">
+          <form
+            className="lg:w-[55%] w-full flex flex-col gap-4"
+            action="https://api.web3forms.com/submit"
+            method="POST"
+          >
+            <input type="hidden" name="access_key" value={w3FormsAccessKey} />
+            <input type="hidden" name="subject" value={`Newsletter Signup - ${siteConfig.name}`} />
+            <input type="hidden" name="from_name" value={`${siteConfig.name} Website Newsletter Form`} />
+            <input type="checkbox" name="botcheck" className="hidden" style={{ display: "none" }} />
+
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
               <input
+                name="first_name"
                 type="text"
                 placeholder="First Name"
                 className="w-full px-4 py-2.5 rounded border border-gray-300 bg-black/5 text-gray-800 placeholder-gray-500 focus:outline-none focus:border-[#002d80] focus:bg-white transition-colors text-sm"
               />
               <input
+                name="last_name"
                 type="text"
                 placeholder="Last Name"
                 className="w-full px-4 py-2.5 rounded border border-gray-300 bg-black/5 text-gray-800 placeholder-gray-500 focus:outline-none focus:border-[#002d80] focus:bg-white transition-colors text-sm"
               />
               <input
+                required
+                name="email"
                 type="email"
                 placeholder="Email"
                 className="w-full px-4 py-2.5 rounded border border-gray-300 bg-black/5 text-gray-800 placeholder-gray-500 focus:outline-none focus:border-[#002d80] focus:bg-white transition-colors text-sm"
               />
             </div>
-            
+
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
               <label className="flex items-center gap-2 cursor-pointer group">
-                <input type="checkbox" className="w-4 h-4 rounded border-gray-300 text-[#002d80] focus:ring-[#002d80] cursor-pointer" />
+                <input name="consent" value="true" type="checkbox" className="w-4 h-4 rounded border-gray-300 text-[#002d80] focus:ring-[#002d80] cursor-pointer" />
                 <span className="text-[14px] text-gray-700 group-hover:text-gray-900 transition-colors">I agree to receiving newsletters.</span>
               </label>
               <button
-                type="button"
+                type="submit"
                 className="bg-[#002d80] text-white px-8 py-2.5 rounded font-medium hover:opacity-90 transition-opacity text-sm whitespace-nowrap"
               >
                 Sign up
               </button>
             </div>
-          </div>
+          </form>
         </div>
 
         {/* Bottom Bar: Socials & Copyright */}
@@ -146,7 +170,7 @@ export function Footer() {
           <div className="text-right text-[13px] text-gray-900">
             <p className="mb-1">© {new Date().getFullYear()} All Rights Reserved. {siteConfig.name}.</p>
 
-            <p>Built By <span className="font-semibold underline cursor-pointer hover:text-[#002d80]">Oxlade Design</span></p>
+            <p>Built By <span className="font-semibold underline cursor-pointer hover:text-[#002d80]">{siteConfig.name}</span></p>
           </div>
         </div>
 

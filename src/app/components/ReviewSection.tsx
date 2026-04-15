@@ -3,27 +3,27 @@
 import Link from "next/link";
 import { Quote, MessageSquarePlus, ChevronLeft, ChevronRight } from "lucide-react";
 import { useState } from "react";
+import { siteConfig } from "@/config/site";
 
 const playfair = { fontFamily: "var(--font-playfair), 'Playfair Display', Georgia, serif" };
-
-const testimonials = [
-  {
-    quote: "The programme was practical from day one—our team came away with tools they used in board papers the same month. Oxlade understood our sector and kept the discussion grounded in real decisions, not theory.",
-    author: "Sarah Mitchell",
-    role: "Chief Operating Officer, TechCorp Global",
-    image: "/pictures/sarah.png"
-  },
-  {
-    quote: "Highly intensive yet incredibly rewarding. The facilitators' ability to translate complex strategic frameworks into actionable business plans was exactly what our leadership team needed.",
-    author: "David Chen",
-    role: "Director of Strategy, Meridian Finance",
-    image: "/pictures/david.png"
-  }
-];
 
 export function ReviewSection() {
   const [activeIndex, setActiveIndex] = useState(0);
   const headingText = "Voices of Experience";
+  const testimonials = [
+    {
+      quote: `The programme was practical from day one-our team came away with tools they used in board papers the same month. ${siteConfig.name} understood our sector and kept the discussion grounded in real decisions, not theory.`,
+      author: "Sarah Mitchell",
+      role: "Chief Operating Officer, TechCorp Global",
+      image: "/pictures/sarah.png",
+    },
+    {
+      quote: "Highly intensive yet incredibly rewarding. The facilitators' ability to translate complex strategic frameworks into actionable business plans was exactly what our leadership team needed.",
+      author: "David Chen",
+      role: "Director of Strategy, Meridian Finance",
+      image: "/pictures/david.png",
+    },
+  ];
 
   const nextTestimonial = () => setActiveIndex((prev) => (prev + 1) % testimonials.length);
   const prevTestimonial = () => setActiveIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
