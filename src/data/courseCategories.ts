@@ -1,11 +1,14 @@
-import courseCategoriesJson from './course-categories.json';
+import { COURSE_CATALOG } from './courseCatalog';
 
 export interface CourseCategoryGroup {
   name: string;
   items: string[];
 }
 
-export const COURSE_CATEGORY_GROUPS = courseCategoriesJson as CourseCategoryGroup[];
+export const COURSE_CATEGORY_GROUPS: CourseCategoryGroup[] = COURSE_CATALOG.map((mainCategory) => ({
+  name: mainCategory.name,
+  items: mainCategory.subcategories.map((subcategory) => subcategory.name),
+}));
 
 export function toCategorySlug(value: string): string {
   return value

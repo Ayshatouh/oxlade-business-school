@@ -1,5 +1,6 @@
 import { getAllCourseIds, getCourseById } from './courses';
-import { getParentCategoryByItemSlug, toCategorySlug } from './courseCategories';
+import { toCategorySlug } from './courseCategories';
+import { getCourseIdsForSlug } from './courseCatalog';
 
 export interface CourseListingRow {
   courseId: string;
@@ -44,17 +45,18 @@ export const COURSE_LISTINGS: CourseListingRow[] = getAllCourseIds()
   );
 
 export function getListingsForSlug(slug: string): CourseListingRow[] {
+  const courseIds = new Set(getCourseIdsForSlug(slug).map((courseId) => toCategorySlug(courseId)));
+
+  if (courseIds.size > 0) {
+    return COURSE_LISTINGS.filter((row) => courseIds.has(toCategorySlug(row.courseId)));
+  }
+
   const normalizedSlug = toCategorySlug(slug);
-  const parentCategory = getParentCategoryByItemSlug(slug);
-  const normalizedParentCategory = parentCategory ? toCategorySlug(parentCategory) : null;
 
   return COURSE_LISTINGS.filter((row) => {
-    return (
-      row.courseId === normalizedSlug ||
-      toCategorySlug(row.title) === normalizedSlug ||
-      toCategorySlug(row.category) === normalizedSlug ||
-      (normalizedParentCategory !== null && toCategorySlug(row.category) === normalizedParentCategory)
-    );
+    const rowCourseSlug = toCategorySlug(row.courseId);
+    const rowTitleSlug = toCategorySlug(row.title);
+    return rowCourseSlug === normalizedSlug || rowTitleSlug === normalizedSlug;
   });
 }
 

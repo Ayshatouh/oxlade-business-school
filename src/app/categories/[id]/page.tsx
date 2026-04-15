@@ -2,28 +2,29 @@
 
 import { Header } from "@/app/components/Header";
 import { Footer } from "@/app/components/Footer";
-import { ChevronRight, Filter, Search, Calendar, MapPin, ArrowRight, DollarSign, Clock } from 'lucide-react';
+import { ChevronRight, Filter, Search, Calendar, MapPin, DollarSign } from 'lucide-react';
 import Link from 'next/link';
 import { use, useMemo, useState } from 'react';
-import { getCategoryLabelFromSlug, toCategorySlug } from '@/data/courseCategories';
+import { getCategoryLabelFromSlug } from '@/data/courseCategories';
 import { siteConfig } from '@/config/site';
 import {
   extractMonthYear,
   getListingsForSlug,
   parseListingDateToTimestamp,
   parsePriceValue,
-  type CourseListingRow,
 } from '@/data/courseListings';
 
 export default function CategoryListingPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);
   const categoryName = getCategoryLabelFromSlug(id);
+  const ROWS_PER_PAGE = 12;
   const [showFilters, setShowFilters] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedVenues, setSelectedVenues] = useState<string[]>([]);
   const [selectedMonth, setSelectedMonth] = useState('any');
   const [selectedPriceRange, setSelectedPriceRange] = useState('any');
   const [sortBy, setSortBy] = useState('nearest-date');
+  const [currentPage, setCurrentPage] = useState(1);
 
   const availableListings = useMemo(() => getListingsForSlug(id), [id]);
 
@@ -87,11 +88,24 @@ export default function CategoryListingPage({ params }: { params: Promise<{ id: 
     return sorted;
   }, [availableListings, searchTerm, selectedVenues, selectedMonth, selectedPriceRange, sortBy]);
 
+  const totalPages = Math.max(1, Math.ceil(filteredCourses.length / ROWS_PER_PAGE));
+  const safeCurrentPage = Math.min(currentPage, totalPages);
+  const paginatedCourses = useMemo(() => {
+    const start = (safeCurrentPage - 1) * ROWS_PER_PAGE;
+    return filteredCourses.slice(start, start + ROWS_PER_PAGE);
+  }, [filteredCourses, safeCurrentPage, ROWS_PER_PAGE]);
+
   const toggleVenue = (venue: string) => {
     setSelectedVenues((prev) =>
       prev.includes(venue) ? prev.filter((v) => v !== venue) : [...prev, venue]
     );
   };
+
+  const goToPage = (page: number) => {
+    setCurrentPage(Math.min(Math.max(page, 1), totalPages));
+  };
+
+  const resetToFirstPage = () => setCurrentPage(1);
 
   return (
     <div className="min-h-screen bg-white">
@@ -139,7 +153,10 @@ export default function CategoryListingPage({ params }: { params: Promise<{ id: 
                     type="text" 
                     placeholder="Search keywords..." 
                     value={searchTerm}
-                    onChange={(event) => setSearchTerm(event.target.value)}
+                    onChange={(event) => {
+                      setSearchTerm(event.target.value);
+                      resetToFirstPage();
+                    }}
                     className="w-full pl-4 pr-12 py-3 bg-white border border-zinc-200 rounded-xl focus:border-[#002d80] focus:ring-4 focus:ring-[#002d80]/5 outline-none transition-all text-[13px] font-medium" 
                   />
                   <div className="absolute right-4 top-1/2 -translate-y-1/2 text-zinc-400 group-focus-within:text-[#002d80] transition-colors">
@@ -160,7 +177,10 @@ export default function CategoryListingPage({ params }: { params: Promise<{ id: 
                       <input
                         type="checkbox"
                         checked={selectedVenues.includes(venue)}
-                        onChange={() => toggleVenue(venue)}
+                        onChange={() => {
+                          toggleVenue(venue);
+                          resetToFirstPage();
+                        }}
                         className="w-4 h-4 rounded border-zinc-300 text-[#002d80] focus:ring-[#002d80]"
                       />
                       <span className="text-[12px] font-bold text-zinc-600 group-hover:text-[#002d80] transition-colors">{venue}</span>
@@ -177,7 +197,10 @@ export default function CategoryListingPage({ params }: { params: Promise<{ id: 
                 </div>
                 <select
                   value={selectedMonth}
-                  onChange={(event) => setSelectedMonth(event.target.value)}
+                  onChange={(event) => {
+                    setSelectedMonth(event.target.value);
+                    resetToFirstPage();
+                  }}
                   className="w-full px-4 py-3 bg-white border border-zinc-200 rounded-xl focus:border-[#002d80] outline-none text-[13px] font-bold text-zinc-600"
                 >
                   <option value="any">Any Month</option>
@@ -207,7 +230,10 @@ export default function CategoryListingPage({ params }: { params: Promise<{ id: 
                         type="radio"
                         name="price"
                         checked={selectedPriceRange === range.value}
-                        onChange={() => setSelectedPriceRange(range.value)}
+                        onChange={() => {
+                          setSelectedPriceRange(range.value);
+                          resetToFirstPage();
+                        }}
                         className="w-4 h-4 border-zinc-300 text-[#002d80] focus:ring-[#002d80]"
                       />
                       <span className="text-[13px] font-bold text-zinc-600 group-hover:text-[#002d80] transition-colors">{range.label}</span>
@@ -226,7 +252,10 @@ export default function CategoryListingPage({ params }: { params: Promise<{ id: 
                 <span className="text-[11px] font-bold text-zinc-400">Sort by:</span>
                 <select
                   value={sortBy}
-                  onChange={(event) => setSortBy(event.target.value)}
+                  onChange={(event) => {
+                    setSortBy(event.target.value);
+                    resetToFirstPage();
+                  }}
                   className="text-[11px] font-black uppercase tracking-widest text-[#002d80] border-none bg-transparent outline-none cursor-pointer"
                 >
                   <option value="nearest-date">Nearest Date</option>
@@ -248,7 +277,7 @@ export default function CategoryListingPage({ params }: { params: Promise<{ id: 
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-zinc-50">
-              {filteredCourses.map((course, idx) => (
+              {paginatedCourses.map((course, idx) => (
                     <tr key={idx} className="hover:bg-[#002d80]/[0.02] transition-colors group cursor-pointer">
                       <td className="px-6 py-5">
                         <Link href={`/courses/${course.courseId}`} className="font-normal text-gray-900 group-hover:text-[#002d80] transition-all leading-tight block text-[14px]">
@@ -273,6 +302,30 @@ export default function CategoryListingPage({ params }: { params: Promise<{ id: 
             {filteredCourses.length === 0 && (
               <div className="mt-8 p-6 rounded-2xl border border-zinc-100 bg-zinc-50 text-zinc-600 text-sm">
                 No programmes match the selected filters. Try clearing one or more filters.
+              </div>
+            )}
+
+            {filteredCourses.length > 0 && (
+              <div className="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <p className="text-[11px] font-bold text-zinc-400 uppercase tracking-widest">
+                  Page {safeCurrentPage} of {totalPages}
+                </p>
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={() => goToPage(safeCurrentPage - 1)}
+                    disabled={safeCurrentPage === 1}
+                    className="px-4 py-2 rounded-full border border-zinc-200 text-[11px] font-black uppercase tracking-widest text-[#002d80] disabled:opacity-40 disabled:cursor-not-allowed hover:bg-zinc-50 transition-colors"
+                  >
+                    Previous
+                  </button>
+                  <button
+                    onClick={() => goToPage(safeCurrentPage + 1)}
+                    disabled={safeCurrentPage === totalPages}
+                    className="px-4 py-2 rounded-full border border-zinc-200 text-[11px] font-black uppercase tracking-widest text-[#002d80] disabled:opacity-40 disabled:cursor-not-allowed hover:bg-zinc-50 transition-colors"
+                  >
+                    Next
+                  </button>
+                </div>
               </div>
             )}
           </div>

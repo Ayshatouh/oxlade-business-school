@@ -1,0 +1,91 @@
+[
+  {
+    "name": "Digital",
+    "subcategories": [
+      { "name": "Digital Transformation", "courseIds": ["digital-transformation"] },
+      { "name": "Data Analytics", "courseIds": ["data-analytics"] },
+      { "name": "Cybersecurity", "courseIds": ["cybersecurity"] },
+      { "name": "Artificial Intelligence", "courseIds": ["artificial-intelligence"] }
+    ]
+  },
+  {
+    "name": "Business Management",
+    "subcategories": [
+      { "name": "Personal Effectiveness", "courseIds": ["personal-effectiveness"] },
+      { "name": "Strategic Planning and Management", "courseIds": ["strategic-planning-and-management"] },
+      { "name": "Sales and Marketing", "courseIds": ["sales-and-marketing"] },
+      { "name": "Public and Media Relations", "courseIds": ["public-and-media-relations"] },
+      { "name": "Office Administration", "courseIds": ["office-administration"] }
+    ]
+  },
+  {
+    "name": "Leadership",
+    "subcategories": [
+      { "name": "Strategic Leadership", "courseIds": ["strategic-leadership"] },
+      { "name": "Driving Organisational Change", "courseIds": ["driving-organisational-change"] },
+      { "name": "Executive Coaching and Mentoring", "courseIds": ["executive-coaching-and-mentoring"] },
+      { "name": "Environmental, Social and Governance", "courseIds": ["environmental-social-and-governance"] },
+      { "name": "Governance and Risk Management", "courseIds": ["governance-and-risk-management"] }
+    ]
+  },
+  {
+    "name": "Operations Management",
+    "subcategories": [
+      { "name": "Project Management", "courseIds": ["project-management"] },
+      { "name": "Business Process Improvement", "courseIds": ["business-process-improvement"] },
+      { "name": "Facilities Management", "courseIds": ["facilities-management"] },
+      { "name": "Logistics and Supply Chain Management", "courseIds": ["logistics-and-supply-chain-management"] },
+      { "name": "Contract Management and Procurement", "courseIds": ["contract-management-and-procurement"] },
+      { "name": "Hospitality, Tourism, and Events Management", "courseIds": ["hospitality-tourism-and-events-management"] }
+    ]
+  },
+  {
+    "name": "Banking and Finance",
+    "subcategories": [
+      { "name": "Reporting and Budgeting", "courseIds": ["reporting-and-budgeting"] },
+      { "name": "Corporate Finance", "courseIds": ["corporate-finance"] },
+      { "name": "Audit and Accounting", "courseIds": ["audit-and-accounting"] },
+      { "name": "Financial Regulation and Compliance", "courseIds": ["financial-regulation-and-compliance"] },
+      { "name": "Financial Modelling", "courseIds": ["financial-modelling"] }
+    ]
+  },
+  {
+    "name": "Specialist Sectors",
+    "subcategories": [
+      { "name": "Oil and Gas", "courseIds": ["oil-and-gas"] },
+      { "name": "Renewable Energy", "courseIds": ["renewable-energy"] },
+      { "name": "Sports Business", "courseIds": ["sports-business"] },
+      { "name": "Engineering", "courseIds": ["engineering"] },
+      { "name": "Real Estate", "courseIds": ["real-estate"] },
+      { "name": "Construction", "courseIds": ["construction"] }
+    ]
+  },
+  {
+    "name": "Human Resources Management",
+    "subcategories": [
+      { "name": "Recruitment and Talent Acquisition", "courseIds": ["recruitment-and-talent-acquisition"] },
+      { "name": "Employee Wellbeing and Diversity", "courseIds": ["employee-wellbeing-and-diversity"] },
+      { "name": "Learning and Development", "courseIds": ["learning-and-development"] },
+      { "name": "Performance Management", "courseIds": ["performance-management"] },
+      { "name": "Neurodiversity in the Workplace", "courseIds": ["neurodiversity-in-the-workplace"] }
+    ]
+  },
+  {
+    "name": "Law",
+    "subcategories": [
+      { "name": "Legislative and Policy Framework", "courseIds": ["legislative-and-policy-framework"] },
+      { "name": "Dispute Management", "courseIds": ["dispute-management"] },
+      { "name": "Legal Reasoning", "courseIds": ["legal-reasoning"] },
+      { "name": "Business Law", "courseIds": ["business-law"] },
+      { "name": "Cyber Law", "courseIds": ["cyber-law"] },
+      { "name": "Corporate Islamic Law", "courseIds": ["corporate-islamic-law"] },
+      { "name": "Islamic Finance and Law", "courseIds": ["islamic-finance-and-law"] }
+    ]
+  },
+  {
+    "name": "New and Trending",
+    "subcategories": [
+      { "name": "Sustainability and Climate Science", "courseIds": ["sustainability-and-climate-science"] }
+    ]
+  }
+]
