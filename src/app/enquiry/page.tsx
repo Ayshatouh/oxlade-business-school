@@ -9,6 +9,7 @@ import { getAllCourseInterestOptions } from "@/data/courseCategories";
 
 export default function EnquiryPage() {
   const courseInterestOptions = getAllCourseInterestOptions();
+  const w3FormsAccessKey = process.env.NEXT_PUBLIC_W3FORMS_ACCESS_KEY;
 
   return (
     <div className="min-h-screen bg-white">
@@ -63,19 +64,28 @@ export default function EnquiryPage() {
               <div className="bg-white rounded-3xl md:rounded-[3rem] shadow-2xl p-6 md:p-12 border border-zinc-100 relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-[#facc15] opacity-5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
                 
-                <form className="space-y-6 relative z-10">
+                <form
+                  className="space-y-6 relative z-10"
+                  action="https://api.web3forms.com/submit"
+                  method="POST"
+                >
+                  <input type="hidden" name="access_key" value={w3FormsAccessKey} />
+                  <input type="hidden" name="subject" value="New Enquiry Form Submission - Oxlade Business School" />
+                  <input type="hidden" name="from_name" value="Oxlade Website Enquiry Form" />
+                  <input type="checkbox" name="botcheck" className="hidden" style={{ display: "none" }} />
+
                   <div className="grid md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <label className="text-[11px] font-black uppercase text-zinc-400 tracking-widest px-1">Full Name</label>
                       <div className="relative">
-                        <input type="text" placeholder="Full Name" className="w-full pl-11 pr-4 py-2.5 bg-black/5 border border-gray-300 rounded text-sm focus:bg-white focus:border-[#002d80] outline-none transition-all" />
+                        <input required name="name" type="text" placeholder="Full Name" className="w-full pl-11 pr-4 py-2.5 bg-black/5 border border-gray-300 rounded text-sm focus:bg-white focus:border-[#002d80] outline-none transition-all" />
                         <User className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-300" size={18} />
                       </div>
                     </div>
                     <div className="space-y-2">
                       <label className="text-[11px] font-black uppercase text-zinc-400 tracking-widest px-1">Email Address</label>
                       <div className="relative">
-                        <input type="email" placeholder="youremail@gmail.com" className="w-full pl-11 pr-4 py-2.5 bg-black/5 border border-gray-300 rounded text-sm focus:bg-white focus:border-[#002d80] outline-none transition-all" />
+                        <input required name="email" type="email" placeholder="youremail@gmail.com" className="w-full pl-11 pr-4 py-2.5 bg-black/5 border border-gray-300 rounded text-sm focus:bg-white focus:border-[#002d80] outline-none transition-all" />
                         <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-300" size={18} />
                       </div>
                     </div>
@@ -85,14 +95,14 @@ export default function EnquiryPage() {
                     <div className="space-y-2">
                       <label className="text-[11px] font-black uppercase text-zinc-400 tracking-widest px-1">Organisation</label>
                       <div className="relative">
-                        <input type="text" placeholder="Company Name" className="w-full pl-11 pr-4 py-2.5 bg-black/5 border border-gray-300 rounded text-sm focus:bg-white focus:border-[#002d80] outline-none transition-all" />
+                        <input name="organization" type="text" placeholder="Company Name" className="w-full pl-11 pr-4 py-2.5 bg-black/5 border border-gray-300 rounded text-sm focus:bg-white focus:border-[#002d80] outline-none transition-all" />
                         <Building className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-300" size={18} />
                       </div>
                     </div>
                     <div className="space-y-2">
                       <label className="text-[11px] font-black uppercase text-zinc-400 tracking-widest px-1">Course Interest</label>
                       <div className="relative">
-                        <select className="w-full pl-11 pr-4 py-2.5 bg-black/5 border border-gray-300 rounded text-sm focus:bg-white focus:border-[#002d80] outline-none transition-all text-gray-700">
+                        <select name="course_interest" className="w-full pl-11 pr-4 py-2.5 bg-black/5 border border-gray-300 rounded text-sm focus:bg-white focus:border-[#002d80] outline-none transition-all text-gray-700">
                           <option>Select a category</option>
                           {courseInterestOptions.map((option) => (
                             <option key={option}>{option}</option>
@@ -106,7 +116,7 @@ export default function EnquiryPage() {
                   <div className="space-y-2">
                     <label className="text-[11px] font-black uppercase text-zinc-400 tracking-widest px-1">Your Message</label>
                     <div className="relative">
-                      <textarea rows={4} placeholder="How can we help you?" className="w-full pl-11 pr-4 py-2.5 bg-black/5 border border-gray-300 rounded text-sm focus:bg-white focus:border-[#002d80] outline-none transition-all resize-none"></textarea>
+                      <textarea required name="message" rows={4} placeholder="How can we help you?" className="w-full pl-11 pr-4 py-2.5 bg-black/5 border border-gray-300 rounded text-sm focus:bg-white focus:border-[#002d80] outline-none transition-all resize-none"></textarea>
                       <MessageSquare className="absolute left-4 top-4 text-zinc-300" size={18} />
                     </div>
                   </div>

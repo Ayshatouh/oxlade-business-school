@@ -7,6 +7,7 @@ import { useState } from "react";
 
 export default function ReviewPage() {
   const [rating, setRating] = useState(0);
+  const w3FormsAccessKey = process.env.NEXT_PUBLIC_W3FORMS_ACCESS_KEY;
 
   return (
     <div className="min-h-screen bg-white">
@@ -30,7 +31,17 @@ export default function ReviewPage() {
           <div className="bg-zinc-50 rounded-3xl md:rounded-[3rem] p-6 md:p-16 border border-zinc-100 shadow-xl relative overflow-hidden">
             {/* Background elements - Blue quote removed as requested */}
             
-            <form className="relative z-10 space-y-10">
+            <form
+              className="relative z-10 space-y-10"
+              action="https://api.web3forms.com/submit"
+              method="POST"
+            >
+              <input type="hidden" name="access_key" value={w3FormsAccessKey} />
+              <input type="hidden" name="subject" value="New Review Submission - Oxlade Business School" />
+              <input type="hidden" name="from_name" value="Oxlade Website Review Form" />
+              <input type="hidden" name="rating" value={rating ? `${rating}/5` : "Not selected"} />
+              <input type="checkbox" name="botcheck" className="hidden" style={{ display: "none" }} />
+
               {/* Star Rating */}
               <div className="text-center space-y-4">
                 <label className="text-[11px] font-black uppercase text-[#002d80] tracking-widest">Rate Your Experience</label>
@@ -56,14 +67,14 @@ export default function ReviewPage() {
                 <div className="space-y-3">
                   <label className="text-[11px] font-black uppercase text-[#002d80] tracking-widest px-1">Your Name</label>
                   <div className="relative">
-                    <input type="text" placeholder="Full Name" className="w-full pl-12 pr-4 py-2.5 bg-black/5 border border-gray-300 rounded focus:border-[#002d80] focus:bg-white outline-none transition-all text-sm" />
+                    <input required name="name" type="text" placeholder="Full Name" className="w-full pl-12 pr-4 py-2.5 bg-black/5 border border-gray-300 rounded focus:border-[#002d80] focus:bg-white outline-none transition-all text-sm" />
                     <User className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-300" size={20} />
                   </div>
                 </div>
                 <div className="space-y-3">
                   <label className="text-[11px] font-black uppercase text-[#002d80] tracking-widest px-1">Course Attended</label>
                   <div className="relative">
-                    <input type="text" placeholder="Course Title" className="w-full pl-12 pr-4 py-2.5 bg-black/5 border border-gray-300 rounded focus:border-[#002d80] focus:bg-white outline-none transition-all text-sm" />
+                    <input required name="course_attended" type="text" placeholder="Course Title" className="w-full pl-12 pr-4 py-2.5 bg-black/5 border border-gray-300 rounded focus:border-[#002d80] focus:bg-white outline-none transition-all text-sm" />
                     <BookOpen className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-300" size={20} />
                   </div>
                 </div>
@@ -72,7 +83,7 @@ export default function ReviewPage() {
               <div className="space-y-3">
                 <label className="text-[11px] font-black uppercase text-[#002d80] tracking-widest px-1">Your Thoughts</label>
                 <div className="relative">
-                  <textarea rows={6} placeholder="How can we help you?" className="w-full pl-12 pr-6 py-2.5 bg-black/5 border border-gray-300 rounded focus:border-[#002d80] focus:bg-white outline-none transition-all text-sm resize-none"></textarea>
+                  <textarea required name="message" rows={6} placeholder="Share your review..." className="w-full pl-12 pr-6 py-2.5 bg-black/5 border border-gray-300 rounded focus:border-[#002d80] focus:bg-white outline-none transition-all text-sm resize-none"></textarea>
                   <MessageSquarePlus className="absolute left-4 top-5 text-zinc-300" size={20} />
                 </div>
               </div>

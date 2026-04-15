@@ -55,15 +55,15 @@ export function FeaturedCourses() {
                 </h3>
                 
                 <div className="space-y-4 mb-8">
-                  <div className="flex items-center gap-3 text-gray-400 text-[13px] font-medium">
+                  <div className="flex items-center gap-3 text-white text-[13px] font-medium">
                     <Calendar size={16} className="text-[#facc15]" />
                     <span>{course.date}</span>
                   </div>
-                  <div className="flex items-center gap-3 text-gray-400 text-[13px] font-medium">
+                  <div className="flex items-center gap-3 text-white text-[13px] font-medium">
                     <MapPin size={16} className="text-[#facc15]" />
                     <span>{course.venue}</span>
                   </div>
-                  <div className="flex items-center gap-3 text-gray-400 text-[13px] font-medium">
+                  <div className="flex items-center gap-3 text-white text-[13px] font-medium">
                     <Clock size={16} className="text-[#facc15]" />
                     <span>{course.duration}</span>
                   </div>
