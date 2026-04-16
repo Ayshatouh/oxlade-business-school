@@ -87,5 +87,11 @@
     "subcategories": [
       { "name": "Sustainability and Climate Science", "courseIds": ["sustainability-and-climate-science"] }
     ]
+  }, 
+  {
+    "name": "Testing",
+    "subcategories": [
+      { "name": "Testing Course", "courseIds": ["testing-course"] }
+    ]
   }
 ]
