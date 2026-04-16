@@ -43,8 +43,6 @@ import salesAndMarketing from "./courses/sales-and-marketing.json";
 import sportsBusiness from "./courses/sports-business.json";
 import strategicLeadership from "./courses/strategic-leadership.json";
 import strategicPlanningAndManagement from "./courses/strategic-planning-and-management.json";
-import sustainabilityAndClimateScience from "./courses/sustainability-and-climate-science.json";
-import testcourse from "./courses/testcourse.json";
 
 export interface CourseTopic {
   title: string;
@@ -116,8 +114,6 @@ const courses: Record<string, CourseData> = {
   "sports-business": sportsBusiness as CourseData,
   "strategic-leadership": strategicLeadership as CourseData,
   "strategic-planning-and-management": strategicPlanningAndManagement as CourseData,
-  "sustainability-and-climate-science": sustainabilityAndClimateScience as CourseData,
-  "testing-course": testcourse as CourseData,
 };
 
 export function getCourseById(id: string): CourseData | null {

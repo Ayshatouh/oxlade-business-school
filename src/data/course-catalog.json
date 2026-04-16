@@ -81,17 +81,5 @@
       { "name": "Corporate Islamic Law", "courseIds": ["corporate-islamic-law"] },
       { "name": "Islamic Finance and Law", "courseIds": ["islamic-finance-and-law"] }
     ]
-  },
-  {
-    "name": "New and Trending",
-    "subcategories": [
-      { "name": "Sustainability and Climate Science", "courseIds": ["sustainability-and-climate-science"] }
-    ]
-  }, 
-  {
-    "name": "Testing",
-    "subcategories": [
-      { "name": "Testing Course", "courseIds": ["testing-course"] }
-    ]
   }
 ]
