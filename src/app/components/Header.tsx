@@ -7,6 +7,14 @@ import { getVenueCityLinks } from '@/data/venueCourses';
 import { COURSE_CATEGORY_GROUPS, getCategoryPath } from '@/data/courseCategories';
 
 
+export const getTopNavLink = (item: string) => {
+  switch (item) {
+    case 'About': return '/about';
+    case 'Our Team': return '/team';
+    default: return `/info/${item.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
+  }
+};
+
 export function Header() {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [activeTopMenu, setActiveTopMenu] = useState<string | null>(null);
@@ -177,7 +185,7 @@ export function Header() {
                       {topNavItems[menuItem as keyof typeof topNavItems].map((item, idx) => (
                         <li key={item} className="border-b border-white/5 last:border-0">
                           <a
-                            href="#"
+                            href={getTopNavLink(item)}
                             className="block px-6 py-3.25 text-[13px] hover:bg-white/5 transition-colors whitespace-nowrap"
                           >
                             {item}
@@ -363,7 +371,7 @@ export function Header() {
                 <h4 className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-3">About Us</h4>
                 <ul className="space-y-2">
                   {topNavItems['About'].slice(0, 4).map(link => (
-                    <li key={link}><a href="#" className="text-gray-600 text-sm">{link}</a></li>
+                    <li key={link}><a href={getTopNavLink(link)} className="text-gray-600 text-sm">{link}</a></li>
                   ))}
                 </ul>
               </div>
@@ -371,7 +379,7 @@ export function Header() {
                 <h4 className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-3">Helpful Information</h4>
                 <ul className="space-y-2">
                   {topNavItems['Info'].slice(0, 4).map(link => (
-                    <li key={link}><a href="#" className="text-gray-600 text-sm">{link}</a></li>
+                    <li key={link}><a href={getTopNavLink(link)} className="text-gray-600 text-sm">{link}</a></li>
                   ))}
                 </ul>
               </div>

@@ -19,7 +19,7 @@ export function Footer() {
   const w3FormsAccessKey = process.env.NEXT_PUBLIC_W3FORMS_ACCESS_KEY;
 
   return (
-    <footer className="bg-zinc-50 border-t border-gray-200 text-gray-800 font-sans">
+    <footer className="bg-[#002d80] border-t border-gray-200 text-white font-sans">
       <div className="max-w-7xl mx-auto px-6 pt-16 pb-8">
         
         {/* Top 4 Columns */}
@@ -27,12 +27,12 @@ export function Footer() {
           {/* Column 1: Description */}
           <div className="lg:pr-8">
             <img
-              src="/pictures/oxladebiz.png"
+              src="/pictures/logofooter.png"
               alt={`${siteConfig.name} Logo`}
               className="h-10 w-auto object-contain mb-6"
             />
 
-            <p className="text-[15px] leading-relaxed text-gray-900 mt-2">
+            <p className="text-[15px] leading-relaxed text-white mt-2">
               {siteConfig.name} offers over 500 intensive courses that elevate professional skills, enhance career growth, and boost organisational effectiveness.
             </p>
 
@@ -40,12 +40,12 @@ export function Footer() {
 
           {/* Column 2: About */}
           <div>
-            <h4 className="font-bold text-gray-900 mb-5 text-[15px]">About</h4>
+            <h4 className="font-bold text-white mb-5 text-[15px]">About</h4>
             <ul className="space-y-3">
               {['About Us', 'Meet the Team', 'Course Locations', 'Training Consultants', 'Testimonials'].map((link) => (
                 <li key={link}>
-                  <a href="#" className="flex items-center gap-2 text-[14px] text-gray-900 hover:text-[#002d80] font-medium transition-colors group">
-                    <ChevronRight size={14} className="text-[#002d80] transition-colors" />
+                  <a href="#" className="flex items-center gap-2 text-[14px] text-white hover:text-[#facc15] font-medium transition-colors group">
+                    <ChevronRight size={14} className="text-[#facc15] transition-colors" />
                     <span>{link}</span>
                   </a>
                 </li>
@@ -55,12 +55,12 @@ export function Footer() {
 
           {/* Column 3: Quick Links */}
           <div>
-            <h4 className="font-bold text-gray-900 mb-5 text-[15px]">Quick Links</h4>
+            <h4 className="font-bold text-white mb-5 text-[15px]">Quick Links</h4>
             <ul className="space-y-3">
               {['Brochures & Calendars', 'Accommodation', 'Airport Transfers', 'Visas', 'Consultancy Solutions'].map((link) => (
                 <li key={link}>
-                  <a href="#" className="flex items-center gap-2 text-[14px] text-gray-900 hover:text-[#002d80] font-medium transition-colors group">
-                    <ChevronRight size={14} className="text-[#002d80] transition-colors" />
+                  <a href="#" className="flex items-center gap-2 text-[14px] text-white hover:text-[#facc15] font-medium transition-colors group">
+                    <ChevronRight size={14} className="text-[#facc15] transition-colors" />
                     <span>{link}</span>
                   </a>
                 </li>
@@ -70,107 +70,54 @@ export function Footer() {
 
           {/* Column 4: Info */}
           <div>
-            <h4 className="font-bold text-gray-900 mb-5 text-[15px]">Info</h4>
+            <h4 className="font-bold text-white mb-5 text-[15px]">Info</h4>
             <ul className="space-y-3">
               {['Privacy Policy', 'Terms', 'FAQs'].map((link) => (
                 <li key={link}>
-                  <a href="#" className="flex items-center gap-2 text-[14px] text-gray-900 hover:text-[#002d80] font-medium transition-colors group">
-                    <ChevronRight size={14} className="text-[#002d80] transition-colors" />
+                  <a href="#" className="flex items-center gap-2 text-[14px] text-white hover:text-[#facc15] font-medium transition-colors group">
+                    <ChevronRight size={14} className="text-[#facc15] transition-colors" />
                     <span>{link}</span>
                   </a>
                 </li>
               ))}
             </ul>
-            <div className="mt-6 space-y-2 text-[14px] text-gray-900">
+            <div className="mt-6 space-y-2 text-[14px] text-white">
               <p className="font-semibold">{siteConfig.address}</p>
-              <a href={`tel:${siteConfig.phone.replace(/\s+/g, '')}`} className="block hover:text-[#002d80] transition-colors">
+              <a href={`tel:${siteConfig.phone.replace(/\s+/g, '')}`} className="block hover:text-[#facc15] transition-colors">
                 {siteConfig.phone}
               </a>
-              <a href={`mailto:${siteConfig.email}`} className="block hover:text-[#002d80] transition-colors">
+              <a href={`mailto:${siteConfig.email}`} className="block hover:text-[#facc15] transition-colors">
                 {siteConfig.email}
               </a>
             </div>
           </div>
         </div>
 
-        {/* Newsletter — light tint of brand blue */}
-        <div className="rounded-xl p-8 mb-12 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8 bg-[#002d80]/[0.06] border border-[#002d80]/10">
-          <div className="lg:w-1/2">
-            <h3 className="text-xl font-bold text-[#002d80] mb-2">Sign up to our newsletter</h3>
-            <p className="text-gray-800 text-[15px]">
-              Receive all the latest information about new courses and much more
-            </p>
-          </div>
-          
-          <form
-            className="lg:w-[55%] w-full flex flex-col gap-4"
-            action="https://api.web3forms.com/submit"
-            method="POST"
-          >
-            <input type="hidden" name="access_key" value={w3FormsAccessKey} />
-            <input type="hidden" name="subject" value={`Newsletter Signup - ${siteConfig.name}`} />
-            <input type="hidden" name="from_name" value={`${siteConfig.name} Website Newsletter Form`} />
-            <input type="checkbox" name="botcheck" className="hidden" style={{ display: "none" }} />
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-              <input
-                name="first_name"
-                type="text"
-                placeholder="First Name"
-                className="w-full px-4 py-2.5 rounded border border-gray-300 bg-black/5 text-gray-800 placeholder-gray-500 focus:outline-none focus:border-[#002d80] focus:bg-white transition-colors text-sm"
-              />
-              <input
-                name="last_name"
-                type="text"
-                placeholder="Last Name"
-                className="w-full px-4 py-2.5 rounded border border-gray-300 bg-black/5 text-gray-800 placeholder-gray-500 focus:outline-none focus:border-[#002d80] focus:bg-white transition-colors text-sm"
-              />
-              <input
-                required
-                name="email"
-                type="email"
-                placeholder="Email"
-                className="w-full px-4 py-2.5 rounded border border-gray-300 bg-black/5 text-gray-800 placeholder-gray-500 focus:outline-none focus:border-[#002d80] focus:bg-white transition-colors text-sm"
-              />
-            </div>
-
-            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-              <label className="flex items-center gap-2 cursor-pointer group">
-                <input name="consent" value="true" type="checkbox" className="w-4 h-4 rounded border-gray-300 text-[#002d80] focus:ring-[#002d80] cursor-pointer" />
-                <span className="text-[14px] text-gray-700 group-hover:text-gray-900 transition-colors">I agree to receiving newsletters.</span>
-              </label>
-              <button
-                type="submit"
-                className="bg-[#002d80] text-white px-8 py-2.5 rounded font-medium hover:opacity-90 transition-opacity text-sm whitespace-nowrap"
-              >
-                Sign up
-              </button>
-            </div>
-          </form>
-        </div>
+        {/* Newsletter Section Removed */}
 
         {/* Bottom Bar: Socials & Copyright */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-6 pt-4 border-t border-gray-200/60">
           <div className="flex items-center gap-3">
-            <span className="text-gray-900 font-bold mr-2 text-sm uppercase tracking-wider">Follow us:</span>
-            <a href="#" className="w-8 h-8 flex items-center justify-center bg-[#facc15] text-[#002d80] rounded hover:bg-[#002d80] hover:text-white transition-all shadow-sm">
+            <span className="text-white font-bold mr-2 text-sm uppercase tracking-wider">Follow us:</span>
+            <a href="#" className="w-8 h-8 flex items-center justify-center bg-[#facc15] text-[#002d80] rounded hover:bg-white hover:text-[#002d80] transition-all shadow-sm">
               <FacebookIcon size={16} fill="currentColor" className="stroke-none" />
             </a>
-            <a href="#" className="w-8 h-8 flex items-center justify-center bg-[#facc15] text-[#002d80] rounded hover:bg-[#002d80] hover:text-white transition-all shadow-sm">
+            <a href="#" className="w-8 h-8 flex items-center justify-center bg-[#facc15] text-[#002d80] rounded hover:bg-white hover:text-[#002d80] transition-all shadow-sm">
               <TwitterIcon size={16} fill="currentColor" className="stroke-none" />
             </a>
-            <a href="#" className="w-8 h-8 flex items-center justify-center bg-[#facc15] text-[#002d80] rounded hover:bg-[#002d80] hover:text-white transition-all shadow-sm">
+            <a href="#" className="w-8 h-8 flex items-center justify-center bg-[#facc15] text-[#002d80] rounded hover:bg-white hover:text-[#002d80] transition-all shadow-sm">
               <LinkedinIcon size={16} fill="currentColor" className="stroke-none" />
             </a>
-            <a href="#" className="w-8 h-8 flex items-center justify-center bg-[#facc15] text-[#002d80] rounded hover:bg-[#002d80] hover:text-white transition-all shadow-sm">
+            <a href="#" className="w-8 h-8 flex items-center justify-center bg-[#facc15] text-[#002d80] rounded hover:bg-white hover:text-[#002d80] transition-all shadow-sm">
               <YoutubeIcon size={16} />
             </a>
           </div>
           
-          <div className="text-right text-[13px] text-gray-900">
+          <div className="text-right text-[13px] text-white">
             <p className="mb-1">© {new Date().getFullYear()} All Rights Reserved. {siteConfig.name}.</p>
 
-            <p>Built By <span className="font-semibold underline cursor-pointer hover:text-[#002d80]">{siteConfig.name}</span></p>
+            <p>Built By <span className="font-semibold underline cursor-pointer hover:text-[#facc15]">{siteConfig.name}</span></p>
           </div>
         </div>
 
