@@ -4,6 +4,7 @@ import { useState, useRef, useEffect, Fragment } from 'react';
 import Link from 'next/link';
 import { siteConfig } from '@/config/site';
 import { getVenueCityLinks } from '@/data/venueCourses';
+import { COURSE_CATEGORY_GROUPS } from '@/data/courseCategories';
 import { buildCategoryGroups, fetchCourseCatalog, getCategoryPath } from '@/lib/courseContent';
 import type { CourseCategoryGroup } from '@/lib/courseContent';
 
@@ -12,6 +13,7 @@ export const getTopNavLink = (item: string) => {
   switch (item) {
     case 'About': return '/about';
     case 'Our Team': return '/team';
+    case 'Reviews': return '/review';
     default: return `/info/${item.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
   }
 };
@@ -40,16 +42,18 @@ export function Header() {
     };
   }, []);
 
-  const [openCourses, setOpenCourses] = useState<CourseCategoryGroup[]>([]);
+  const [openCourses, setOpenCourses] = useState<CourseCategoryGroup[]>(COURSE_CATEGORY_GROUPS);
 
   useEffect(() => {
     let cancelled = false;
     fetchCourseCatalog()
       .then((catalog) => {
-        if (!cancelled) setOpenCourses(buildCategoryGroups(catalog));
+        if (cancelled) return;
+        const groups = buildCategoryGroups(catalog);
+        setOpenCourses(groups.length > 0 ? groups : COURSE_CATEGORY_GROUPS);
       })
       .catch(() => {
-        if (!cancelled) setOpenCourses([]);
+        if (!cancelled) setOpenCourses(COURSE_CATEGORY_GROUPS);
       });
     return () => {
       cancelled = true;
@@ -243,7 +247,11 @@ export function Header() {
             {navMenus.map((navItem) => (
               <Fragment key={navItem.name}>
                 {navItem.hasDropdown ? (
-                  <div className="relative">
+                  <div
+                    className="relative"
+                    onMouseEnter={() => setActiveMenu(navItem.name)}
+                    onMouseLeave={() => setActiveMenu((prev) => (prev === navItem.name ? null : prev))}
+                  >
                     <button
                       onClick={() => toggleMenu(navItem.name)}
                       className="flex items-center gap-1 py-4 -my-4 text-gray-900 hover:text-[#002d80] transition-all duration-300 font-medium text-[15px] group"
