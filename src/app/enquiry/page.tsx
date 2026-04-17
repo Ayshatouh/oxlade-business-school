@@ -4,11 +4,26 @@ import { Header } from "@/app/components/Header";
 import { Footer } from "@/app/components/Footer";
 import { Mail, Phone, MapPin, Send, MessageSquare, User, Building, Book } from "lucide-react";
 import { siteConfig } from "@/config/site";
-import { getAllCourseInterestOptions } from "@/data/courseCategories";
+import { useEffect, useState } from "react";
+import { fetchCourseCatalog, getAllCourseInterestOptionsFromCatalog } from "@/lib/courseContent";
 
 
 export default function EnquiryPage() {
-  const courseInterestOptions = getAllCourseInterestOptions();
+  const [courseInterestOptions, setCourseInterestOptions] = useState<string[]>([]);
+
+  useEffect(() => {
+    let cancelled = false;
+    fetchCourseCatalog()
+      .then((catalog) => {
+        if (!cancelled) setCourseInterestOptions(getAllCourseInterestOptionsFromCatalog(catalog));
+      })
+      .catch(() => {
+        if (!cancelled) setCourseInterestOptions([]);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
   const w3FormsAccessKey = process.env.NEXT_PUBLIC_W3FORMS_ACCESS_KEY;
 
   return (

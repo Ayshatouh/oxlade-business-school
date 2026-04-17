@@ -4,19 +4,51 @@ import { Header } from "@/app/components/Header";
 import { Footer } from "@/app/components/Footer";
 import { ChevronRight, Filter, Search, Calendar, MapPin, DollarSign } from 'lucide-react';
 import Link from 'next/link';
-import { use, useMemo, useState } from 'react';
-import { getCategoryLabelFromSlug } from '@/data/courseCategories';
+import { use, useEffect, useMemo, useState } from 'react';
 import { siteConfig } from '@/config/site';
+import type { CourseCatalogMainCategory, CourseListingRow } from '@/lib/courseContent';
 import {
+  buildCourseListings,
   extractMonthYear,
-  getListingsForSlug,
+  fetchAllCourses,
+  fetchCourseCatalog,
+  getCategoryLabelFromSlugFromCatalog,
+  getListingsForSlugFromData,
   parseListingDateToTimestamp,
   parsePriceValue,
-} from '@/data/courseListings';
+} from '@/lib/courseContent';
 
 export default function CategoryListingPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);
-  const categoryName = getCategoryLabelFromSlug(id);
+  const [catalog, setCatalog] = useState<CourseCatalogMainCategory[]>([]);
+  const [listings, setListings] = useState<CourseListingRow[]>([]);
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    let cancelled = false;
+    setLoaded(false);
+    Promise.all([fetchCourseCatalog(), fetchAllCourses()])
+      .then(([catalogData, courses]) => {
+        if (cancelled) return;
+        setCatalog(catalogData);
+        setListings(buildCourseListings(courses));
+        setLoaded(true);
+      })
+      .catch(() => {
+        if (cancelled) return;
+        setCatalog([]);
+        setListings([]);
+        setLoaded(true);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  const categoryName = useMemo(
+    () => getCategoryLabelFromSlugFromCatalog(id, catalog),
+    [id, catalog]
+  );
   const ROWS_PER_PAGE = 12;
   const [showFilters, setShowFilters] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
@@ -26,7 +58,10 @@ export default function CategoryListingPage({ params }: { params: Promise<{ id: 
   const [sortBy, setSortBy] = useState('nearest-date');
   const [currentPage, setCurrentPage] = useState(1);
 
-  const availableListings = useMemo(() => getListingsForSlug(id), [id]);
+  const availableListings = useMemo(
+    () => getListingsForSlugFromData(id, catalog, listings),
+    [id, catalog, listings]
+  );
 
   const availableVenues = useMemo(
     () => Array.from(new Set(availableListings.map((item) => item.venue))).sort((a, b) => a.localeCompare(b)),

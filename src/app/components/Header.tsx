@@ -4,7 +4,8 @@ import { useState, useRef, useEffect, Fragment } from 'react';
 import Link from 'next/link';
 import { siteConfig } from '@/config/site';
 import { getVenueCityLinks } from '@/data/venueCourses';
-import { COURSE_CATEGORY_GROUPS, getCategoryPath } from '@/data/courseCategories';
+import { buildCategoryGroups, fetchCourseCatalog, getCategoryPath } from '@/lib/courseContent';
+import type { CourseCategoryGroup } from '@/lib/courseContent';
 
 
 export const getTopNavLink = (item: string) => {
@@ -39,6 +40,22 @@ export function Header() {
     };
   }, []);
 
+  const [openCourses, setOpenCourses] = useState<CourseCategoryGroup[]>([]);
+
+  useEffect(() => {
+    let cancelled = false;
+    fetchCourseCatalog()
+      .then((catalog) => {
+        if (!cancelled) setOpenCourses(buildCategoryGroups(catalog));
+      })
+      .catch(() => {
+        if (!cancelled) setOpenCourses([]);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
   const topNavItems = {
     'About': ['About', 'Our Team', 'Our Course Locations', 'Our Training Venues', 'Our Training Consultants', 'Careers', 'Reviews'],
     'Info': ['Clients', 'Accredetation', 'Accomodation', 'Airport Transfers', 'Policies', 'Visas', 'Terms and Conditions', 'Privacy Policy'],
@@ -53,8 +70,6 @@ export function Header() {
     { name: 'Training Formats', hasDropdown: true },
     { name: 'Calendar', href: '#calendar' }
   ];
-
-  const openCourses = COURSE_CATEGORY_GROUPS;
 
   const trainingLocations = getVenueCityLinks().map(link => link.label);
 

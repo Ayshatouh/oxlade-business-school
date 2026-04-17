@@ -1,9 +1,10 @@
 "use client";
 
-import { useState, type ComponentType } from 'react';
+import { useEffect, useState, type ComponentType } from 'react';
 import { TrendingUp, Building2, Users, Settings, Landmark, Globe, UserCheck, Scale, ChevronRight, ChevronDown } from 'lucide-react';
 import Link from 'next/link';
-import { COURSE_CATEGORY_GROUPS, getCategoryPath } from '@/data/courseCategories';
+import { buildCategoryGroups, fetchCourseCatalog, getCategoryPath } from '@/lib/courseContent';
+import type { CourseCategoryGroup } from '@/lib/courseContent';
 
 const playfair = { fontFamily: "var(--font-playfair), 'Playfair Display', Georgia, serif" };
 
@@ -22,6 +23,21 @@ const iconByCategory: Record<string, ComponentType<{ size?: number; strokeWidth?
 export function CourseCategories() {
   const [openCategory, setOpenCategory] = useState<string | null>(null);
   const headingText = "Explore Our Course Categories";
+  const [groups, setGroups] = useState<CourseCategoryGroup[]>([]);
+
+  useEffect(() => {
+    let cancelled = false;
+    fetchCourseCatalog()
+      .then((catalog) => {
+        if (!cancelled) setGroups(buildCategoryGroups(catalog));
+      })
+      .catch(() => {
+        if (!cancelled) setGroups([]);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   const toggleCategory = (name: string) => {
     setOpenCategory(openCategory === name ? null : name);
@@ -58,7 +74,7 @@ export function CourseCategories() {
       </div>
 
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-start">
-        {COURSE_CATEGORY_GROUPS.map((category) => {
+        {groups.map((category) => {
           const Icon = iconByCategory[category.name] ?? Building2;
           const isOpen = openCategory === category.name;
 

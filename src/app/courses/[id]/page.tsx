@@ -3,21 +3,59 @@
 import { Header } from "@/app/components/Header";
 import { Footer } from "@/app/components/Footer";
 import { Calendar, MapPin, Clock, Award, Users, BookOpen, CheckCircle2, FileText, Mail, Phone, ArrowRight, ChevronRight, Download, ChevronDown, Minus, Plus } from 'lucide-react';
-import React, { use, useState } from "react";
+import React, { use, useEffect, useState } from "react";
 import Link from "next/link";
 import { siteConfig } from "@/config/site";
-import { getCourseById } from "@/data/courses";
-import { COURSE_CATEGORY_GROUPS, getCategoryPath } from "@/data/courseCategories";
 import { notFound } from "next/navigation";
+import type { CourseCategoryGroup, CourseData } from "@/lib/courseContent";
+import { buildCategoryGroups, fetchCourseById, fetchCourseCatalog, getCategoryPath } from "@/lib/courseContent";
 
 
 
 
 export default function CourseDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);
-  const courseData = getCourseById(id);
+  const [courseData, setCourseData] = useState<CourseData | null>(null);
+  const [loaded, setLoaded] = useState(false);
+  const [categoryGroups, setCategoryGroups] = useState<CourseCategoryGroup[]>([]);
 
-  if (!courseData) {
+  useEffect(() => {
+    let cancelled = false;
+    setLoaded(false);
+    fetchCourseById(id)
+      .then((data) => {
+        if (!cancelled) {
+          setCourseData(data);
+          setLoaded(true);
+        }
+      })
+      .catch(() => {
+        if (!cancelled) {
+          setCourseData(null);
+          setLoaded(true);
+        }
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [id]);
+
+  useEffect(() => {
+    let cancelled = false;
+    fetchCourseCatalog()
+      .then((catalog) => {
+        if (!cancelled) setCategoryGroups(buildCategoryGroups(catalog));
+      })
+      .catch(() => {
+        if (!cancelled) setCategoryGroups([]);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  if (loaded && !courseData) {
     notFound();
   }
 
@@ -31,6 +69,18 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
         : [...prev, index]
     );
   };
+
+  if (!loaded || !courseData) {
+    return (
+      <div className="min-h-screen bg-white selection:bg-[#facc15] selection:text-[#002d80]">
+        <Header />
+        <main className="max-w-7xl mx-auto px-6 pt-32 pb-16">
+          <div className="text-zinc-500 text-sm">Loading course…</div>
+        </main>
+        <Footer />
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-white selection:bg-[#facc15] selection:text-[#002d80]">
@@ -270,7 +320,7 @@ export default function CourseDetailPage({ params }: { params: Promise<{ id: str
               <div className="bg-zinc-50 p-8 rounded-3xl border border-zinc-100">
                 <h4 className="font-black text-[#002d80] mb-6 text-[10px] uppercase tracking-[0.2em] border-b border-zinc-200 pb-3">Department Directory</h4>
                 <div className="space-y-3">
-                  {COURSE_CATEGORY_GROUPS.map((cat) => (
+                  {categoryGroups.map((cat) => (
                     <Link key={cat.name} href={getCategoryPath(cat.name)} className="flex items-center gap-2 text-[13px] font-bold text-gray-500 hover:text-[#002d80] transition-colors group">
                       <ChevronRight size={14} className="text-[#facc15] group-hover:translate-x-1 transition-transform" />
                       <span>{cat.name}</span>

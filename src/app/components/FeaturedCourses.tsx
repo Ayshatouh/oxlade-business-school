@@ -1,6 +1,10 @@
+"use client";
+
 import { Calendar, MapPin, Clock, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
-import { getAllCourseIds, getCourseById } from '@/data/courses';
+import { useEffect, useMemo, useState } from 'react';
+import type { CourseData } from '@/lib/courseContent';
+import { fetchAllCourses } from '@/lib/courseContent';
 
 const featuredImages: Record<string, string> = {
   'fraud-detection': '/pictures/pic1.jpg',
@@ -9,20 +13,36 @@ const featuredImages: Record<string, string> = {
 };
 
 export function FeaturedCourses() {
-  const featuredCourses = getAllCourseIds()
-    .map((courseId) => getCourseById(courseId))
-    .filter((course): course is NonNullable<typeof course> => course !== null)
-    .slice(0, 3)
-    .map((course) => ({
-      id: course.id,
-      title: course.title,
-      category: course.category,
-      duration: course.schedule[0]?.duration ?? 'TBC',
-      date: course.schedule[0]?.date ?? 'TBC',
-      venue: course.schedule[0]?.venue ?? 'TBC',
-      price: course.schedule[0]?.price ?? 'TBC',
-      image: featuredImages[course.id] ?? '/pictures/pic1.jpg',
-    }));
+  const [courses, setCourses] = useState<CourseData[]>([]);
+
+  useEffect(() => {
+    let cancelled = false;
+    fetchAllCourses()
+      .then((data) => {
+        if (!cancelled) setCourses(data);
+      })
+      .catch(() => {
+        if (!cancelled) setCourses([]);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  const featuredCourses = useMemo(
+    () =>
+      courses.slice(0, 3).map((course) => ({
+        id: course.id,
+        title: course.title,
+        category: course.category,
+        duration: course.schedule[0]?.duration ?? 'TBC',
+        date: course.schedule[0]?.date ?? 'TBC',
+        venue: course.schedule[0]?.venue ?? 'TBC',
+        price: course.schedule[0]?.price ?? 'TBC',
+        image: featuredImages[course.id] ?? '/pictures/pic1.jpg',
+      })),
+    [courses]
+  );
 
   return (
     <section className="py-10 bg-[#002d80] text-white">
