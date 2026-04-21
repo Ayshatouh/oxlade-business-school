@@ -217,8 +217,8 @@ export function Header() {
               </div>
             ))}
 
-            <a href="#faqs" className="text-[13px] font-medium hover:text-[#facc15] transition-colors">FAQs</a>
-            <a href="#blog" className="text-[13px] font-medium hover:text-[#facc15] transition-colors">Blog</a>
+            <a href="/info/faqs" className="text-[13px] font-medium hover:text-[#facc15] transition-colors">FAQs</a>
+            <a href="/info/blog" className="text-[13px] font-medium hover:text-[#facc15] transition-colors">Blog</a>
             <a href="#contact" className="text-[13px] font-medium hover:text-[#facc15] transition-colors">Contact</a>
           </div>
         </div>
@@ -249,8 +249,6 @@ export function Header() {
                 {navItem.hasDropdown ? (
                   <div
                     className="relative"
-                    onMouseEnter={() => setActiveMenu(navItem.name)}
-                    onMouseLeave={() => setActiveMenu((prev) => (prev === navItem.name ? null : prev))}
                   >
                     <button
                       onClick={() => toggleMenu(navItem.name)}

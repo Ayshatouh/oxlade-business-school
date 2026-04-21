@@ -1,7 +1,6 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { Quote } from "lucide-react";
 import {
   REVIEW_SHOWCASE_ITEMS,
   REVIEW_SHOWCASE_TABS,
@@ -44,9 +43,8 @@ export function ReviewsShowcaseTabs() {
             key={item.id}
             className="rounded-xl border border-zinc-200 bg-zinc-50/80 p-5 md:p-6"
           >
-            <Quote className="mb-3 h-8 w-8 text-[#facc15]" strokeWidth={1.75} aria-hidden />
             <blockquote className="text-sm md:text-[15px] leading-relaxed text-gray-700">
-              “{item.quote}”
+              {item.quote}
             </blockquote>
             <footer className="mt-4 text-xs font-bold uppercase tracking-wide text-[#002d80]">
               {item.attribution}

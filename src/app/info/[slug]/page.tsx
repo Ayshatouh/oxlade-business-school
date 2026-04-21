@@ -7,6 +7,8 @@ import Link from 'next/link';
 import { getVenueCityLinks } from '@/data/venueCourses';
 import { TRAINING_CONSULTANTS } from '@/data/trainingConsultants';
 import { CareersPageContent } from '@/app/components/careers/CareersPageContent';
+import { BlogPageContent } from '@/app/components/blog/BlogPageContent';
+import { FaqAccordion } from '@/app/components/FaqAccordion';
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -22,7 +24,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         ? 'Our Training Consultants'
         : slug === 'careers'
           ? 'Careers'
-          : slug.split('-').map((word) => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+          : slug === 'blog'
+            ? 'News & Insights'
+            : slug.split('-').map((word) => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
   return {
     title: `${title} | ${siteConfig.name}`,
     description:
@@ -32,7 +36,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
           ? `Meet the training consultants and subject experts at ${siteConfig.name}.`
           : slug === 'careers'
             ? `Career opportunities at ${siteConfig.name}.`
-            : undefined,
+            : slug === 'blog'
+              ? `Latest news and insights from ${siteConfig.name}.`
+              : undefined,
   };
 }
 
@@ -81,7 +87,8 @@ export default async function InfoPage({ params }: Props) {
   const compactInfoHero =
     slug === 'our-training-venues' ||
     slug === 'our-training-consultants' ||
-    slug === 'careers';
+    slug === 'careers' ||
+    slug === 'blog';
 
   return (
     <div className="flex flex-col min-h-screen font-sans bg-white">
@@ -101,7 +108,9 @@ export default async function InfoPage({ params }: Props) {
                     ? 'Venues'
                     : slug === 'our-training-consultants'
                       ? 'Consultants'
-                      : 'Careers'}
+                      : slug === 'blog'
+                        ? 'Blog'
+                        : 'Careers'}
                 </span>
               </nav>
               <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-white mb-4">
@@ -109,7 +118,9 @@ export default async function InfoPage({ params }: Props) {
                   ? 'Our Training Venues'
                   : slug === 'our-training-consultants'
                     ? 'Our Training Consultants'
-                    : 'Careers with Oxlade Business School'}
+                    : slug === 'blog'
+                      ? 'News & Insights'
+                      : 'Careers with Oxlade Business School'}
               </h1>
               <p className="text-white/85 text-sm md:text-[15px] leading-relaxed max-w-2xl">
                 {slug === 'our-training-venues' ? (
@@ -120,6 +131,10 @@ export default async function InfoPage({ params }: Props) {
                   <>
                     Our consultants combine deep subject expertise with practical delivery experience—supporting delegates from diagnosis through to measurable workplace application.
                   </>
+                ) : slug === 'blog' ? (
+                  <>
+                    Deep dives into corporate training trends, venue updates, and real-world case notes from our instructional design team.
+                  </>
                 ) : (
                   <>
                     We are building a team of rigorous, client-centred professionals across delivery, programmes, and operations. If you thrive in high-trust environments and care about learning impact, we would like to hear from you.
@@ -129,7 +144,7 @@ export default async function InfoPage({ params }: Props) {
             </div>
           </section>
         ) : (
-          <section className="relative w-full h-[400px] flex items-center justify-center mt-12 md:mt-16 overflow-hidden">
+          <section className="relative w-full h-[250px] flex items-center justify-center mt-12 md:mt-16 overflow-hidden">
             <div className="absolute inset-0 bg-[#002d80]/80 z-10 mix-blend-multiply"></div>
             <div
               className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
@@ -153,7 +168,8 @@ export default async function InfoPage({ params }: Props) {
           className={
             slug === 'our-training-venues' ||
             slug === 'our-training-consultants' ||
-            slug === 'careers'
+            slug === 'careers' ||
+            slug === 'blog'
               ? 'py-10 md:py-12 px-6'
               : 'py-20 px-6'
           }
@@ -163,7 +179,8 @@ export default async function InfoPage({ params }: Props) {
               slug === 'our-course-locations' ||
               slug === 'our-training-venues' ||
               slug === 'our-training-consultants' ||
-              slug === 'careers'
+              slug === 'careers' ||
+              slug === 'blog'
                 ? 'max-w-7xl mx-auto'
                 : 'max-w-4xl mx-auto'
             }
@@ -171,6 +188,8 @@ export default async function InfoPage({ params }: Props) {
             <div className="bg-white">
               {slug === 'careers' ? (
                 <CareersPageContent />
+              ) : slug === 'blog' ? (
+                <BlogPageContent />
               ) : slug === 'our-training-consultants' ? (
                 <div>
                   <p className="text-gray-600 text-sm md:text-[15px] leading-relaxed max-w-3xl mb-8">
@@ -260,50 +279,100 @@ export default async function InfoPage({ params }: Props) {
               ) : (
                 <>
                   <h2 className="text-3xl font-bold text-gray-900 mb-8 border-b border-gray-100 pb-6">
-                    Overview & Information
+                    {slug === 'terms-and-conditions' ? 'Terms & Conditions' : 
+                     slug === 'privacy-policy' ? 'Privacy Policy' :
+                     slug === 'accredetation' ? 'Professional Accreditation' :
+                     slug === 'accomodation' ? 'Accommodation Services' :
+                     slug === 'airport-transfers' ? 'Airport Transfers' :
+                     slug === 'visas' ? 'Visa Support' :
+                     slug === 'clients' ? 'Our Corporate Clients' :
+                     slug === 'case-studies' ? 'Case Studies' :
+                     slug === 'faqs' ? 'Frequently Asked Questions' :
+                     slug === 'blog' ? 'News & Insights' :
+                     formattedTitle}
                   </h2>
                   
-                  <div className="prose prose-lg max-w-none text-gray-600 leading-relaxed space-y-6">
-                    <p>
-                      Welcome to the <strong>{formattedTitle}</strong> page of {siteConfig.name}. We are currently generating specific content for this section. 
-                      Our commitment to excellence ensures that whether you are looking for venue information, corporate policies, or career opportunities, our resources are designed to meet the highest professional standards.
-                    </p>
-                    <p>
-                      At Oxlade, we pride ourselves on delivering not only top-tier training but also transparent, accessible information for our corporate clients, individual delegates, and industry partners.
-                    </p>
+                  <div className="prose max-w-none text-gray-600 leading-relaxed space-y-6 md:text-[20px] text-[18px]">
+                    {slug === 'clients' && (
+                      <p>We are proud to partner with leading organizations globally, delivering tailored training solutions that drive measurable business impact. From multinational corporations to dynamic SMEs, our client portfolio reflects our commitment to excellence across every sector.</p>
+                    )}
+                    {slug === 'accredetation' && (
+                      <p>Quality assurance is at the heart of what we do. Our programs are designed to align with strict professional standards, ensuring that your certification carries weight and recognition in the global marketplace. We are actively engaged with leading industry awarding bodies.</p>
+                    )}
+                    {slug === 'accomodation' && (
+                      <p>To ensure a comfortable learning experience, we maintain partnerships with premium hotels near our training venues across all our locations. Our delegate support team can assist you with securing exclusive corporate rates during your stay.</p>
+                    )}
+                    {slug === 'airport-transfers' && (
+                      <p>We understand the importance of seamless travel. For our international delegates, we offer coordinated airport transfer services. Please reach out to our logistics team upon booking to arrange your executive transport securely.</p>
+                    )}
+                    {slug === 'policies' && (
+                      <p>Oxlade Business School operates with the highest degree of transparency and ethical standards. Our corporate policies govern everything from equal opportunity and diversity to health, safety, and operational excellence.</p>
+                    )}
+                    {slug === 'visas' && (
+                      <div className="space-y-6">
+                        <p>Following receipt of full payment of course fees, we are permitted by the United Kingdom Visa & Immigration (UKVI) to support visa applications. Delegates will be provided with a visa letter to support their application at the British Embassy / High Commission.</p>
+                        
+                        <p>All applicants attending our courses must apply for a Standard Visitor visas. As we are accredited by the British Accreditation Council (BAC) for independent further and higher education – a UKVI approved accreditation body, all delegates applying for Standard Visitor visas will be successful provided all the necessary supporting documentation is included.</p>
+                        
+                        <p>Following is a list of recommended documents that delegates can include as part of their visa applications:</p>
+                        
+                        <ul className="list-disc pl-6 space-y-2 mt-4 text-[#002d80]">
+                          <li><span className="text-gray-600">Two recent passport-sized colour photographs with a white background</span></li>
+                          <li><span className="text-gray-600">Passport or travel document, valid for at least six months (the passport must have at least one clear page for the visa)</span></li>
+                          <li><span className="text-gray-600">Correct application form fully completed in English</span></li>
+                          <li><span className="text-gray-600">Visa support letter from {siteConfig.name}</span></li>
+                          <li><span className="text-gray-600">Letter of employment</span></li>
+                          <li><span className="text-gray-600">Six months itemised bank statements/evidence of assets</span></li>
+                          <li><span className="text-gray-600">Letter from your sponsor (employer), confirming they are paying for the course</span></li>
+                          <li><span className="text-gray-600">Evidence of accommodation in London</span></li>
+                          <li><span className="text-gray-600">Relevant diplomas or educational certificates that you have achieved (it is helpful to submit mark sheets/passing certificates)</span></li>
+                          <li><span className="text-gray-600">Original IELTS/TOEFL Certificate, or other evidence of your ability to speak English</span></li>
+                          <li><span className="text-gray-600">Detailed information with regard to visa requirements can be found on your local British Embassy’s web site</span></li>
+                        </ul>
+                      </div>
+                    )}
+                    {slug === 'terms-and-conditions' && (
+                      <p>Our Terms and Conditions outline the framework of our engagement, covering bookings, cancellations, intellectual property, and delegate responsibilities. We ensure that our terms are clear and fair for both individual learners and corporate sponsors.</p>
+                    )}
+                    {slug === 'privacy-policy' && (
+                      <p>We are committed to protecting your personal and corporate data. Our Privacy Policy details how we collect, store, and utilize your information in strict compliance with global data protection regulations.</p>
+                    )}
+                    {slug === 'brochures-and-calenders' && (
+                      <p>Looking for a comprehensive overview? Our digital brochures and annual training calendars are available upon request. These materials provide deep insights into our curriculum methodologies and upcoming schedule.</p>
+                    )}
+                    {slug === 'case-studies' && (
+                      <p>Discover how our training interventions have transformed teams and optimized operations for our clients. Our case studies detail the precise challenges faced, the solutions deployed, and the tangible ROI achieved.</p>
+                    )}
+                    
+                    {slug === 'faqs' && (
+                      <FaqAccordion />
+                    )}
+                    
+                    {/* Fallback for completely unknown slugs */}
+                    {!['blog', 'faqs', 'clients', 'accredetation', 'accomodation', 'airport-transfers', 'policies', 'visas', 'terms-and-conditions', 'privacy-policy', 'brochures-and-calenders', 'case-studies'].includes(slug) && (
+                      <p>
+                        Welcome to the <strong>{formattedTitle}</strong> hub. Our commitment to excellence ensures that our resources and communications are designed to meet the highest professional standards for our corporate clients and delegates.
+                      </p>
+                    )}
 
                     <div className="bg-zinc-50 border border-gray-100 rounded-xl p-8 my-10 relative overflow-hidden">
                        <div className="absolute top-0 right-0 w-24 h-24 bg-[#002d80] opacity-5 rounded-bl-full"></div>
                        <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
                          <CheckCircle size={20} className="text-[#002d80]" />
-                         Why Choose {siteConfig.name}?
+                         Need specific details?
                        </h3>
-                       <ul className="space-y-3">
-                         <li className="flex items-start gap-3">
-                           <ArrowRight size={18} className="text-[#facc15] mt-1 flex-shrink-0" />
-                           <span>Industry-leading professional development programs and certifications.</span>
-                         </li>
-                         <li className="flex items-start gap-3">
-                           <ArrowRight size={18} className="text-[#facc15] mt-1 flex-shrink-0" />
-                           <span>Global network of state-of-the-art training venues.</span>
-                         </li>
-                         <li className="flex items-start gap-3">
-                           <ArrowRight size={18} className="text-[#facc15] mt-1 flex-shrink-0" />
-                           <span>Expert consultants with genuine, real-world corporate experience.</span>
-                         </li>
-                       </ul>
+                       <p className="text-sm">
+                         If you have immediate operational questions, require specific corporate documentation, or wish to speak with one of our training advisors regarding {formattedTitle.toLowerCase()}, please do not hesitate to reach out to our support team directly.
+                       </p>
                     </div>
-
-                    <p>
-                      If you have immediate operational questions, require specific corporate documentation, or wish to speak with one of our training advisors regarding {formattedTitle.toLowerCase()}, please do not hesitate to reach out to our support team directly.
-                    </p>
                   </div>
                 </>
               )}
 
               {slug !== 'our-training-venues' &&
                 slug !== 'our-training-consultants' &&
-                slug !== 'careers' && (
+                slug !== 'careers' &&
+                slug !== 'blog' && (
                 <div className="mt-16 bg-[#002d80] rounded-2xl p-10 text-center shadow-lg">
                   <BookOpen size={40} className="text-[#facc15] mx-auto mb-4" />
                   <h3 className="text-2xl font-bold text-white mb-4">Require More Details?</h3>

@@ -6,19 +6,24 @@ import { Mail, Phone, MapPin, Send, MessageSquare, User, Building, Book } from "
 import { siteConfig } from "@/config/site";
 import { useEffect, useState } from "react";
 import { fetchCourseCatalog, getAllCourseInterestOptionsFromCatalog } from "@/lib/courseContent";
-
+import { getAllCourseInterestOptions } from "@/data/courseCategories";
 
 export default function EnquiryPage() {
-  const [courseInterestOptions, setCourseInterestOptions] = useState<string[]>([]);
+  const [courseInterestOptions, setCourseInterestOptions] = useState<string[]>(getAllCourseInterestOptions());
 
   useEffect(() => {
     let cancelled = false;
     fetchCourseCatalog()
       .then((catalog) => {
-        if (!cancelled) setCourseInterestOptions(getAllCourseInterestOptionsFromCatalog(catalog));
+        if (!cancelled) {
+            const options = getAllCourseInterestOptionsFromCatalog(catalog);
+            if (options.length > 0) {
+                setCourseInterestOptions(options);
+            }
+        }
       })
       .catch(() => {
-        if (!cancelled) setCourseInterestOptions([]);
+        if (!cancelled) setCourseInterestOptions(getAllCourseInterestOptions());
       });
     return () => {
       cancelled = true;

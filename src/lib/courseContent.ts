@@ -48,6 +48,10 @@ export type CourseListingRow = {
   scheduleIndex: number;
 };
 
+import { COURSE_CATALOG } from "@/data/courseCatalog";
+import { getCourseById, getAllCourseIds } from "@/data/courses";
+// Also import CourseData to resolve returning CourseData correctly
+
 const DEFAULT_COURSE_CATALOG_PATH = "/src/data/course-catalog.json";
 const DEFAULT_COURSE_MANIFEST_PATH = "/src/data/courses-manifest.json";
 const DEFAULT_COURSE_DIR = "/src/data/courses";
@@ -72,27 +76,50 @@ async function fetchJson<T>(url: string): Promise<T> {
 
 export async function fetchCourseCatalog(): Promise<CourseCatalogMainCategory[]> {
   const baseUrl = getContentBaseUrl();
-  if (!baseUrl) return [];
-  return await fetchJson<CourseCatalogMainCategory[]>(`${baseUrl}${DEFAULT_COURSE_CATALOG_PATH}`);
+  if (baseUrl) {
+    try {
+      return await fetchJson<CourseCatalogMainCategory[]>(`${baseUrl}${DEFAULT_COURSE_CATALOG_PATH}`);
+    } catch {
+      console.warn("API fetch failed, falling back to local static catalog");
+    }
+  }
+  return COURSE_CATALOG;
 }
 
 export async function fetchCourseIds(): Promise<string[]> {
   const baseUrl = getContentBaseUrl();
-  if (!baseUrl) return [];
-  return await fetchJson<string[]>(`${baseUrl}${DEFAULT_COURSE_MANIFEST_PATH}`);
+  if (baseUrl) {
+    try {
+      return await fetchJson<string[]>(`${baseUrl}${DEFAULT_COURSE_MANIFEST_PATH}`);
+    } catch {
+      console.warn("API fetch failed, falling back to local static course IDs");
+    }
+  }
+  return getAllCourseIds();
 }
 
 export async function fetchCourseById(id: string): Promise<CourseData | null> {
   const baseUrl = getContentBaseUrl();
-  if (!baseUrl) return null;
-  try {
-    return await fetchJson<CourseData>(`${baseUrl}${DEFAULT_COURSE_DIR}/${id}.json`);
-  } catch {
-    return null;
+  if (baseUrl) {
+    try {
+      return await fetchJson<CourseData>(`${baseUrl}${DEFAULT_COURSE_DIR}/${id}.json`);
+    } catch {
+      console.warn(`API fetch for ${id} failed, falling back to local static course data`);
+    }
   }
+  return getCourseById(id);
 }
 
 export async function fetchAllCourses(): Promise<CourseData[]> {
+  const baseUrl = getContentBaseUrl();
+  if (!baseUrl) {
+    // Fast path: fully static extraction if no API base URL is provided
+    const ids = getAllCourseIds();
+    const courses = ids.map((id) => getCourseById(id));
+    return courses.filter((c): c is CourseData => c !== null);
+  }
+
+  // Network path with graceful item-level fallback included in fetchCourseById
   const ids = await fetchCourseIds();
   const courses = await Promise.all(ids.map((id) => fetchCourseById(id)));
   return courses.filter((c): c is CourseData => c !== null);

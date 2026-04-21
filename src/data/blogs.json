@@ -1,0 +1,38 @@
+[
+  {
+    "id": "fraud-audit-week",
+    "category": "Programmes",
+    "title": "London April intake: one place left on the fraud audit week",
+    "excerpt": "We added a second May cohort after the first filled; if you need board-ready reporting skills before Q2 closes, this is the last April start in the City.",
+    "content": "Due to overwhelming demand from our corporate clients, our April intake for the extensive Fraud Audit week in London has completely sold out, with the exception of a single boardroom vacancy unexpectedly opening up this morning.\n\n### Why the demand?\nRecent shifts in European regulatory compliance have drastically changed how reporting must be performed at Q2 closes. This program has been fundamentally restructured to provide intensive, board-ready reporting skills that satisfy these new requirements without disrupting operational workflows.\n\n### What's next?\nFor those who miss out on this final April seat, we have formally opened a second cohort starting in May. However, if achieving compliance and operational security before the mid-year is a priority for your audit division, securing this final spot is highly recommended.",
+    "date": "04 Apr 2026",
+    "readTime": "4 min",
+    "image": "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1200&q=80",
+    "featured": true,
+    "author": "Programmes Team"
+  },
+  {
+    "id": "dubai-venue-checklist",
+    "category": "Operations",
+    "title": "What changed in our Dubai venue checklist for 2026",
+    "excerpt": "Airport transfers, hotel blocks, and classroom tech—here is what we standardised so overseas delegates spend less time on logistics and more on the course.",
+    "content": "Providing a seamless educational experience means removing logistical friction entirely. Going into 2026, we completely overhauled our venue checklist for our Dubai training center.\n\n### Streamlined Logistics\nWe mapped the average transit time for overseas delegates arriving at DXB and have pre-arranged fixed block allocations with surrounding premium hotels. This eliminates booking uncertainty and guarantees our delegates are housed within a ten-minute executive transfer window from our training facilities.\n\n### Enhanced Classroom Technology\nThe learning environments themselves have been upgraded to support seamless hybrid attendance. Smart boards and high-fidelity acoustics now come standard across all rooms to ensure delegates remain completely focused on the curriculum rather than troubleshooting audiovisual issues.",
+    "date": "28 Mar 2026",
+    "readTime": "6 min",
+    "image": "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1200&q=80",
+    "featured": false,
+    "author": "Operations Division"
+  },
+  {
+    "id": "finance-workshop",
+    "category": "Case note",
+    "title": "Case note: turning a generic finance workshop into a bank-specific run",
+    "excerpt": "A risk team asked for IFRS examples from their own loan book. We rewrote three modules in ten working days—without pushing the delivery date.",
+    "content": "When an international tier-1 bank approached us for a comprehensive finance workshop for their risk analysts, they had one non-negotiable requirement: the case studies had to be modeled on their actual loan books.\n\n### The Challenge\nGeneric IFRS examples do not adequately prepare analysts for the specific nuances of commercial lending portfolios. Our instructional design team faced the challenge of parsing sanitized institutional data and completely rewriting three integral modules of the standard syllabus.\n\n### The Result\nWorking closely with the client's internal compliance officers, our team achieved the rewrite in just ten working days. The delivery date remained unaffected, but the impact of the training multiplied exponentially. The risk officers reported immediate applicability of the frameworks taught, drastically reducing error rates in their subsequent quarterly reporting.",
+    "date": "17 Mar 2026",
+    "readTime": "5 min",
+    "image": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80",
+    "featured": false,
+    "author": "Instructional Design Team"
+  }
+]

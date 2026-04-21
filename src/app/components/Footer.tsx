@@ -72,11 +72,15 @@ export function Footer() {
           <div>
             <h4 className="font-bold text-white mb-5 text-[15px]">Info</h4>
             <ul className="space-y-3">
-              {['Privacy Policy', 'Terms', 'FAQs'].map((link) => (
-                <li key={link}>
-                  <a href="#" className="flex items-center gap-2 text-[14px] text-white hover:text-[#facc15] font-medium transition-colors group">
+              {[
+                { label: 'Privacy Policy', path: '/info/privacy-policy' },
+                { label: 'Terms', path: '/info/terms-and-conditions' },
+                { label: 'FAQs', path: '/info/faqs' }
+              ].map((link) => (
+                <li key={link.label}>
+                  <a href={link.path} className="flex items-center gap-2 text-[14px] text-white hover:text-[#facc15] font-medium transition-colors group">
                     <ChevronRight size={14} className="text-[#facc15] transition-colors" />
-                    <span>{link}</span>
+                    <span>{link.label}</span>
                   </a>
                 </li>
               ))}
